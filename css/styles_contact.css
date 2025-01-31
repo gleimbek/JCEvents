@@ -1,0 +1,626 @@
+/* Reset Styles */
+*{
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+}
+
+/* General Styles */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+
+body {
+	font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+	color: #FFD700;
+	line-height: 1.6;
+
+
+}
+
+/* Header */
+header {
+	background-color: #FFD700;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+header img{
+	max-width:5%;
+	margin-left:50px;
+}
+
+/* Navigation */
+nav{
+	display:flex;
+	align-items:center;
+	position:relative;
+	width:100%;
+}
+
+nav ul{
+	list-style: none; 
+	margin: 0;
+	padding: 0;
+	display:flex;
+	justify-content:center;
+	font-weight:bold;
+	font-size:32px;
+	width:100%;
+}
+
+nav ul li{
+	flex:1;
+	text-align:center;
+}
+
+nav ul li a {
+    text-decoration: none; 
+	font-size: 1rem;
+	color: black;
+    transition: color 0.3s ease;
+}
+		
+nav ul li a:hover {
+    color: white;
+}
+		
+/* Estilos para el ícono de hamburguesa */
+.hamburger-icon {
+	display: none;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 35px;
+	width: 40px;
+	position:absolute;
+	top:10px;
+	right:20px;
+}
+
+.hamburger-icon span {
+	background-color: #333;
+	height: 5px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.social-icons {
+	display: flex;
+	justify-content:flex-end;
+	align-items:center;
+	gap:0px;
+	width:100%;
+}
+
+.social-icons img{
+	width:150px;
+	height:auto;
+	object-fit: contain;
+	cursor:pointer;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+/*Hero Section */
+.hero {
+    position: relative;
+    text-align: center;
+    color: #FFD700;
+}
+
+.hero video {
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero h1 {
+	font-family: 'Parisienne', cursive;
+	font-size: 5rem;
+	margin: 0;
+}
+
+.hero button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 1rem;
+	color: #000;
+	background-color: #FFD700;
+	border: 2px solid #FFD700;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.hero button:hover {
+	background-color: #333;
+	color: #FFD700;
+}
+
+
+/* Styles rules for Contact Us Page */
+.container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#form-wrapper {
+    display: flex;
+	flex-wrap:wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px; /* Espaciado entre el formulario y la dirección */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+	box-sizing:border-box;
+}
+
+#form {
+	flex:1 1 50%;
+	max-width:640px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2{
+	margin-left:150px;
+	margin-bottom:20px;
+}
+.uscontent img{
+	width:1520px;
+	height:auto;
+}
+
+.usform{
+	display:flex;
+	flex-direction:row;
+}
+
+.ustext {
+	margin-top:50px;
+	font-family:'Mulish', sans-serif;
+	margin-left:30px;
+	margin-right:30px;
+	width:400px;
+}
+
+.ustext h2{
+	text-align:center;
+	font-size:30px;
+}
+
+.ustext p{
+	text-align:left;
+	line-height:22px;
+}
+
+.usinfo{
+	display:flex;
+	background-color: #EDEDED;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+.usinfo h2{
+	font-family:'Mulish', sans-serif;
+	text-align:center;
+	font-style:italic;
+	margin-top:5px;
+}
+
+.uscontact{
+	display:flex;
+	flex-direction:row;
+	font-family:'Mulish', sans-serif;
+	color:black;
+}
+
+.uscontact input{
+	height:25px;
+}
+
+.usdata h4{
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
+#fName{
+	margin-bottom:10px;
+	margin-right:30px;
+}
+
+#lName{
+	margin-bottom:20px;
+	margin-right:30px;
+}
+
+#email{
+	margin-bottom:20px;
+	margin-right:30px;
+}
+
+#phone{
+	margin-right:30px;
+	margin-bottom:15px;
+}
+
+.usmessage p{
+	margin-top:5px;
+}
+
+.usmessage textarea{
+	width: 100%;
+	max-width: 100%;
+    min-height: 100px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.usbutton button{
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top:280px;
+	margin-left:-90px;
+    font-size: 16px;
+}
+
+.usbutton:hover {
+    background-color: #0056b3;
+}
+
+.usaddress {
+	flex:1 1 40%;
+	max-width:500px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+	box-sizing:border-box;
+}
+
+.usaddress h4{
+	font-family:'Mulish', sans-serif;
+	text-align:center;
+	margin-bottom:10px;
+	color:black;
+}
+
+iframe {
+    border-radius: 10px;
+    width: 100%;
+    height:310px;
+}
+
+.usmap{
+	margin-left:40px;
+	width: 200px; 
+	height: 200px;
+	border:2 solid black;
+}
+
+
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #form-wrapper {
+        flex-direction: column;
+        gap:20px;
+    }
+
+    #form, .usaddress {
+        width: 100%;
+    }
+
+    iframe {
+        max-height: 200px;
+    }
+	
+	.usmessage textarea{
+		min-height: 210px; /* Aumenta la altura para facilitar la escritura */
+		font-size: 14px; /* Reduce el tamaño de fuente */
+		padding: 8px; /* Reduce el espaciado */
+	}
+	
+	.usmessage p{
+		font-size:15px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor de las tres columnas */
+.three-columns {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+	padding: 15px;
+	background: #FFD700;	
+}
+
+/* Estilo general para cada columna */
+.column {
+	flex: 1;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+/* Estilo de la columna izquierda */
+.left-column .logo {
+	height:100px;
+	width: 100px;
+	margin-bottom: 20px;
+	margin-left:50px;
+	flex-shrink:0;
+	margin-right:20px;
+}
+		
+.left-column {
+	display: flex; /* Alinea los elementos hijos horizontalmente */
+	align-items: center; /* Centra verticalmente el logo y el texto */
+	max-width:450px;
+}
+
+.left-column .description {
+	font-size: 1rem;
+	color: #000;
+	line-height: 1.5;
+	margin:0;
+	flex-grow:1;
+}
+
+/* Estilo de la columna central */
+.center-column h4 {
+	font-size: 1.5rem;
+	color: #000;
+	margin-bottom: 10px;
+	margin-left:20px;
+	margin-right:50px;
+}
+
+.center-column p {
+	font-size: 1rem;
+	color: #000;
+	margin-bottom: 10px;
+	margin-left:20px;
+}
+
+/* Estilo de la columna derecha */
+.right-column h4 {
+	font-size: 1.5rem;
+	color: #000;
+	margin-bottom: 10px;
+}
+
+.right-column .email-input {
+	width: 90%;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right:50px;
+}
+
+.right-column .subscribe-button {
+	padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #000;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.right-column .subscribe-button:hover {
+	background-color: #d07a92; /* Cambio de color al pasar el mouse */
+}
+
+		
+/* Estilo del pie de página */
+.footer {
+	background-color: #000;  /* Fondo negro */
+	color: #fff;  /* Texto blanco */
+	text-align: center;  /* Alineación del texto al centro */
+	padding: 20px 0;  /* Espaciado arriba y abajo */
+	font-size: 1rem;  /* Tamaño de fuente */
+}
+
+.footer p {
+	margin: 0;  /* Elimina el margen por defecto */
+}
+
+
+/* Estilo Responsivo Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+	header {
+		flex-direction: column;
+		padding: 10px;
+	}
+
+	header img {
+		max-width: 30%;
+		margin-left: 0;
+		margin-bottom:20px;
+		margin-top:20px;
+	}
+				
+	.social-icons img{
+		width:60px;
+		height:auto;
+	}
+
+	nav ul {
+		display: none; 
+		flex-direction: column;
+		font-size: 1.5rem;
+		text-align: left;
+	}
+
+	nav ul li {
+		margin: 10px 0;
+		width:100%;
+	}
+			
+	.hamburger-icon {
+		display: flex; /* Mostrar el ícono de hamburguesa */
+		margin-left:5px;
+		height: 30px;
+		width: 35px;
+		top:-180px;
+		right:40px;
+	}
+	
+	.three-columns {
+		display: flex;
+		justify-content: space-between; /* Espaciado igual entre columnas */
+		align-items: flex-start; /* Alinea los elementos al inicio vertical */
+		margin: 0 auto; /* Centro horizontalmente */
+		max-width: 1200px; /* Ancho máximo del contenedor */
+		margin-top:50px;
+		margin-bottom:10px;
+	}
+	
+	.three-columns > div {
+		text-align: center; /* Centra el texto y elementos en cada columna */
+		box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+	}
+								
+	.center-column a{
+		text-decoration:none;
+	}
+				
+			
+	.email-input{
+		max-width: 300px;
+		
+	}
+	
+	
+	/* Columna de la izquierda */
+	.left-column .logo {
+		width: 60%; /* Ajusta el tamaño del logo al contenedor */
+		max-width:100px; /* Máximo ancho del logo */
+		margin: 0 auto 15px; /* Centra la imagen con un margen inferior */
+	}
+
+	.left-column .description {
+		font-size: 14px; /* Tamaño de texto */
+		line-height: 1.6; /* Espaciado entre líneas */
+		max-width: 400px; 
+		margin-left:20px;
+		margin-right:10px;
+		text-align:left;
+	}
+
+	/* Columna del centro */
+	.center-column{
+		max-width: 350px;
+		margin-right:20px;
+		margin-left:10px;
+	}
+
+	.center-column h4 {
+		font-size: 18px;
+		margin-bottom: 10px;
+		margin-right:-11px;
+	}
+
+	.center-column p {
+		font-size: 14px;
+		text-align:center;
+	}
+
+	.center-column a {
+		color: #007BFF; /* Color del enlace */
+		text-decoration: none;
+	}
+
+	.center-column a:hover {
+		text-decoration: underline;
+	}
+
+	/* Columna de la derecha */
+	.right-column h4 {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	.email-input {
+		width: calc(100% - 20px); /* Asegura que el campo ocupe todo el ancho */
+		padding: 10px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 0; /* Sin esquinas redondeadas */
+		font-size: 14px;
+		box-sizing: border-box;
+		margin-left:20px;
+	}
+
+
+				
+	.footer {
+		padding: 10px;
+		font-size: 1rem;
+	}
+}

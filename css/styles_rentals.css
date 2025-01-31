@@ -1,0 +1,832 @@
+/* Reset Styles */
+*{
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+}
+
+/* General Styles */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+
+body {
+	font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:white;
+	color: #FFD700;
+	line-height: 1.6;
+}
+
+/* Header */
+header {
+	background-color: #FFD700;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+header img{
+	max-width:5%;
+	margin-left:50px;
+}
+
+/* Navigation */
+nav{
+	display:flex;
+	align-items:center;
+	position:relative;
+	width:100%;
+}
+
+nav ul{
+	list-style: none; 
+	margin: 0;
+	padding: 0;
+	display:flex;
+	justify-content:center;
+	font-weight:bold;
+	font-size:32px;
+	width:100%;
+}
+
+nav ul li{
+	flex:1;
+	text-align:center;
+}
+
+nav ul li a {
+    text-decoration: none; 
+	font-size: 1rem;
+	color: black;
+    transition: color 0.3s ease;
+}
+		
+nav ul li a:hover {
+    color: white;
+}
+		
+/* Estilos para el ícono de hamburguesa */
+.hamburger-icon {
+	display: none;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 35px;
+	width: 40px;
+	position:absolute;
+	top:10px;
+	right:20px;
+}
+
+.hamburger-icon span {
+	background-color: #333;
+	height: 5px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.social-icons {
+	display: flex;
+	justify-content:flex-end;
+	align-items:center;
+	gap:0px;
+	width:100%;
+}
+
+.social-icons img{
+	width:150px;
+	height:auto;
+	object-fit: contain;
+	cursor:pointer;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.rent{
+    position: relative;
+    text-align: center;
+    color: white;
+    z-index: 1;
+	margin:0;
+	padding:0;
+}
+
+.rent img{
+	max-width:100%;
+    object-fit: contain;
+}
+
+.overlay h1{
+	margin-top:10px;
+	margin-bottom:40px;
+	text-align:center;
+	font-size:80px;
+	font-family:'Times', sans-serif;
+}
+
+.rent .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.call{
+	margin-top: 20px;
+	font-size: 20px; 
+	padding:15px 20px;  
+	min-width: 250px; 
+	margin-bottom:10px;
+	background-color:#FFD700;
+	text-decoration:none;
+	color:black;
+}
+
+.getquote{
+	margin-top: 20px;
+	font-size: 20px; 
+	padding:15px 20px;  
+	min-width: 250px; 
+	margin-bottom:10px;
+	background-color:#FFD700;
+	text-decoration:none;
+	color:black;
+}
+
+.bg-white-words{
+	margin-top:30px;
+}
+
+.stars {
+    color: #ffbb00;
+	margin-top:30px;
+  }
+
+.rating-text{
+	margin-bottom:30px;
+	padding:20px;
+}
+.elements{
+	background-color:white;
+	margin:0;
+	padding:0;
+}
+
+section{
+	background-color:#efefef;
+}
+
+.catalog h1,h3{
+	font-family:'Times New Roman', sans-serif;
+	text-align:center;
+	color:black;
+}
+
+.catalog h1{
+	font-size:70px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se ajusten en varias filas si es necesario */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 20px; /* Espacio superior del contenedor */
+	margin-left:120px;
+	margin-right:120px;
+}
+
+button.all {
+    padding: 10px 15px; /* Tamaño del botón */
+    font-size: 14px; /* Tamaño del texto */
+    font-family: 'Mulish', sans-serif; /* Fuente del botón */
+    color: black; /* Color del texto */
+    background-color: #FFD700; /* Color de fondo */
+    border: 1px solid #FFD700; /* Borde del botón */
+    border-radius: 0; /* Sin esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+	margin-bottom:-15px;
+}
+
+button.all:hover {
+    background-color:#333; /* Cambia el color al pasar el mouse */
+	color:white;
+}
+
+.inventory-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+        
+
+.inventory {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.inventory h4{
+	font-size: 19px;
+	color:black;
+}
+
+.inventory img {
+    width: 60%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.inventory h3 {
+	margin-top:10px;
+    font-size: 18px;
+	color: red;
+}
+
+.inventory p {
+    color: #555;
+	line-height:25px;
+	margin-top:5px;
+}
+
+.get-button{
+	background-color:#FFD700;
+	color:black;
+}
+
+.get-button:hover{
+	background-color:#333; /* Cambia el color al pasar el mouse */
+	color:white;	
+}
+
+.inventory-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Espacio entre los elementos */
+  justify-content: space-around; /* Centrar los elementos */
+}
+
+.inventory {
+  /*flex: 1 1 calc(33.333% - 16px);  Tres columnas */
+  box-sizing: border-box;
+  max-width: calc(33.333% - 16px);
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  display: none;
+  transition: all 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+  height: 100%; /* Asegura el mismo tamaño vertical */
+  font-family:'Times New Roman', sans-serif;
+}
+
+.inventory.show {
+    display: block; /* Muestra los productos seleccionados */
+}
+
+.inventory img {
+  max-width: 50%;
+  height: auto; /* Mantener proporciones */
+}
+
+.inventory h4 {
+  text-align: center;
+  margin: 8px 0;
+  font-size:18px;
+}
+
+.inventory p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 8px 0;
+  text-align: center;
+  font-size:14px;
+}
+
+.inventory h3 {
+  color: gray;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.get-button {
+  background-color: #FFD700;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.get-button:hover {
+  background-color: #0056b3;
+}
+
+
+section, .quote-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color:#d2d2d0;
+	flex-direction: column;
+}
+
+
+form{
+	background-color:white;
+	padding:20px;
+}
+
+form button{
+	margin-bottom:20px;
+}
+
+.contact, .details{
+	border:0.7px solid #d2d2d0;
+
+}
+.form-row{
+	padding:10px;	
+	margin-left:30px;
+}
+
+.form-group input, #event-type, #pickup-type, #setup-text, #location-type, #dropoff-area, #pickup-same{
+	max-width:300px;
+}
+
+.contact{
+	margin-bottom:30px;
+}
+
+#pickup-type, #event-type, #setup-text, #location-type, #dropoff-area, #pickup-same{
+	padding:8px;
+	border-radius:3%;
+	border:1px solid #c6c6c2;
+}
+
+#delivery-address{
+	max-width:655px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .inventory {
+    flex: 1 1 calc(50% - 16px); /* Dos columnas */
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory {
+    flex: 1 1 100%; /* Una columna */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 20px; /* Espacio entre los botones */
+	flex-wrap:nowwrap;
+}
+
+.send-button, .quote-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+	background:#FFD700;
+	color:black;
+	margin-top:50px;
+}
+
+.send-button .quote-button { 
+    background-color: black; /* Color de fondo de WhatsApp */
+    color: white;
+}
+  
+.send-button:hover, .quote-button:hover {
+    opacity: 0.8;
+}
+
+.secondary{
+	margin-top:170px;
+	margin-left:50px;	
+}
+/* Estilos del menú principal */
+#menu1 {
+    list-style-type: none; /* Elimina los puntos de las listas */
+    padding: 10px;
+	width:500px;
+	justify-content:center;
+	margin-top:5px;
+	
+}
+
+#menu1 > li {
+    display: inline-block;  /* Hace que los elementos del menú se alineen horizontalmente */
+    position: relative; /* Necesario para posicionar el submenú */
+    padding: 10px 20px;
+	color:white;
+}
+
+#menu1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu2{
+	margin-top:1px;
+	margin-bottom:2px;
+	font-family:'Mulish', sans-serif;
+	font-size:18px;
+	cursor:pointer;
+	color:white;
+}
+
+.menu-item{
+	font-family:'Mulish', sans-serif;
+	font-size:16px;
+	cursor:pointer;
+	color:white;
+}
+
+/* Estilo para la flecha */
+#arrow {
+    font-size: 12px;
+    margin-left: 8px;
+    transition: transform 0.3s; /* Transición suave para la flecha */
+}
+
+/* Estilos para el submenú */
+.submenu {
+    display: none; /* Oculta el submenú por defecto */
+    position: absolute; /* Lo posiciona de forma absoluta con respecto al contenedor principal */
+    left: 0;
+    top: 100%; /* Aparece debajo del item de menú */
+    background-color: #f9f9f9; /* Fondo del submenú */
+    min-width: 100px; /* Ancho mínimo del submenú */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+    z-index: 1; /* Asegura que esté encima de otros elementos */
+}
+
+/* Estilo de los elementos dentro del submenú */
+.submenu li {
+    display: block; /* Los elementos de la lista se muestran verticalmente */
+    padding: 10px;
+}
+
+.submenu li a {
+    display: block;
+    padding: 5px 10px;
+}
+
+.submenu li a:hover {
+    background-color: #ddd; /* Efecto hover sobre los enlaces del submenú */
+}
+
+.text-center{
+	font-family:'Times New Roman', sans-serif;
+	text-align:center;
+	font-size:50px;
+}
+
+.container{
+	background-color:white;
+	color:black;
+	max-width:1000px;
+	margin-left:250px;
+	padding:20px;
+}
+
+.title{
+	margin-bottom:30px;
+}
+.sub, .sub1{
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:-10px;
+}
+
+.sub1 p{
+	margin-bottom:30px;
+}
+
+
+  
+.product-section {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-section img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.product-section div {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="number"] {
+    padding: 0.5rem;
+    width: 50px;
+}
+
+.total {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/*Styles for quote */
+form{
+	text-align:center;
+	color: black;
+	
+}
+
+.encabezado{
+	padding-bottom:30px;
+}
+
+.quote-container{
+	max-width:1200px;
+	justify-content:center;
+}
+
+.quote-container h4{
+	text-align:center;
+	font-family:'Mulish',sans-serif;
+	font-size:50px;
+	color:black;
+}
+
+.form-container {
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+}
+
+.form-header {
+    text-align: center;
+    background-color: #e7e6e4;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+label .icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fdfdfd;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor de las tres columnas */
+.three-columns {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+	padding: 15px;
+	background: #FFD700;	
+}
+
+/* Estilo general para cada columna */
+.column {
+	flex: 1;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+/* Estilo de la columna izquierda */
+.left-column .logo {
+	height:100px;
+	width: 100px;
+	margin-bottom: 20px;
+	margin-left:50px;
+	flex-shrink:0;
+	margin-right:20px;
+}
+		
+.left-column {
+	display: flex; /* Alinea los elementos hijos horizontalmente */
+	align-items: center; /* Centra verticalmente el logo y el texto */
+	max-width:450px;
+}
+
+.left-column .description {
+	font-size: 1rem;
+	color: #000;
+	line-height: 1.5;
+	margin:0;
+	flex-grow:1;
+}
+
+/* Estilo de la columna central */
+.center-column h4 {
+	font-size: 1.5rem;
+	color: #000;
+	margin-bottom: 10px;
+	margin-left:20px;
+	margin-right:50px;
+}
+
+.center-column p {
+	font-size: 1rem;
+	color: #000;
+	margin-bottom: 10px;
+	margin-left:20px;
+}
+
+/* Estilo de la columna derecha */
+.right-column h4 {
+	font-size: 1.5rem;
+	color: #000;
+	margin-bottom: 10px;
+}
+
+.right-column .email-input {
+	width: 90%;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right:50px;
+}
+
+.right-column .subscribe-button {
+	padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #000;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.right-column .subscribe-button:hover {
+	background-color: #d07a92; /* Cambio de color al pasar el mouse */
+}
+
+		
+/* Estilo del pie de página */
+.footer {
+	background-color: #000;  /* Fondo negro */
+	color: #fff;  /* Texto blanco */
+	text-align: center;  /* Alineación del texto al centro */
+	padding: 20px 0;  /* Espaciado arriba y abajo */
+	font-size: 1rem;  /* Tamaño de fuente */
+}
+
+.footer p {
+	margin: 0;  /* Elimina el margen por defecto */
+}
+		
+		
