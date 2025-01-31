@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Parisienne&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+	<link rel="icon" sizes="192x192" href="images/logo.png">
+	<link rel="stylesheet" href="css/styles_contact.css">
+    <title>JC Events:Home</title>
+</head>
+<body>
+    <header>
+		<img src="images/logo.jpg" alt="Decoración a lo largo de la página">
+
+        <nav>
+            <ul id="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About us</a></li>
+				<li><a href="rentals.html">Rentals</a></li>
+				<li><a href="venues.html">Our Venues</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li> <a href="contact.html">Contact</a></li>
+			</ul>
+			
+			<!-- Icono de hamburguesa -->
+            <div id="hamburger" class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="social-icons">
+            <img src="images/facebook.png" alt="facebook">
+            <img src="images/instagram.png" alt="instagram,">
+            <img src="images/tiktok.png" alt="tiktok">
+            <img src="images/whatsapp.png" alt="whatsapp">
+        </div>
+    </header>
+
+        <nav class="tab-desk">
+            <ul>
+                <li><a href="index.html">Home</a></li>  
+                <li><a href="about.html">About Us</a></li> 
+                <li><a href="partnership.html">Partnership</a></li> 
+                <li><a href="gallery.html">Gallery</a></li> 
+                <li><a href="faqs.html">FAQs</a></li> 
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Use the main area to add the main content to the webpage -->
+        <main>
+			<div class="container">
+				<h2>Complete the form below and we will contact you soon.</h2>
+			</div>
+				
+			<div id="form-wrapper">	
+				<div id="form">
+					<div  class="usinfo">
+						<div class="uscontact">
+							<div class="usdata">
+								<h4>Name</h4>
+								<label for="fName">First Name</label><br>
+								<input type="text" name="fName" id="fName" placeholder=" Enter your name"><br>
+								
+								<label for="lName">Last Name</label><br>
+								<input type="text" name="lName" id="lName" placeholder=" Enter your last name">
+								<br>
+								<h4>Email</h4>
+								<input type="email" name="email" id="email" placeholder=" example@pennyjuice.com">
+								
+								<h4>Phone</h4>
+								<input type="phone" name="phone" id="phone">
+							</div>
+						
+							<div class="usmessage">
+								<h4>Message</h4>
+								<p>0 of 1000 max characters</p>
+								<textarea id="message" maxlength="1000" rows="10" cols="50" placeholder=" Enter your message"></textarea>
+							</div>
+							
+						</div>
+						<div class="usbutton">
+							<button type="button" onclick="sendEmail()">Submit</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="usaddress">
+					<h4>Our Address</h4>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12687.416319991402!2d-121.93629004208626!3d37.345963153541156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcb0ae8203e77%3A0x8d7e8ae42917b0e3!2s1111%20Campbell%20Ave%2C%20San%20Jose%2C%20CA%2095126!5e0!3m2!1ses-419!2sus!4v1737580940090!5m2!1ses-419!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+            
+            </div>
+
+        </main>
+
+        <!-- Sección con tres columnas -->
+	<div class="three-columns">
+		<!-- Columna de la izquierda -->
+		<div class="left-column">
+			<img src="images/logo.jpg" alt="Logo" class="logo" />
+			<p class="description">Experience and Elegance at Party Fiesta Events. Weddings, Quinceañeras, Graduations, Baby Showers and Any Social Event. The Best Prices and All Services for that Special Day!!</p>
+		</div>
+
+		<!-- Columna del centro -->
+		<div class="center-column">
+			<h4>Our Location</h4>
+			<p>1111 Campbell Ave, San Jose, California 95126</p>
+			<p><a href="mailto:info@partyfiestaeventos.com">jc.events@yahoo.com</a></p>
+			<p>+(408) 687-3611</p>
+		</div>
+
+		<!-- Columna de la derecha -->
+		<div class="right-column">
+			<h4>Newsletter</h4>
+			<input type="email" placeholder="Enter your email" name="Email suscrite" class="email-input" />
+			<button class="subscribe-button">Suscribe</button>
+		</div>
+	</div>
+
+
+    <!-- Pie de página -->
+	<footer class="footer">
+		<p>© Copyright 2025. Designed by Leimbek Web Studio</p>
+	</footer>
+
+        
+    </div>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+	<script type="text/javascript">
+		// Inicializar EmailJS correctamente con la Public Key
+		(function() {
+			emailjs.init("Exk9NOQB_it9mt92O"); // Aquí pasa solo el string
+		})();
+	</script>
+
+	<script>
+		function sendEmail() {
+			// Obtener valores del formulario
+			const fName = document.getElementById("fName").value;
+			const lName = document.getElementById("lName").value;
+			const email = document.getElementById("email").value;
+			const phone = document.getElementById("phone").value;
+			const message = document.getElementById("message").value;
+
+			// Parámetros para la plantilla
+			const templateParams = {
+				firstName: fName,
+				lastName: lName,
+				email: email,
+				phone: phone,
+				message: message,
+			};
+
+			// Enviar correo con EmailJS
+			emailjs.send("service_0lokxhv", "template_3hrmpdc", templateParams)
+				.then(function(response) {
+					alert("Correo enviado correctamente: " + response.status);
+				}, function(error) {
+					alert("Error al enviar el correo: " + error.text);
+				});
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JC Events: Rental Product Catalog</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Parisienne&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+	<link rel="icon" sizes="192x192" href="images/logo.png">
+	<link rel="stylesheet" href="css/styles_rentals.css">
+    
+    <header>
+		<img src="images/logo.jpg" alt="Decoración a lo largo de la página">
+
+        <nav>
+            <ul id="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About us</a></li>
+				<li><a href="rentals.html">Rentals</a></li>
+				<li><a href="venues.html">Our Venues</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li> <a href="contact.html">Contact</a></li>
+			</ul>
+			
+			<!-- Icono de hamburguesa -->
+            <div id="hamburger" class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="social-icons">
+            <img src="images/facebook.png" alt="facebook">
+            <img src="images/instagram.png" alt="instagram,">
+            <img src="images/tiktok.png" alt="tiktok">
+            <img src="images/whatsapp.png" alt="whatsapp">
+        </div>
+    </header>
+
+
+
+	<div class="rent">
+		<img src="images/rentals.jpg" alt="About us">
+		<div class="overlay">
+			<h1>Equipment rental for events</h1>
+			
+			<div>
+                <a href="tel:725-600-1802" class="call">Call Now: 725-600-1802</a>
+					<a href="#quotation" class="getquote">Get an Instant Quote</a>
+					<div class="stars">
+						★★★★★
+					</div>
+					<div class="rating-text">
+						49+ 5-Start Reviews
+					</div>    
+			</div>
+		</div>
+	</div>	
+	
+    
+	<div class="elements">
+		<div class="catalog">
+			<h1>Our Rental Catalog</h1>
+			<h3>For Weddings, Birthday Parties, Corporate Events, Graduations and more.</h3>
+		</div>		
+		
+		<div class="button-container">
+			<button class="all" data-category="all" onclick="filterProducts('all')">All</button>
+					
+			<button class="all" data-category="bundles" onclick="filterProducts('bundles')">Bundles</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Chairs</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Tables</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Tents and Canopy</button>
+					
+			<button class="all" data-category="category-5" onclick="filterProducts('category-5')">Throne Chairs</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Accessories</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Audio and Karaoke</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Bounce Houses and Inflatables</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Concessions</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Coolers and Heaters</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Dance Floors, Stage</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Games </button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Linens</button>
+										
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Marquee Numbers</button>
+					
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Outdoor Event Packages</button>
+
+			<button class="all" data-category="category-0" onclick="filterProducts('category-0')">Portable Bar</button>
+	</div>
+				
+	<div class="inventory-container" >
+		<div class="inventory" data-category="category-5">
+			<a href="#" target="_blank">
+				<img src="images/throne.png" alt="Throne">
+			</a>
+			<h4>36” white/gold kids throne chair</h4>
+			<p>For kids 2-8 years old. Make your little one feel like royalty with our 36" Kids Throne Chair in a luxurious Gold/Ivory finish. Perfect for birthdays, photo shoots, or just to make an ordinary day extraordinary. Standing at 36 inches, it's the perfect size for your young prince or princess.</p>
+			<h3>$75.00 /day/Item</h3>
+			<a href="#quotation"><button class="get-button">Get an Instant Quote</button></a>	
+		</div>			
+					
+		<div class="inventory" data-category="category-5">
+			<a href="#" target="_blank">
+				<img src="images/throne1.png" alt="Throne">
+			</a>
+			<h4>36” white/gold kids throne chair</h4>
+			<p>For kids 2-8 years old. Rent our 36" Kids Throne Chair in White/Ivory! Perfect for birthdays, photoshoots, or just to make your child feel like royalty.</p>
+			<h3>$75.00 /day/Item</h3>
+			<a href="#quotation"><button class="get-button">Get an Instant Quote</button></a>
+		</div>			
+					
+		<div class="inventory" data-category="category-5">
+			<a href="#" target="_blank">
+				<img src="images/throne2.png" alt="Throne">
+			</a>
+			<h4>70” white/gold throne chair</h4>
+			<p>Experience the ultimate luxury seating with our exquisite 70" Silver/Ivory Throne Chair. This throne chair is not just a piece of furniture, it's a statement. It's perfect for weddings, birthdays, photo shoots, or any event where you want to stand out. Rent this throne chair and elevate your event to a whole new level of luxury.</p>
+			<h3>$110.00 /day/Item</h3>
+			<a href="#quotation"><button class="get-button">Get an Instant Quote</button></a>
+		</div>
+					
+		<div class="inventory" data-category="category-5">
+			<a href="#" target="_blank">
+				<img src="images/throne3.png" alt="Throne">
+			</a>
+			<h4>70” white/silver throne chair</h4>
+			<p>Experience the ultimate luxury seating with our exquisite 70" Silver/Ivory Throne Chair. This throne chair is not just a piece of furniture, it's a statement. It's perfect for weddings, birthdays, photo shoots, or any event where you want to stand out. Rent this throne chair and elevate your event to a whole new level of luxury.</p>
+			<h3>$110.00 /day/Item</h3>
+			<a href="#quotation"><button class="get-button">Get an Instant Quote</button></a>
+		</div>
+					
+		<div class="inventory" data-category="category-5">
+			<a href="#" target="_blank">
+				<img src="images/throne4.jpg" alt="Throne">
+			</a>
+			<h4>White and Silver Double Throne Chair</h4>
+			<p>70" White and Silver Double Throne Chair</p>
+			<h3>$175.00 /day/Item</h3>
+			<a href="#quotation"><button class="get-button">Get an Instant Quote</button></a>
+		</div>
+
+	</div>
+				
+	
+	<section>
+		<div class="quote-container">
+			<div>
+				<h4 id="quotation">Get an Instant Quote</h4>
+			</div>
+			<form>
+				<div class="encabezado">
+					<h5>Your Quote Request Details</h5>
+					<p>Please complete our "Instant Quote Request Form" and we will send you a free quote via email and text. </p>
+				</div>
+                
+				<div class="contact">
+					<div class="form-header">
+						<h2>Contact Details:</h2>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group">
+							<label for="name">
+								<span class="icon">👤</span> Full Name *
+							</label>
+							<input id="name" type="text" placeholder="Full Name *" required>
+						</div>
+
+						<div class="form-group">
+							<label for="company">
+								<span class="icon">🏢</span> Company Name
+							</label>
+							<input id="company" type="text" placeholder="Company Name">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group">
+							<label for="email">
+								<span class="icon">✉️</span> Email Address *
+							</label>
+							<input id="email" type="email" placeholder="Email Address *" required>
+						</div>
+						
+						<div class="form-group">
+							<label for="phone">
+								<span class="icon">📞</span> Phone Number *
+							</label>
+							<input id="phone" type="tel" placeholder="Phone Number *" required>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="details">
+					<div class="form-header">
+						<h2>Event Details</h2>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group">
+							<label for="event-date">
+								<span class="icon">📅</span> Event Date *
+							</label>
+							<input id="event-date" type="date" name="event-date" required>
+						</div>
+						<div class="form-group">
+							<label for="event-time">
+								<span class="icon">⏰</span> Event Time *
+							</label>
+							<input id="event-time" type="time" name="event-time" required>
+						</div>
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="event-type">Event Type *</label>
+								<select id="event-type" name="event-type">
+									<option value="Not Selected">Please Choose One</option>
+									<option value="Anniversary">Anniversary</option>
+									<option value="Baby Shower">Baby Shower</option>
+									<option value="Birthdays">Birthday</option>
+									<option value="Bridal Shower">Bridal Shower</option>
+									<option value="Community Event">Community Event</option>
+									<option value="Cookout">Cookout</option>
+									<option value="Corporate Event">Corporate Event</option>
+									<option value="Dinner Gathering">Dinner Gathering</option>
+									<option value="Funeral">Funeral</option>
+									<option value="Garage Sale">Garage Sale</option>
+									<option value="Graduation">Graduation</option>
+									<option value="Housewarming">Housewarming</option>
+									<option value="Party">Party</option>
+									<option value="Quinceañera">Quinceañera</option>
+									<option value="Religious Event">Religious Event</option>
+									<option value="Reunions">Reunion</option>
+									<option value="Tailgate">Tailgate</option>
+									<option value="Surprise Party">Surprise Party</option>
+									<option value="Wedding">Wedding</option>
+									<option value="Other">Other</option>
+								</select>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="pickup-type">Pickup Type *</label>
+							<select id="pickup-type" name="pickup-type">
+								<option value="">Please Choose One</option>
+								<option value="next-business-day">Next Business Day Pickup*</option>
+								<option value="same-day">Same Day Pickup + $50</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label class="setup-text">Do you need setup?</label>
+                                <select id="setup-text" name="setup">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+						</div>
+					</div>
+        
+					<div class="form-row">
+						<div class="form-group">
+							<label for="location-type">Location Type *</label>
+							<select id="location-type" name="location-type">
+								<option value="Not Selected">Please Choose One</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Business Suites">Business Suites</option>
+                                <option value="House">House</option>
+                                <option value="Office Building">Office Building</option>
+                                <option value="Park">Park</option>
+                                <option value="Resturant-bar">Restaurant/Bar</option>
+                                <option value="Venue">Venue</option>
+                                <option value="Other">Other</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="dropoff-area">Dropoff Area *</label>
+							<select id="dropoff-area" name="dropoff-area">
+								<option value="Not Selected">Please Choose One</option>
+								<option value="Back Alleyway">Back Alleyway</option>
+								<option value="Back Gate">Back Gate</option>
+								<option value="Car Port">Car Port</option>
+								<option value="Driveway">Driveway</option>
+								<option value="Front Door">Front Door</option>
+								<option value="Front Gate">Front Gate</option>
+								<option value="Front Porch">Front Porch</option>
+								<option value="Garage">Garage</option>
+								<option value="backyard">Back Yard</option>
+								<option value="Other">Other</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-row">	
+						<div class="form-group">
+							<label for="delivery-address">Full Delivery Address *</label>
+							<input type="text" id="delivery-address" name="delivery-address" placeholder="Full Delivery Address *">
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="delivery-suite">Suite #</label>
+							<input type="text" id="delivery-suite" name="delivery-suite" placeholder="Suite #">
+						</div>
+						<div class="form-group">
+							<label for="delivery-zip">Delivery Zip Code *</label>
+							<input type="text" id="delivery-zip" name="delivery-zip" placeholder="# Zip Code">
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="gate-code">Gate Code</label>
+							<input type="text" id="gate-code" name="gate-code" placeholder="Gate Code">
+						</div>
+
+						<div class="form-group">
+							<label for="pickup-same">Is pickup address the same? *</label>
+							<select id="pickup-same" name="pickup-same">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="extra-details">Extra details about your rental request:</label>
+							<textarea id="extra-details" name="extra-details" rows="3"></textarea>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group">
+							<label for="promo-code">Promotional Code</label>
+							<input type="text" id="promo-code" name="promo-code" placeholder="#">
+						</div>
+					</div>
+					
+					
+                <button type="submit" class="submit-button">Submit Request</button></a>
+            
+			</form>
+		</div>	
+	</section>	
+
+
+
+
+
+
+
+
+
+
+<!-- Sección con tres columnas -->
+	<div class="three-columns">
+		<!-- Columna de la izquierda -->
+		<div class="left-column">
+			<img src="images/logo.jpg" alt="Logo" class="logo" />
+			<p class="description">Experience and Elegance at Party Fiesta Events. Weddings, Quinceañeras, Graduations, Baby Showers and Any Social Event. The Best Prices and All Services for that Special Day!!</p>
+		</div>
+
+		<!-- Columna del centro -->
+		<div class="center-column">
+			<h4>Our Location</h4>
+			<p>1111 Campbell Ave, San Jose, California 95126</p>
+			<p><a href="mailto:info@partyfiestaeventos.com">jc.events@yahoo.com</a></p>
+			<p>+(408) 687-3611</p>
+		</div>
+
+		<!-- Columna de la derecha -->
+		<div class="right-column">
+			<h4>Newsletter</h4>
+			<input type="email" placeholder="Enter your email" name="Email suscrite" class="email-input" />
+			<button class="subscribe-button">Suscribe</button>
+		</div>
+	</div>
+
+
+    <!-- Pie de página -->
+	<footer class="footer">
+		<p>© Copyright 2025. Designed by Leimbek Web Studio</p>
+	</footer>
+    <script src="script/script.js"></script>
+	<script src="script/script1.js"></script>
+	
+
+</body>
+</html>
