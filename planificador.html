@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planificador de Eventos - Eventos Elegantes</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.step-indicator {
+position: relative;
+}
+.step-indicator::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 100%;
+height: 2px;
+width: 100%;
+background-color: #E5E7EB;
+z-index: 0;
+}
+.step-indicator:last-child::after {
+display: none;
+}
+.step-active {
+background-color: #B8860B;
+color: white;
+border-color: #B8860B;
+}
+.step-completed {
+background-color: #B8860B;
+color: white;
+border-color: #B8860B;
+}
+.step-completed::after {
+background-color: #B8860B;
+}
+.step-form {
+display: none;
+}
+.step-form.active {
+display: block;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+cursor: pointer;
+opacity: 0.6;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+opacity: 1;
+}
+input[type="range"] {
+-webkit-appearance: none;
+height: 6px;
+background: #E5E7EB;
+border-radius: 5px;
+outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background: #B8860B;
+border-radius: 50%;
+cursor: pointer;
+}
+.custom-checkbox {
+display: flex;
+align-items: center;
+position: relative;
+cursor: pointer;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.checkmark {
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #E5E7EB;
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #B8860B;
+border-color: #B8860B;
+}
+.checkmark:after {
+content: "";
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+color: white;
+}
+.custom-checkbox .checkmark:after {
+content: "\f267";
+font-family: "Remix Icon";
+color: white;
+font-size: 12px;
+}
+.custom-radio {
+display: flex;
+align-items: center;
+position: relative;
+cursor: pointer;
+}
+.custom-radio input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.radiomark {
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #E5E7EB;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.custom-radio input:checked ~ .radiomark {
+border-color: #B8860B;
+}
+.radiomark:after {
+content: "";
+display: none;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #B8860B;
+}
+.custom-radio input:checked ~ .radiomark:after {
+display: block;
+}
+.switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #E5E7EB;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #B8860B;
+}
+input:checked + .slider:before {
+transform: translateX(24px);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+			<nav class="flex items-center justify-between px-6 h-20">
+			<div class="flex items-center gap-12">
+				<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+					<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+				</a>
+				<div class="hidden lg:flex items-center gap-8">
+					<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+					<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+					<a href="eventos.html" data-readdy="true" class="text-gray-600 hover:text-primary">Eventos</a>
+					<a href="galeria.html" class="text-primary">Galería</a>
+					<a href="rental.html#" class="text-gray-600 hover:text-primary">Rental</a>
+					<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+				</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+					<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+						<i class="ri-search-line"></i>
+					</div>
+					<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+				</div>
+				<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+					Contactar
+				</a>
+				<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+					<i class="ri-menu-line text-xl"></i>
+				</button>
+			</div>
+			</nav>
+		</header>
+<main class="pt-20 pb-20">
+<div class="container mx-auto px-6 py-12">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-12">
+<h1 class="text-4xl font-semibold mb-4">Planifica tu Evento</h1>
+<p class="text-gray-600 max-w-2xl mx-auto">Completa los siguientes pasos para comenzar a planificar tu evento. Nuestro equipo de expertos te ayudará a crear una experiencia inolvidable.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="flex justify-between mb-12 relative">
+<div class="hidden sm:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
+<div class="step-indicator step-active flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full border-2 flex items-center justify-center mb-2 bg-primary text-white">
+1
+</div>
+<span class="text-sm font-medium">Tipo de Evento</span>
+</div>
+<div class="step-indicator flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center mb-2 bg-white text-gray-500">
+2
+</div>
+<span class="text-sm text-gray-500">Detalles</span>
+</div>
+<div class="step-indicator flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center mb-2 bg-white text-gray-500">
+3
+</div>
+<span class="text-sm text-gray-500">Requisitos</span>
+</div>
+<div class="step-indicator flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center mb-2 bg-white text-gray-500">
+4
+</div>
+<span class="text-sm text-gray-500">Contacto</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Form Area -->
+<div class="lg:col-span-2">
+<div class="bg-white rounded-lg shadow-sm p-8">
+<!-- Step 1: Tipo de Evento -->
+<div id="step1" class="step-form active">
+<h2 class="text-2xl font-semibold mb-6">Selecciona el tipo de evento</h2>
+<p class="text-gray-600 mb-8">Elige el tipo de evento que deseas organizar para que podamos ofrecerte opciones personalizadas.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="event-type-card cursor-pointer border-2 border-gray-100 hover:border-primary rounded-lg overflow-hidden transition-all">
+<input type="radio" name="eventType" value="boda" id="boda" class="hidden">
+<label for="boda" class="cursor-pointer block">
+<div class="h-40 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520ceremony%2520with%2520floral%2520arrangements%2520and%2520sophisticated%2520decor%2520in%2520a%2520luxurious%2520venue%2520with%2520soft%2520lighting%2520and%2520romantic%2520atmosphere&width=400&height=200&seq=101&orientation=landscape" class="w-full h-full object-cover object-top" alt="Boda">
+</div>
+<div class="p-4">
+<h3 class="font-medium text-lg mb-1">Boda</h3>
+<p class="text-sm text-gray-500">Celebra tu día especial con elegancia</p>
+</div>
+</label>
+</div>
+<div class="event-type-card cursor-pointer border-2 border-gray-100 hover:border-primary rounded-lg overflow-hidden transition-all">
+<input type="radio" name="eventType" value="babyShower" id="babyShower" class="hidden">
+<label for="babyShower" class="cursor-pointer block">
+<div class="h-40 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=baby%2520shower%2520celebration%2520with%2520elegant%2520pastel%2520decorations%2520and%2520themed%2520elements%2520in%2520a%2520bright%2520modern%2520space%2520with%2520balloons%2520and%2520gifts&width=400&height=200&seq=102&orientation=landscape" class="w-full h-full object-cover object-top" alt="Baby Shower">
+</div>
+<div class="p-4">
+<h3 class="font-medium text-lg mb-1">Baby Shower</h3>
+<p class="text-sm text-gray-500">Da la bienvenida a tu bebé</p>
+</div>
+</label>
+</div>
+<div class="event-type-card cursor-pointer border-2 border-gray-100 hover:border-primary rounded-lg overflow-hidden transition-all">
+<input type="radio" name="eventType" value="quinceanera" id="quinceanera" class="hidden">
+<label for="quinceanera" class="cursor-pointer block">
+<div class="h-40 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=quincea%25C3%25B1era%2520celebration%2520with%2520elegant%2520pink%2520and%2520gold%2520decorations%2520in%2520a%2520grand%2520ballroom%2520setting%2520with%2520beautiful%2520lighting%2520and%2520floral%2520arrangements&width=400&height=200&seq=103&orientation=landscape" class="w-full h-full object-cover object-top" alt="Quinceañera">
+</div>
+<div class="p-4">
+<h3 class="font-medium text-lg mb-1">Quinceañera</h3>
+<p class="text-sm text-gray-500">Celebra tus 15 años con estilo</p>
+</div>
+</label>
+</div>
+<div class="event-type-card cursor-pointer border-2 border-gray-100 hover:border-primary rounded-lg overflow-hidden transition-all">
+<input type="radio" name="eventType" value="corporativo" id="corporativo" class="hidden">
+<label for="corporativo" class="cursor-pointer block">
+<div class="h-40 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520event%2520setup%2520with%2520professional%2520staging%2520and%2520modern%2520business%2520atmosphere%2520in%2520a%2520conference%2520center%2520with%2520elegant%2520table%2520settings%2520and%2520presentation%2520area&width=400&height=200&seq=104&orientation=landscape" class="w-full h-full object-cover object-top" alt="Corporativo">
+</div>
+<div class="p-4">
+<h3 class="font-medium text-lg mb-1">Corporativo</h3>
+<p class="text-sm text-gray-500">Eventos empresariales profesionales</p>
+</div>
+</label>
+</div>
+</div>
+<div class="mt-6">
+<label class="custom-radio flex items-center gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="radio" name="eventType" value="otro" id="otro">
+<span class="radiomark"></span>
+<div>
+<h3 class="font-medium">Otro tipo de evento</h3>
+<p class="text-sm text-gray-500">Especifica el tipo de evento que deseas organizar</p>
+</div>
+</label>
+<div id="otroEventoInput" class="mt-4 hidden">
+<input type="text" placeholder="Especifica el tipo de evento" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+</div>
+<!-- Step 2: Detalles Básicos -->
+<div id="step2" class="step-form">
+<h2 class="text-2xl font-semibold mb-6">Detalles del evento</h2>
+<p class="text-gray-600 mb-8">Proporciona la información básica sobre tu evento para ayudarnos a planificar mejor.</p>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Fecha del evento</label>
+<input type="date" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Número de invitados</label>
+<div class="flex items-center gap-4">
+<input type="range" min="10" max="500" value="100" class="w-full" id="guestRange">
+<span class="w-16 text-center font-medium" id="guestValue">100</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500 mt-1">
+<span>10</span>
+<span>500</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Ubicación preferida</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-10">
+<option value="">Selecciona una ubicación</option>
+<option value="salon">Salón de eventos</option>
+<option value="jardin">Jardín al aire libre</option>
+<option value="playa">Playa</option>
+<option value="hotel">Hotel</option>
+<option value="restaurante">Restaurante</option>
+<option value="otro">Otro</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Presupuesto estimado</label>
+<div class="relative">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</div>
+<input type="text" placeholder="Ingresa tu presupuesto" class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<p class="text-xs text-gray-500 mt-1">Ingresa un monto aproximado en dólares</p>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Hora del evento</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative">
+<input type="time" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+<p class="text-xs text-gray-500 mt-1">Hora de inicio</p>
+</div>
+<div class="relative">
+<input type="time" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+<p class="text-xs text-gray-500 mt-1">Hora de finalización</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Requisitos Especiales -->
+<div id="step3" class="step-form">
+<h2 class="text-2xl font-semibold mb-6">Requisitos especiales</h2>
+<p class="text-gray-600 mb-8">Personaliza tu evento seleccionando los servicios adicionales que necesitas.</p>
+<div class="space-y-6">
+<div>
+<h3 class="font-medium mb-4">Servicios de catering</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="catering" value="buffet">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Buffet</h4>
+<p class="text-sm text-gray-500">Variedad de platos para autoservicio</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="catering" value="emplatado">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Servicio emplatado</h4>
+<p class="text-sm text-gray-500">Menú servido a la mesa</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="catering" value="cocteleria">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Coctelería</h4>
+<p class="text-sm text-gray-500">Servicio de bebidas y cócteles</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="catering" value="reposteria">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Repostería</h4>
+<p class="text-sm text-gray-500">Mesa de postres y pastelería</p>
+</div>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-medium mb-4">Decoración y ambientación</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="decoracion" value="floral">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Arreglos florales</h4>
+<p class="text-sm text-gray-500">Centros de mesa y decoración floral</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="decoracion" value="iluminacion">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Iluminación especial</h4>
+<p class="text-sm text-gray-500">Luces ambientales y efectos</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="decoracion" value="tematica">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Decoración temática</h4>
+<p class="text-sm text-gray-500">Ambientación según temática</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="decoracion" value="mobiliario">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Mobiliario especial</h4>
+<p class="text-sm text-gray-500">Mesas, sillas y elementos decorativos</p>
+</div>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-medium mb-4">Entretenimiento</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="entretenimiento" value="dj">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">DJ profesional</h4>
+<p class="text-sm text-gray-500">Música y animación</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="entretenimiento" value="musica">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Música en vivo</h4>
+<p class="text-sm text-gray-500">Banda o grupo musical</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="entretenimiento" value="fotografia">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Fotografía y video</h4>
+<p class="text-sm text-gray-500">Servicio profesional de captura</p>
+</div>
+</label>
+<label class="custom-checkbox flex items-start gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer">
+<input type="checkbox" name="entretenimiento" value="animacion">
+<span class="checkmark mt-0.5"></span>
+<div>
+<h4 class="font-medium">Animación y shows</h4>
+<p class="text-sm text-gray-500">Espectáculos y actividades</p>
+</div>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Requisitos específicos</label>
+<textarea rows="4" placeholder="Describe cualquier requisito especial o detalle adicional que necesites para tu evento" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+</div>
+</div>
+<!-- Step 4: Información de Contacto -->
+<div id="step4" class="step-form">
+<h2 class="text-2xl font-semibold mb-6">Información de contacto</h2>
+<p class="text-gray-600 mb-8">Proporciona tus datos para que podamos ponernos en contacto contigo y finalizar la planificación de tu evento.</p>
+<div class="space-y-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+<input type="text" placeholder="Ingresa tu nombre" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
+<input type="email" placeholder="Ingresa tu email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+<input type="tel" placeholder="Ingresa tu número de teléfono" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Ciudad</label>
+<input type="text" placeholder="Ingresa tu ciudad" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-4">Método de contacto preferido</label>
+<div class="flex flex-col sm:flex-row gap-4">
+<label class="custom-radio flex items-center gap-3">
+<input type="radio" name="contactMethod" value="email" checked>
+<span class="radiomark"></span>
+<span>Correo electrónico</span>
+</label>
+<label class="custom-radio flex items-center gap-3">
+<input type="radio" name="contactMethod" value="phone">
+<span class="radiomark"></span>
+<span>Teléfono</span>
+</label>
+<label class="custom-radio flex items-center gap-3">
+<input type="radio" name="contactMethod" value="whatsapp">
+<span class="radiomark"></span>
+<span>WhatsApp</span>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div>
+<h3 class="font-medium">Solicitar consulta personalizada</h3>
+<p class="text-sm text-gray-500">Agenda una videollamada con un planificador</p>
+</div>
+<label class="switch">
+<input type="checkbox" id="consultaSwitch">
+<span class="slider"></span>
+</label>
+</div>
+<div id="consultaOptions" class="hidden p-4 bg-gray-50 rounded-lg">
+<h3 class="font-medium mb-4">Selecciona una fecha y hora para tu consulta</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Fecha</label>
+<input type="date" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Hora</label>
+<input type="time" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<p class="text-sm text-gray-500">Nuestro equipo confirmará la disponibilidad y te enviará un enlace para la videollamada.</p>
+</div>
+<div>
+<label class="custom-checkbox flex items-start gap-3">
+<input type="checkbox" name="terms" required>
+<span class="checkmark mt-0.5"></span>
+<span class="text-sm">Acepto los <a href="#" class="text-primary hover:underline">términos y condiciones</a> y la <a href="#" class="text-primary hover:underline">política de privacidad</a>.</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between mt-12 pt-6 border-t border-gray-100">
+<button id="prevBtn" class="!rounded-button border border-gray-200 px-6 py-3 text-gray-700 font-medium hidden whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-left-line"></i>
+</div>
+<span>Anterior</span>
+</div>
+</button>
+<button id="saveBtn" class="!rounded-button border border-gray-200 px-6 py-3 text-gray-700 font-medium whitespace-nowrap ml-auto mr-4">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-save-line"></i>
+</div>
+<span>Guardar y continuar después</span>
+</div>
+</button>
+<button id="nextBtn" class="!rounded-button bg-primary text-white px-8 py-3 font-medium whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span>Siguiente</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</div>
+</button>
+<button id="submitBtn" class="!rounded-button bg-primary text-white px-8 py-3 font-medium hidden whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span>Enviar solicitud</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar -->
+<div class="lg:col-span-1">
+<div class="bg-white rounded-lg shadow-sm p-6 sticky top-28">
+<h3 class="text-lg font-semibold mb-4">Resumen de tu evento</h3>
+<div class="space-y-4 mb-6">
+<div id="summaryEventType" class="flex items-start gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-calendar-event-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Tipo de evento</p>
+<p class="font-medium" id="eventTypeSummary">No seleccionado</p>
+</div>
+</div>
+<div id="summaryDate" class="flex items-start gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-calendar-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Fecha</p>
+<p class="font-medium" id="dateSummary">No especificada</p>
+</div>
+</div>
+<div id="summaryGuests" class="flex items-start gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-user-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Invitados</p>
+<p class="font-medium" id="guestsSummary">No especificados</p>
+</div>
+</div>
+<div id="summaryLocation" class="flex items-start gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-map-pin-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Ubicación</p>
+<p class="font-medium" id="locationSummary">No especificada</p>
+</div>
+</div>
+<div id="summaryBudget" class="flex items-start gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-money-dollar-circle-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Presupuesto</p>
+<p class="font-medium" id="budgetSummary">No especificado</p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-100 pt-6 mb-6">
+<h4 class="font-medium mb-4">¿Necesitas ayuda?</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full">
+<i class="ri-phone-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Llámanos</p>
+<p class="font-medium">+1 (408) 687-3611</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full">
+<i class="ri-mail-line"></i>
+</div>
+<div>
+<p class="text-sm text-gray-500">Escríbenos</p>
+<p class="font-medium">jc.events@yahoo.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="font-medium mb-2">Preguntas frecuentes</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="#" class="text-primary hover:underline">¿Cuánto tiempo antes debo planificar?</a></li>
+<li><a href="#" class="text-primary hover:underline">¿Qué servicios incluye la planificación?</a></li>
+<li><a href="#" class="text-primary hover:underline">¿Cómo se realiza el pago?</a></li>
+<li><a href="#" class="text-primary hover:underline">Ver todas las preguntas</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010. Especialistas en planificación de eventos exclusivos.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces rápidos</h3>
+<ul class="space-y-4">
+<li><a href="index.html" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="aboutus.html#" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Eventos</a></li>
+<li><a href="galeria.html" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="rental.html" class="text-gray-400 hover:text-white">Rental</a></li>
+<li><a href="curso.html" class="text-gray-400 hover:text-white">Curso</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 Eventos Elegantes. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-pinterest-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Variables
+let currentStep = 1;
+const totalSteps = 4;
+// Elements
+const stepForms = document.querySelectorAll('.step-form');
+const stepIndicators = document.querySelectorAll('.step-indicator');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+// Event Type Selection
+const eventTypeCards = document.querySelectorAll('.event-type-card');
+const eventTypeSummary = document.getElementById('eventTypeSummary');
+const otroRadio = document.getElementById('otro');
+const otroEventoInput = document.getElementById('otroEventoInput');
+// Guest Range
+const guestRange = document.getElementById('guestRange');
+const guestValue = document.getElementById('guestValue');
+const guestsSummary = document.getElementById('guestsSummary');
+// Consulta Personalizada
+const consultaSwitch = document.getElementById('consultaSwitch');
+const consultaOptions = document.getElementById('consultaOptions');
+// Initialize
+updateStepUI();
+// Event Listeners
+prevBtn.addEventListener('click', goToPreviousStep);
+nextBtn.addEventListener('click', goToNextStep);
+submitBtn.addEventListener('click', submitForm);
+// Event Type Selection
+eventTypeCards.forEach(card => {
+card.addEventListener('click', function() {
+const radio = this.querySelector('input[type="radio"]');
+radio.checked = true;
+// Update all cards
+eventTypeCards.forEach(c => {
+if (c.querySelector('input[type="radio"]').checked) {
+c.classList.add('border-primary');
+} else {
+c.classList.remove('border-primary');
+}
+});
+// Update summary
+const eventType = radio.value;
+const eventTypeLabel = this.querySelector('h3').textContent;
+eventTypeSummary.textContent = eventTypeLabel;
+});
+});
+// Otro Event Type
+otroRadio.addEventListener('change', function() {
+if (this.checked) {
+otroEventoInput.classList.remove('hidden');
+eventTypeCards.forEach(card => card.classList.remove('border-primary'));
+eventTypeSummary.textContent = 'Otro';
+} else {
+otroEventoInput.classList.add('hidden');
+}
+});
+// Guest Range
+guestRange.addEventListener('input', function() {
+guestValue.textContent = this.value;
+guestsSummary.textContent = this.value + ' invitados';
+});
+// Consulta Personalizada
+consultaSwitch.addEventListener('change', function() {
+if (this.checked) {
+consultaOptions.classList.remove('hidden');
+} else {
+consultaOptions.classList.add('hidden');
+}
+});
+// Functions
+function updateStepUI() {
+// Hide all steps
+stepForms.forEach(form => {
+form.classList.remove('active');
+});
+// Show current step
+document.getElementById(`step${currentStep}`).classList.add('active');
+// Update step indicators
+stepIndicators.forEach((indicator, index) => {
+const step = index + 1;
+const indicatorCircle = indicator.querySelector('div');
+if (step < currentStep) {
+indicator.classList.add('step-completed');
+indicatorCircle.classList.add('step-completed');
+indicatorCircle.innerHTML = '<i class="ri-check-line"></i>';
+} else if (step === currentStep) {
+indicator.classList.add('step-active');
+indicatorCircle.classList.add('step-active');
+indicatorCircle.textContent = step;
+} else {
+indicator.classList.remove('step-active', 'step-completed');
+indicatorCircle.classList.remove('step-active', 'step-completed');
+indicatorCircle.textContent = step;
+}
+});
+// Update buttons
+if (currentStep === 1) {
+prevBtn.classList.add('hidden');
+} else {
+prevBtn.classList.remove('hidden');
+}
+if (currentStep === totalSteps) {
+nextBtn.classList.add('hidden');
+submitBtn.classList.remove('hidden');
+} else {
+nextBtn.classList.remove('hidden');
+submitBtn.classList.add('hidden');
+}
+}
+function goToPreviousStep() {
+if (currentStep > 1) {
+currentStep--;
+updateStepUI();
+window.scrollTo(0, 0);
+}
+}
+function goToNextStep() {
+if (currentStep < totalSteps) {
+currentStep++;
+updateStepUI();
+window.scrollTo(0, 0);
+// Update summary based on step
+if (currentStep === 3) {
+const dateInput = document.querySelector('input[type="date"]');
+const locationSelect = document.querySelector('select');
+const budgetInput = document.querySelector('input[placeholder="Ingresa tu presupuesto"]');
+if (dateInput.value) {
+document.getElementById('dateSummary').textContent = formatDate(dateInput.value);
+}
+if (locationSelect.value) {
+document.getElementById('locationSummary').textContent = locationSelect.options[locationSelect.selectedIndex].text;
+}
+if (budgetInput.value) {
+document.getElementById('budgetSummary').textContent = '$' + budgetInput.value;
+}
+}
+}
+}
+function submitForm() {
+// Here you would normally submit the form data
+alert('¡Formulario enviado con éxito! Pronto nos pondremos en contacto contigo.');
+// Redirect to home page
+window.location.href = 'https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d';
+}
+function formatDate(dateString) {
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+return new Date(dateString).toLocaleDateString('es-ES', options);
+}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitud de Cotización - Eventos Elegantes</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#B8860B',
+        secondary: '#1F2937'
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        '2xl': '24px',
+        '3xl': '32px',
+        'full': '9999px',
+        'button': '8px'
+      }
+    }
+  }
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.datepicker-toggle {
+  position: relative;
+}
+.datepicker-toggle-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.confirmation-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.confirmation-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.confirmation-content {
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+.confirmation-modal.active .confirmation-content {
+  transform: translateY(0);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="fixed w-full z-50 bg-white shadow-sm">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center gap-4">
+        <a href="eventos.html" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary">
+          <div class="w-10 h-10 flex items-center justify-center">
+            <i class="ri-arrow-left-line text-xl"></i>
+          </div>
+          <span>Volver</span>
+        </a>
+      </div>
+      <h1 class="text-2xl font-semibold">Solicitud de Cotización</h1>
+      <div class="w-10 h-10"></div> <!-- Spacer for balance -->
+    </div>
+  </div>
+</header>
+
+<main class="pt-28 pb-20">
+  <div class="container mx-auto px-6 max-w-4xl">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+      <form id="cotizacionForm" class="space-y-8">
+        <!-- Sección 1: Datos Personales -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-100">Datos Personales</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-gray-700 mb-2">Nombre completo <span class="text-red-500">*</span></label>
+              <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Este campo es obligatorio</p>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico <span class="text-red-500">*</span></label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Introduce un correo electrónico válido</p>
+            </div>
+            <div>
+              <label for="telefono" class="block text-sm font-medium text-gray-700 mb-2">Teléfono <span class="text-red-500">*</span></label>
+              <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Introduce un número de teléfono válido</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 2: Detalles del Evento -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-100">Detalles del Evento</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="tipoEvento" class="block text-sm font-medium text-gray-700 mb-2">Tipo de evento <span class="text-red-500">*</span></label>
+              <div class="relative">
+                <select id="tipoEvento" name="tipoEvento" required class="w-full appearance-none px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm pr-10">
+                  <option value="">Selecciona un tipo</option>
+                  <option value="boda">Boda</option>
+                  <option value="babyShower">Baby Shower</option>
+                  <option value="quinceanera">Quinceañera</option>
+                  <option value="corporativo">Evento Corporativo</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Selecciona un tipo de evento</p>
+            </div>
+            <div>
+              <label for="fecha" class="block text-sm font-medium text-gray-700 mb-2">Fecha del evento <span class="text-red-500">*</span></label>
+              <div class="relative datepicker-toggle">
+                <input type="date" id="fecha" name="fecha" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+                <span class="datepicker-toggle-button">
+                  <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-calendar-line"></i>
+                  </div>
+                </span>
+              </div>
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Selecciona una fecha</p>
+            </div>
+            <div>
+              <label for="invitados" class="block text-sm font-medium text-gray-700 mb-2">Número de invitados <span class="text-red-500">*</span></label>
+              <input type="number" id="invitados" name="invitados" min="1" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Introduce un número válido</p>
+            </div>
+            <div>
+              <label for="ubicacion" class="block text-sm font-medium text-gray-700 mb-2">Ubicación del evento <span class="text-red-500">*</span></label>
+              <input type="text" id="ubicacion" name="ubicacion" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Este campo es obligatorio</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 3: Requisitos Específicos -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-100">Requisitos Específicos</h2>
+          <div class="space-y-6">
+            <div>
+              <p class="text-sm font-medium text-gray-700 mb-3">Servicios adicionales (selecciona los que necesites)</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="catering" name="servicios[]" value="catering" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="catering" class="text-sm text-gray-700 cursor-pointer select-none">Catering y bebidas</label>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="decoracion" name="servicios[]" value="decoracion" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="decoracion" class="text-sm text-gray-700 cursor-pointer select-none">Decoración temática</label>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="fotografia" name="servicios[]" value="fotografia" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="fotografia" class="text-sm text-gray-700 cursor-pointer select-none">Fotografía y vídeo</label>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="musica" name="servicios[]" value="musica" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="musica" class="text-sm text-gray-700 cursor-pointer select-none">Música y entretenimiento</label>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="transporte" name="servicios[]" value="transporte" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="transporte" class="text-sm text-gray-700 cursor-pointer select-none">Transporte para invitados</label>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="invitaciones" name="servicios[]" value="invitaciones" class="opacity-0 absolute h-5 w-5 cursor-pointer">
+                    <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                      <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <label for="invitaciones" class="text-sm text-gray-700 cursor-pointer select-none">Diseño de invitaciones</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="requisitos" class="block text-sm font-medium text-gray-700 mb-2">Requisitos especiales</label>
+              <textarea id="requisitos" name="requisitos" rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm" placeholder="Describe cualquier requisito especial para tu evento..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 4: Presupuesto -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-100">Presupuesto</h2>
+          <div class="space-y-6">
+            <div>
+              <label for="presupuesto" class="block text-sm font-medium text-gray-700 mb-2">Presupuesto estimado <span class="text-red-500">*</span></label>
+              <div class="relative">
+                <select id="presupuesto" name="presupuesto" required class="w-full appearance-none px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm pr-10">
+                  <option value="">Selecciona un rango</option>
+                  <option value="menos5000">Menos de $5,000</option>
+                  <option value="5000-10000">$5,000 - $10,000</option>
+                  <option value="10000-20000">$10,000 - $20,000</option>
+                  <option value="20000-30000">$20,000 - $30,000</option>
+                  <option value="mas30000">Más de $30,000</option>
+                </select>
+                <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+              <p class="error-message text-red-500 text-xs mt-1 hidden">Selecciona un rango de presupuesto</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 5: Comentarios Adicionales -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-100">Comentarios Adicionales</h2>
+          <div>
+            <label for="comentarios" class="block text-sm font-medium text-gray-700 mb-2">¿Algo más que debamos saber?</label>
+            <textarea id="comentarios" name="comentarios" rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm" placeholder="Comparte cualquier información adicional que consideres relevante..."></textarea>
+          </div>
+        </div>
+
+        <!-- Términos y Condiciones -->
+        <div class="pt-4">
+          <div class="flex items-start">
+            <div class="relative flex items-center h-5">
+              <input type="checkbox" id="terminos" name="terminos" required class="opacity-0 absolute h-5 w-5 cursor-pointer">
+              <div class="bg-white border border-gray-200 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                <svg class="fill-current hidden w-3 h-3 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+              </div>
+              <label for="terminos" class="text-sm text-gray-700 cursor-pointer select-none ml-2">
+                Acepto la <a href="#" class="text-primary hover:underline">política de privacidad</a> y los <a href="#" class="text-primary hover:underline">términos y condiciones</a> <span class="text-red-500">*</span>
+              </label>
+            </div>
+          </div>
+          <p class="error-message text-red-500 text-xs mt-1 hidden">Debes aceptar los términos y condiciones</p>
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="pt-4">
+          <button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-4 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+            Enviar Solicitud
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- Modal de confirmación -->
+<div id="confirmationModal" class="confirmation-modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div class="confirmation-content bg-white w-full max-w-md rounded-lg shadow-xl mx-4 overflow-hidden">
+    <div class="p-6 text-center">
+      <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div class="w-10 h-10 flex items-center justify-center text-primary">
+          <i class="ri-check-line text-3xl"></i>
+        </div>
+      </div>
+      <h3 class="text-2xl font-semibold mb-2">¡Solicitud Enviada!</h3>
+      <p class="text-gray-600 mb-6">Gracias por tu interés en nuestros servicios. Hemos recibido tu solicitud de cotización y nos pondremos en contacto contigo en las próximas 24-48 horas.</p>
+      <div class="bg-gray-50 p-4 rounded-lg mb-6">
+        <p class="text-sm text-gray-600 mb-1">Número de referencia:</p>
+        <p class="text-lg font-medium text-primary" id="referenceNumber">COT-25052023</p>
+      </div>
+      <button id="closeConfirmation" class="!rounded-button bg-primary text-white px-8 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+        Entendido
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-white border-t border-gray-100 py-8">
+  <div class="container mx-auto px-6 text-center">
+    <p class="text-sm text-gray-500">© 2025 Eventos Elegantes. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Manejo de checkboxes personalizados
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const svg = this.nextElementSibling.querySelector('svg');
+      if (this.checked) {
+        svg.classList.remove('hidden');
+      } else {
+        svg.classList.add('hidden');
+      }
+    });
+  });
+
+  // Generar número de referencia aleatorio
+  function generateReference() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    return `COT-${day}${month}${year}-${random}`;
+  }
+  
+  document.getElementById('referenceNumber').textContent = generateReference();
+
+  // Validación del formulario
+  const form = document.getElementById('cotizacionForm');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let isValid = true;
+    
+    // Validar campos requeridos
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        showError(field, 'Este campo es obligatorio');
+        isValid = false;
+      } else {
+        hideError(field);
+      }
+    });
+    
+    // Validar email
+    const emailField = document.getElementById('email');
+    if (emailField.value && !validateEmail(emailField.value)) {
+      showError(emailField, 'Introduce un correo electrónico válido');
+      isValid = false;
+    }
+    
+    // Validar teléfono
+    const phoneField = document.getElementById('telefono');
+    if (phoneField.value && !validatePhone(phoneField.value)) {
+      showError(phoneField, 'Introduce un número de teléfono válido');
+      isValid = false;
+    }
+    
+    // Validar términos y condiciones
+    const termsCheckbox = document.getElementById('terminos');
+    if (!termsCheckbox.checked) {
+      showError(termsCheckbox, 'Debes aceptar los términos y condiciones');
+      isValid = false;
+    } else {
+      hideError(termsCheckbox);
+    }
+    
+    if (isValid) {
+      // Mostrar modal de confirmación
+      const modal = document.getElementById('confirmationModal');
+      modal.classList.add('active');
+      
+      // Generar nuevo número de referencia
+      document.getElementById('referenceNumber').textContent = generateReference();
+    }
+  });
+  
+  // Funciones de validación
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  function validatePhone(phone) {
+    const re = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+    return re.test(phone);
+  }
+  
+  function showError(field, message) {
+    const errorElement = field.closest('div').querySelector('.error-message');
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.classList.remove('hidden');
+      field.classList.add('border-red-500');
+    }
+  }
+  
+  function hideError(field) {
+    const errorElement = field.closest('div').querySelector('.error-message');
+    if (errorElement) {
+      errorElement.classList.add('hidden');
+      field.classList.remove('border-red-500');
+    }
+  }
+  
+  // Cerrar modal de confirmación
+  document.getElementById('closeConfirmation').addEventListener('click', function() {
+    const modal = document.getElementById('confirmationModal');
+    modal.classList.remove('active');
+    form.reset();
+    
+    // Resetear los checkboxes personalizados
+    checkboxes.forEach(checkbox => {
+      const svg = checkbox.nextElementSibling.querySelector('svg');
+      svg.classList.add('hidden');
+    });
+  });
+  
+  // Validación en tiempo real
+  const inputs = form.querySelectorAll('input, select, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('blur', function() {
+      if (this.hasAttribute('required') && !this.value.trim()) {
+        showError(this, 'Este campo es obligatorio');
+      } else if (this.id === 'email' && this.value && !validateEmail(this.value)) {
+        showError(this, 'Introduce un correo electrónico válido');
+      } else if (this.id === 'telefono' && this.value && !validatePhone(this.value)) {
+        showError(this, 'Introduce un número de teléfono válido');
+      } else {
+        hideError(this);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

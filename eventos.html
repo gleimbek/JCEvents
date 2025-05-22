@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos - JC Events</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.event-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.testimonial-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.stat-counter {
+font-feature-settings: "tnum";
+font-variant-numeric: tabular-nums;
+}
+.gallery-tab.active {
+color: #B8860B;
+border-color: #B8860B;
+}
+.gallery-content {
+display: none;
+}
+.gallery-content.active {
+display: grid;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+display: inline-block;
+position: relative;
+cursor: pointer;
+user-select: none;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #B8860B;
+border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #B8860B;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+<nav class="flex items-center justify-between px-6 h-20">
+<div class="flex items-center gap-12">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/53ed9e31-6ec0-417c-b2ec-3acb0c6b8e55" data-readdy="true" class="h-12">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+<a href="aboutus.html" data-readdy="true" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+<a href="eventos.html" class="text-primary">Eventos</a>
+<a href="galeria.html" data-readdy="true" class="text-gray-600 hover:text-primary">Galería</a>
+<a href="rental.html" data-readdy="true" class="text-gray-600 hover:text-primary">Rental</a>
+<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+<a href="f_cotizacion.html" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</a>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+
+<main class="pt-20">
+<section class="relative h-[600px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%2520event%2520venue%2520with%2520beautiful%2520decorations%2520showing%2520different%2520types%2520of%2520events%2520-%2520wedding%2520setup%2520with%2520white%2520flowers%2520and%2520elegant%2520table%2520settings%2520on%2520one%2520side%252C%2520corporate%2520event%2520setup%2520with%2520professional%2520staging%2520in%2520the%2520middle%252C%2520and%2520social%2520party%2520setup%2520with%2520colorful%2520decorations%2520on%2520the%2520right%2520side.%2520The%2520image%2520has%2520soft%2520lighting%2520and%2520shows%2520a%2520luxurious%2520venue%2520with%2520high%2520ceilings%2520and%2520crystal%2520chandeliers.%2520The%2520left%2520side%2520has%2520a%2520clean%2520white%2520background%2520that%2520smoothly%2520transitions%2520into%2520the%2520venue%2520scene&width=1920&height=600&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-semibold mb-6">Nuestros Eventos</h1>
+<p class="text-xl text-gray-600 mb-8">Transformamos momentos especiales en experiencias inolvidables. Descubre la variedad de eventos que organizamos con pasión y excelencia.</p>
+<a href="f_cotizacion.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium inline-block whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</a>
+</div>
+</div>
+</section>
+
+<section id="categorias" class="py-16">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Categorías de Eventos</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Nos especializamos en diferentes tipos de eventos, cada uno con un enfoque personalizado para garantizar una experiencia única y memorable.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition-all border border-gray-100 hover:border-primary/30">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520ceremony%2520setup%2520with%2520beautiful%2520floral%2520arrangements%252C%2520white%2520chairs%2520with%2520satin%2520ribbons%252C%2520and%2520a%2520romantic%2520arch%2520decorated%2520with%2520white%2520roses%2520and%2520greenery.%2520The%2520scene%2520shows%2520a%2520luxurious%2520outdoor%2520wedding%2520venue%2520with%2520perfect%2520lighting%2520and%2520elegant%2520details.%2520No%2520people%2520visible%2520in%2520the%2520image%252C%2520just%2520the%2520beautiful%2520setup&width=400&height=300&seq=2&orientation=landscape" class="w-full h-60 object-cover object-top" alt="Bodas">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Bodas</h3>
+<p class="text-gray-600 mb-4">Creamos bodas mágicas y personalizadas que reflejan la personalidad de cada pareja. Desde íntimas ceremonias hasta grandes celebraciones, cuidamos cada detalle para hacer de este día algo inolvidable.</p>
+<a href="#galeria" class="!rounded-button inline-flex items-center text-primary font-medium hover:underline whitespace-nowrap cursor-pointer" onclick="showGalleryTab('bodas')">
+Ver más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition-all border border-gray-100 hover:border-primary/30">
+<img src="https://readdy.ai/api/search-image?query=professional%2520corporate%2520event%2520setup%2520with%2520elegant%2520stage%2520design%252C%2520professional%2520lighting%252C%2520large%2520screens%252C%2520and%2520rows%2520of%2520chairs%2520arranged%2520in%2520a%2520conference%2520style.%2520The%2520venue%2520has%2520corporate%2520branding%2520elements%2520and%2520a%2520professional%2520atmosphere%2520with%2520modern%2520technology%2520setup.%2520No%2520people%2520visible%2520in%2520the%2520image%252C%2520just%2520the%2520professional%2520setup&width=400&height=300&seq=3&orientation=landscape" class="w-full h-60 object-cover object-top" alt="Eventos Corporativos">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Eventos Corporativos</h3>
+<p class="text-gray-600 mb-4">Organizamos conferencias, lanzamientos de productos, cenas de gala y eventos empresariales con un enfoque profesional y atención al detalle que refuerza la imagen de su empresa.</p>
+<a href="#galeria" class="!rounded-button inline-flex items-center text-primary font-medium hover:underline whitespace-nowrap cursor-pointer" onclick="showGalleryTab('corporativos')">
+Ver más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition-all border border-gray-100 hover:border-primary/30">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520social%2520event%2520setup%2520with%2520round%2520tables%2520beautifully%2520decorated%2520with%2520centerpieces%252C%2520fine%2520china%252C%2520and%2520elegant%2520tableware.%2520The%2520venue%2520has%2520ambient%2520lighting%2520with%2520chandeliers%252C%2520creating%2520a%2520sophisticated%2520atmosphere%2520for%2520a%2520gala%2520dinner%2520or%2520birthday%2520celebration.%2520No%2520people%2520visible%2520in%2520the%2520image%252C%2520just%2520the%2520elegant%2520setup&width=400&height=300&seq=4&orientation=landscape" class="w-full h-60 object-cover object-top" alt="Eventos Sociales">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Eventos Sociales</h3>
+<p class="text-gray-600 mb-4">Celebraciones de cumpleaños, aniversarios, graduaciones y reuniones familiares organizadas con creatividad y estilo para crear momentos especiales que perdurarán en la memoria.</p>
+<a href="#galeria" class="!rounded-button inline-flex items-center text-primary font-medium hover:underline whitespace-nowrap cursor-pointer" onclick="showGalleryTab('sociales')">
+Ver más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition-all border border-gray-100 hover:border-primary/30">
+<img src="https://readdy.ai/api/search-image?query=colorful%2520themed%2520party%2520setup%2520with%2520vibrant%2520decorations%252C%2520thematic%2520props%252C%2520and%2520creative%2520table%2520arrangements.%2520The%2520scene%2520shows%2520a%2520fantasy-themed%2520event%2520with%2520magical%2520elements%252C%2520colorful%2520lighting%252C%2520and%2520unique%2520design%2520features.%2520The%2520setup%2520includes%2520custom%2520backdrops%2520and%2520immersive%2520decorative%2520elements.%2520No%2520people%2520visible%2520in%2520the%2520image%252C%2520just%2520the%2520creative%2520setup&width=400&height=300&seq=5&orientation=landscape" class="w-full h-60 object-cover object-top" alt="Fiestas Temáticas">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Fiestas Temáticas</h3>
+<p class="text-gray-600 mb-4">Eventos con conceptos únicos y ambientaciones especiales que transportan a los invitados a diferentes épocas, culturas o mundos de fantasía, creando experiencias inmersivas.</p>
+<a href="#galeria" class="!rounded-button inline-flex items-center text-primary font-medium hover:underline whitespace-nowrap cursor-pointer" onclick="showGalleryTab('tematicas')">
+Ver más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="galeria" class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-semibold mb-4">Galería por Categoría</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Explora nuestra selección de eventos anteriores organizados por categoría y déjate inspirar por nuestro trabajo.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-2 mb-8">
+<button class="gallery-tab active px-6 py-3 text-gray-700 border-b-2 border-transparent hover:text-primary transition-colors" data-tab="bodas">Bodas</button>
+<button class="gallery-tab px-6 py-3 text-gray-700 border-b-2 border-transparent hover:text-primary transition-colors" data-tab="corporativos">Corporativos</button>
+<button class="gallery-tab px-6 py-3 text-gray-700 border-b-2 border-transparent hover:text-primary transition-colors" data-tab="sociales">Sociales</button>
+<button class="gallery-tab px-6 py-3 text-gray-700 border-b-2 border-transparent hover:text-primary transition-colors" data-tab="tematicas">Temáticos</button>
+</div>
+<div class="gallery-content active" data-content="bodas">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520ceremony%2520with%2520beautiful%2520floral%2520arch%252C%2520white%2520chairs%2520with%2520satin%2520ribbons%252C%2520and%2520a%2520romantic%2520setup%2520in%2520a%2520garden%2520venue.%2520The%2520scene%2520shows%2520a%2520luxurious%2520wedding%2520with%2520perfect%2520lighting%2520and%2520elegant%2520details&width=400&height=300&seq=6&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Boda en jardín">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Boda en Jardín Botánico</h4>
+<p class="text-gray-600 text-sm">Marzo 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520beach%2520wedding%2520setup%2520with%2520white%2520chairs%252C%2520floral%2520arrangements%252C%2520and%2520a%2520beautiful%2520arch%2520on%2520a%2520sandy%2520beach%2520with%2520ocean%2520view.%2520The%2520scene%2520shows%2520a%2520romantic%2520sunset%2520wedding%2520with%2520elegant%2520details&width=400&height=300&seq=7&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Boda en playa">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Boda en Playa del Carmen</h4>
+<p class="text-gray-600 text-sm">Febrero 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520reception%2520with%2520beautiful%2520table%2520settings%252C%2520floral%2520centerpieces%252C%2520and%2520romantic%2520lighting%2520in%2520a%2520luxurious%2520ballroom.%2520The%2520scene%2520shows%2520elegant%2520round%2520tables%2520with%2520fine%2520china%2520and%2520crystal%2520glassware&width=400&height=300&seq=8&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Recepción de boda">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Recepción en Hacienda Los Olivos</h4>
+<p class="text-gray-600 text-sm">Enero 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=rustic%2520wedding%2520setup%2520in%2520a%2520barn%2520with%2520wooden%2520tables%252C%2520wildflower%2520arrangements%252C%2520and%2520string%2520lights%2520creating%2520a%2520warm%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520charming%2520countryside%2520wedding%2520with%2520rustic%2520elegant%2520details&width=400&height=300&seq=9&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Boda rústica">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Boda Rústica en Viñedo</h4>
+<p class="text-gray-600 text-sm">Abril 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520winter%2520wedding%2520with%2520white%2520and%2520silver%2520decorations%252C%2520crystal%2520elements%252C%2520and%2520soft%2520lighting%2520creating%2520a%2520magical%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520luxurious%2520indoor%2520wedding%2520with%2520elegant%2520winter%2520wonderland%2520theme&width=400&height=300&seq=10&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Boda de invierno">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Boda de Invierno en Palacio</h4>
+<p class="text-gray-600 text-sm">Diciembre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=intimate%2520wedding%2520ceremony%2520with%2520close%2520family%2520setup%252C%2520elegant%2520minimal%2520decorations%252C%2520and%2520a%2520beautiful%2520small%2520venue.%2520The%2520scene%2520shows%2520a%2520cozy%2520wedding%2520with%2520personal%2520touches%2520and%2520elegant%2520details&width=400&height=300&seq=11&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Boda íntima">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Boda Íntima en Villa Privada</h4>
+<p class="text-gray-600 text-sm">Mayo 2025</p>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-content" data-content="corporativos">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=professional%2520conference%2520setup%2520with%2520large%2520stage%252C%2520professional%2520lighting%252C%2520large%2520screens%252C%2520and%2520rows%2520of%2520chairs%2520arranged%2520in%2520a%2520theater%2520style.%2520The%2520venue%2520has%2520corporate%2520branding%2520elements%2520and%2520a%2520professional%2520atmosphere&width=400&height=300&seq=12&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Conferencia anual">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Conferencia Anual TechCorp</h4>
+<p class="text-gray-600 text-sm">Marzo 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=product%2520launch%2520event%2520with%2520elegant%2520product%2520displays%252C%2520professional%2520lighting%252C%2520brand%2520elements%252C%2520and%2520a%2520modern%2520venue.%2520The%2520scene%2520shows%2520a%2520high-end%2520product%2520presentation%2520setup%2520with%2520technology%2520and%2520style&width=400&height=300&seq=13&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Lanzamiento de producto">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Lanzamiento de Producto Innovatech</h4>
+<p class="text-gray-600 text-sm">Febrero 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520gala%2520dinner%2520with%2520elegant%2520table%2520settings%252C%2520professional%2520lighting%252C%2520and%2520a%2520luxurious%2520venue.%2520The%2520scene%2520shows%2520round%2520tables%2520with%2520fine%2520dining%2520setup%2520and%2520corporate%2520branding%2520elements&width=400&height=300&seq=14&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Cena de gala corporativa">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Cena de Gala Anual GlobalBank</h4>
+<p class="text-gray-600 text-sm">Diciembre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520team%2520building%2520event%2520setup%2520with%2520activity%2520stations%252C%2520team%2520challenges%252C%2520and%2520an%2520engaging%2520environment.%2520The%2520scene%2520shows%2520a%2520professional%2520yet%2520fun%2520atmosphere%2520with%2520corporate%2520branding&width=400&height=300&seq=15&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Team building">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Team Building MegaCorp</h4>
+<p class="text-gray-600 text-sm">Abril 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520awards%2520ceremony%2520with%2520elegant%2520stage%252C%2520trophy%2520displays%252C%2520professional%2520lighting%252C%2520and%2520a%2520formal%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520prestigious%2520event%2520setup%2520with%2520corporate%2520branding&width=400&height=300&seq=16&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Ceremonia de premios">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Ceremonia de Premios Anuales MediaGroup</h4>
+<p class="text-gray-600 text-sm">Noviembre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520networking%2520event%2520with%2520cocktail%2520tables%252C%2520lounge%2520areas%252C%2520and%2520a%2520professional%2520yet%2520relaxed%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520modern%2520venue%2520designed%2520for%2520business%2520connections&width=400&height=300&seq=17&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Evento de networking">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Networking StartUp Summit</h4>
+<p class="text-gray-600 text-sm">Mayo 2025</p>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-content" data-content="sociales">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520birthday%2520party%2520for%2520adults%2520with%2520sophisticated%2520decorations%252C%2520beautiful%2520table%2520settings%252C%2520and%2520a%2520luxurious%2520venue.%2520The%2520scene%2520shows%2520an%2520elegant%2520celebration%2520with%2520fine%2520details&width=400&height=300&seq=18&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta de cumpleaños">
+<div class="p-4 bg-white">
+<h4 class="font-medium">50º Cumpleaños de Elena</h4>
+<p class="text-gray-600 text-sm">Marzo 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520anniversary%2520celebration%2520with%2520romantic%2520decorations%252C%2520intimate%2520table%2520settings%252C%2520and%2520a%2520beautiful%2520venue.%2520The%2520scene%2520shows%2520a%2520special%2520celebration%2520with%2520personal%2520touches&width=400&height=300&seq=19&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Aniversario">
+<div class="p-4 bg-white">
+<h4 class="font-medium">25º Aniversario de Matrimonio</h4>
+<p class="text-gray-600 text-sm">Febrero 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=graduation%2520party%2520with%2520academic%2520themed%2520decorations%252C%2520elegant%2520setup%252C%2520and%2520a%2520celebratory%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520sophisticated%2520event%2520honoring%2520educational%2520achievement&width=400&height=300&seq=20&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Graduación">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Graduación Universidad Nacional</h4>
+<p class="text-gray-600 text-sm">Julio 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520baby%2520shower%2520with%2520soft%2520pastel%2520decorations%252C%2520beautiful%2520table%2520settings%252C%2520and%2520a%2520warm%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520sophisticated%2520celebration%2520with%2520delicate%2520details&width=400&height=300&seq=21&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Baby shower">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Baby Shower de Claudia</h4>
+<p class="text-gray-600 text-sm">Abril 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520family%2520reunion%2520with%2520warm%2520decorations%252C%2520long%2520dining%2520tables%252C%2520and%2520a%2520welcoming%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520multigenerational%2520celebration%2520with%2520personal%2520touches&width=400&height=300&seq=22&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Reunión familiar">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Reunión Familiar Rodríguez</h4>
+<p class="text-gray-600 text-sm">Diciembre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520engagement%2520party%2520with%2520romantic%2520decorations%252C%2520intimate%2520setting%252C%2520and%2520a%2520beautiful%2520venue.%2520The%2520scene%2520shows%2520a%2520sophisticated%2520celebration%2520of%2520love%2520with%2520elegant%2520details&width=400&height=300&seq=23&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta de compromiso">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Compromiso de Alejandro y María</h4>
+<p class="text-gray-600 text-sm">Mayo 2025</p>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-content" data-content="tematicas">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=vintage%2520gatsby%2520themed%2520party%2520with%2520art%2520deco%2520decorations%252C%25201920s%2520style%2520elements%252C%2520and%2520an%2520elegant%2520venue.%2520The%2520scene%2520shows%2520a%2520luxurious%2520celebration%2520with%2520gold%2520and%2520black%2520details&width=400&height=300&seq=24&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta Gatsby">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Gran Gatsby Años 20</h4>
+<p class="text-gray-600 text-sm">Marzo 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=tropical%2520hawaiian%2520themed%2520party%2520with%2520colorful%2520decorations%252C%2520tiki%2520elements%252C%2520and%2520a%2520beach%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520fun%2520celebration%2520with%2520vibrant%2520details&width=400&height=300&seq=25&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta Hawaiana">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Fiesta Tropical Hawaiana</h4>
+<p class="text-gray-600 text-sm">Agosto 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=hollywood%2520glamour%2520themed%2520party%2520with%2520red%2520carpet%252C%2520movie%2520elements%252C%2520and%2520a%2520luxurious%2520venue.%2520The%2520scene%2520shows%2520an%2520elegant%2520celebration%2520with%2520star-studded%2520details&width=400&height=300&seq=26&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Noche de Hollywood">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Noche de Glamour Hollywood</h4>
+<p class="text-gray-600 text-sm">Febrero 2025</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=masquerade%2520ball%2520themed%2520party%2520with%2520elegant%2520masks%252C%2520venetian%2520decorations%252C%2520and%2520a%2520mysterious%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520sophisticated%2520celebration%2520with%2520dramatic%2520details&width=400&height=300&seq=27&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Baile de máscaras">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Baile de Máscaras Veneciano</h4>
+<p class="text-gray-600 text-sm">Octubre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=medieval%2520themed%2520party%2520with%2520castle%2520decorations%252C%2520period%2520elements%252C%2520and%2520a%2520historical%2520atmosphere.%2520The%2520scene%2520shows%2520an%2520immersive%2520celebration%2520with%2520authentic%2520details&width=400&height=300&seq=28&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta medieval">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Banquete Medieval</h4>
+<p class="text-gray-600 text-sm">Noviembre 2024</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=circus%2520themed%2520party%2520with%2520colorful%2520decorations%252C%2520carnival%2520elements%252C%2520and%2520a%2520festive%2520atmosphere.%2520The%2520scene%2520shows%2520a%2520fun%2520celebration%2520with%2520whimsical%2520details&width=400&height=300&seq=29&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Fiesta de circo">
+<div class="p-4 bg-white">
+<h4 class="font-medium">Gran Circo Fantástico</h4>
+<p class="text-gray-600 text-sm">Julio 2025</p>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-8">
+<a href="#" class="!rounded-button inline-block bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Ver Galería Completa
+</a>
+</div>
+</div>
+</section>
+
+<section id="testimonios" class="py-16">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-semibold mb-4">Testimonios por Categoría</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Descubre lo que nuestros clientes opinan sobre nuestros servicios en diferentes tipos de eventos.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-2 mb-8">
+<button id="all-testimonials" class="testimonial-filter active px-6 py-2 text-gray-700 bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">Todos</button>
+<button id="wedding-testimonials" class="testimonial-filter px-6 py-2 text-gray-700 bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">Bodas</button>
+<button id="corporate-testimonials" class="testimonial-filter px-6 py-2 text-gray-700 bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">Corporativos</button>
+<button id="social-testimonials" class="testimonial-filter px-6 py-2 text-gray-700 bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">Sociales</button>
+<button id="themed-testimonials" class="testimonial-filter px-6 py-2 text-gray-700 bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">Temáticos</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="wedding">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520woman%2520in%2520elegant%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=30&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Isabel Moreno">
+<div>
+<h4 class="font-medium">Isabel Moreno</h4>
+<p class="text-sm text-gray-500">Boda en Jardín Botánico</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"JC Events hizo que nuestra boda fuera un sueño hecho realidad. Cada detalle fue cuidadosamente planeado y ejecutado a la perfección. El equipo fue increíblemente profesional y atento, anticipándose a nuestras necesidades incluso antes de que las expresáramos."</p>
+<p class="text-sm text-gray-500">Marzo 2025</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="corporate">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520businessman%2520in%2520formal%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=31&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Carlos Vega">
+<div>
+<h4 class="font-medium">Carlos Vega</h4>
+<p class="text-sm text-gray-500">Director de Marketing, TechCorp</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"Nuestra conferencia anual fue un éxito rotundo gracias a JC Events. Su capacidad para gestionar todos los aspectos logísticos y técnicos nos permitió centrarnos en el contenido. El feedback de los asistentes fue excepcionalmente positivo."</p>
+<p class="text-sm text-gray-500">Febrero 2025</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="social">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520woman%2520in%2520casual%2520elegant%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=32&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Elena Gutiérrez">
+<div>
+<h4 class="font-medium">Elena Gutiérrez</h4>
+<p class="text-sm text-gray-500">50º Cumpleaños</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"Mi fiesta de cumpleaños número 50 fue exactamente como la soñé gracias a JC Events. Captaron perfectamente mi visión y la llevaron a otro nivel. Mis invitados siguen hablando de lo increíble que fue la celebración."</p>
+<p class="text-sm text-gray-500">Enero 2025</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="themed">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520man%2520in%2520casual%2520elegant%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=33&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Javier Mendoza">
+<div>
+<h4 class="font-medium">Javier Mendoza</h4>
+<p class="text-sm text-gray-500">Fiesta Gran Gatsby</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"La fiesta temática de Gran Gatsby que organizaron fue espectacular. La atención al detalle en la decoración, el vestuario del personal y la ambientación nos transportó realmente a los años 20. Una experiencia inmersiva inolvidable."</p>
+<p class="text-sm text-gray-500">Noviembre 2024</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="wedding">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520man%2520in%2520elegant%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=34&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Alejandro Soto">
+<div>
+<h4 class="font-medium">Alejandro Soto</h4>
+<p class="text-sm text-gray-500">Boda en Playa</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"Organizar una boda en la playa parecía un desafío logístico enorme, pero JC Events lo hizo parecer fácil. Su experiencia en este tipo de eventos fue evidente. Nuestra ceremonia al atardecer fue mágica y sin contratiempos."</p>
+<p class="text-sm text-gray-500">Diciembre 2024</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100" data-category="corporate">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520businesswoman%2520in%2520formal%2520attire%252C%2520neutral%2520background%252C%2520confident%2520smile&width=60&height=60&seq=35&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Lucía Fernández">
+<div>
+<h4 class="font-medium">Lucía Fernández</h4>
+<p class="text-sm text-gray-500">CEO, Innovatech</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"El lanzamiento de nuestro producto fue un éxito rotundo gracias a la organización impecable de JC Events. Su comprensión de nuestros objetivos de marca y su ejecución creativa superaron nuestras expectativas."</p>
+<p class="text-sm text-gray-500">Abril 2025</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Nuestras Estadísticas</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Números que reflejan nuestra experiencia y compromiso con la excelencia en cada tipo de evento.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<div id="events-chart" class="h-80 w-full"></div>
+</div>
+<div>
+<div id="satisfaction-chart" class="h-80 w-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">850+</div>
+<h3 class="text-lg font-medium mb-2">Eventos Realizados</h3>
+<p class="text-gray-600">Experiencia acumulada en la organización de eventos de todo tipo y tamaño.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">98%</div>
+<h3 class="text-lg font-medium mb-2">Clientes Satisfechos</h3>
+<p class="text-gray-600">Nuestro compromiso con la excelencia se refleja en la satisfacción de nuestros clientes.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">15</div>
+<h3 class="text-lg font-medium mb-2">Años de Experiencia</h3>
+<p class="text-gray-600">Trayectoria consolidada en la industria de eventos y celebraciones.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">200+</div>
+<h3 class="text-lg font-medium mb-2">Proveedores Asociados</h3>
+<p class="text-gray-600">Red de colaboradores de calidad para ofrecer servicios integrales.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cotizacion" class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Solicita una Cotización Personalizada</h2>
+<p class="text-gray-600 mb-8">Cuéntanos sobre el evento que estás planeando y te enviaremos una propuesta adaptada a tus necesidades y presupuesto.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Propuesta Detallada</h3>
+<p class="text-gray-600">Recibirás una cotización completa con todos los servicios incluidos y opciones disponibles.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Asesoramiento Personalizado</h3>
+<p class="text-gray-600">Un coordinador de eventos te guiará durante todo el proceso de planificación.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Sin Compromiso</h3>
+<p class="text-gray-600">La cotización es gratuita y no implica ningún compromiso de contratación.</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hidden lg:block">
+<h3 class="text-xl font-semibold mb-6">Testimonios Destacados</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-double-quotes-l text-xl"></i>
+</div>
+<div>
+<p class="text-gray-600 italic mb-2">"El equipo de JC Events transformó nuestra visión en una realidad que superó todas nuestras expectativas."</p>
+<p class="text-sm font-medium">Gabriela y Roberto, Boda Diciembre 2024</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-double-quotes-l text-xl"></i>
+</div>
+<div>
+<p class="text-gray-600 italic mb-2">"La atención al detalle y la capacidad de resolver imprevistos hizo que nuestro evento corporativo fuera perfecto."</p>
+<p class="text-sm font-medium">Martín Herrera, Director de Eventos GlobalTech</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Formulario de Solicitud</h3>
+<form id="quote-form" class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Evento *</label>
+<select id="event-type" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="boda">Boda</option>
+<option value="corporativo">Evento Corporativo</option>
+<option value="social">Evento Social</option>
+<option value="tematico">Fiesta Temática</option>
+<option value="otro">Otro</option>
+</select>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre Completo *</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+<input type="tel" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Fecha Tentativa *</label>
+<input type="date" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Número de Invitados *</label>
+<input type="number" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div id="wedding-fields" class="hidden space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Ceremonia</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="religiosa">Religiosa</option>
+<option value="civil">Civil</option>
+<option value="simbolica">Simbólica</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Servicios Adicionales</label>
+<div class="space-y-2">
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Fotografía y Video</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Decoración Floral</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Música en Vivo</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Catering</span>
+</label>
+</div>
+</div>
+</div>
+<div id="corporate-fields" class="hidden space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Evento Corporativo</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="conferencia">Conferencia</option>
+<option value="lanzamiento">Lanzamiento de Producto</option>
+<option value="cena">Cena de Gala</option>
+<option value="teambuilding">Team Building</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Servicios Adicionales</label>
+<div class="space-y-2">
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Equipamiento Audiovisual</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Catering Ejecutivo</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Registro de Asistentes</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Transporte</span>
+</label>
+</div>
+</div>
+</div>
+<div id="social-fields" class="hidden space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Evento Social</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="cumpleanos">Cumpleaños</option>
+<option value="aniversario">Aniversario</option>
+<option value="graduacion">Graduación</option>
+<option value="babyshower">Baby Shower</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Servicios Adicionales</label>
+<div class="space-y-2">
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Decoración Temática</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Entretenimiento</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Catering</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Fotografía</span>
+</label>
+</div>
+</div>
+</div>
+<div id="themed-fields" class="hidden space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Temática Deseada</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="gatsby">Gran Gatsby</option>
+<option value="tropical">Tropical/Hawaiana</option>
+<option value="hollywood">Hollywood</option>
+<option value="mascaras">Baile de Máscaras</option>
+<option value="medieval">Medieval</option>
+<option value="otro">Otra</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Servicios Adicionales</label>
+<div class="space-y-2">
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Decoración Temática Completa</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Vestuario para Personal</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Entretenimiento Temático</span>
+</label>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm">Menú Temático</span>
+</label>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Presupuesto Estimado</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="basico">Menos de $5,000</option>
+<option value="estandar">$5,000 - $10,000</option>
+<option value="premium">$10,000 - $20,000</option>
+<option value="lujo">Más de $20,000</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Detalles Adicionales</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<div>
+<label class="custom-checkbox flex items-center gap-2">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="text-sm" style="margin-left:32px;">Acepto recibir información sobre servicios y promociones de JC Events</span>
+</label>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-primary/5">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-semibold mb-6">¿Listo para crear un evento inolvidable?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Permítenos ayudarte a transformar tu visión en realidad. En JC Events nos especializamos en crear experiencias memorables adaptadas a tus necesidades.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="#cotizacion" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</a>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/53ed9e31-6ec0-417c-b2ec-3acb0c6b8e55" data-readdy="true" class="!rounded-button bg-white border border-primary text-primary px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Volver al Inicio
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/53ed9e31-6ec0-417c-b2ec-3acb0c6b8e55" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
+<ul class="space-y-4">
+<li><a href="index.html" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="aboutus.html" data-readdy="true" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+<li><a href="eventos.html" class="text-white">Eventos</a></li>
+<li><a href="galeria.html" data-readdy="true" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="rental.html" data-readdy="true" class="text-gray-400 hover:text-white">Rental</a></li>
+<li><a href="curso.html" data-readdy="true" class="text-gray-400 hover:text-white">Curso</a></li>
+<li><a href="#cotizacion" class="text-gray-400 hover:text-white">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir ofertas especiales y novedades</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+<p class="text-gray-400 text-sm" style="margin-bottom:-20px;">© 2025 JC Events. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0" style="margin-bottom:-20px; margin-left:800px;">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-pinterest-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-whatsapp-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Gallery tabs
+const galleryTabs = document.querySelectorAll('.gallery-tab');
+const galleryContents = document.querySelectorAll('.gallery-content');
+galleryTabs.forEach(tab => {
+tab.addEventListener('click', () => {
+const target = tab.getAttribute('data-tab');
+
+
+// Remove active class from all tabs and contents
+galleryTabs.forEach(t => t.classList.remove('active'));
+galleryContents.forEach(c => c.classList.remove('active'));
+
+
+// Add active class to clicked tab and corresponding content
+tab.classList.add('active');
+document.querySelector(`.gallery-content[data-content="${target}"]`).classList.add('active');
+});
+});
+// Function to show specific gallery tab
+window.showGalleryTab = function(tabId) {
+const tab = document.querySelector(`.gallery-tab[data-tab="${tabId}"]`);
+if (tab) {
+tab.click();
+document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+}
+};
+
+// Testimonial filtering
+const testimonialFilters = document.querySelectorAll('.testimonial-filter');
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+testimonialFilters.forEach(filter => {
+filter.addEventListener('click', () => {
+// Remove active class from all filters
+testimonialFilters.forEach(f => f.classList.remove('active', 'bg-primary', 'text-white'));
+filter.classList.add('active', 'bg-primary', 'text-white');
+
+
+const category = filter.id.replace('-testimonials', '');
+
+
+if (category === 'all') {
+testimonialCards.forEach(card => {
+card.style.display = 'block';
+});
+} else {
+testimonialCards.forEach(card => {
+if (card.getAttribute('data-category') === category) {
+card.style.display = 'block';
+} else {
+card.style.display = 'none';
+}
+});
+}
+});
+});
+
+// Dynamic form fields based on event type
+const eventTypeSelect = document.getElementById('event-type');
+const weddingFields = document.getElementById('wedding-fields');
+const corporateFields = document.getElementById('corporate-fields');
+const socialFields = document.getElementById('social-fields');
+const themedFields = document.getElementById('themed-fields');
+
+eventTypeSelect.addEventListener('change', function() {
+// Hide all specific fields
+weddingFields.classList.add('hidden');
+corporateFields.classList.add('hidden');
+socialFields.classList.add('hidden');
+themedFields.classList.add('hidden');
+
+// Show fields based on selection
+const selectedValue = this.value;
+if (selectedValue === 'boda') {
+weddingFields.classList.remove('hidden');
+} else if (selectedValue === 'corporativo') {
+corporateFields.classList.remove('hidden');
+} else if (selectedValue === 'social') {
+socialFields.classList.remove('hidden');
+} else if (selectedValue === 'tematico') {
+themedFields.classList.remove('hidden');
+}
+});
+
+// Form submission
+const quoteForm = document.getElementById('quote-form');
+quoteForm.addEventListener('submit', function(e) {
+e.preventDefault();
+alert('Gracias por tu solicitud. Nos pondremos en contacto contigo a la brevedad para enviarte una cotización personalizada.');
+quoteForm.reset();
+// Reset dynamic fields
+weddingFields.classList.add('hidden');
+corporateFields.classList.add('hidden');
+socialFields.classList.add('hidden');
+themedFields.classList.add('hidden');
+});
+
+// Custom checkbox functionality
+const customCheckboxes = document.querySelectorAll('.custom-checkbox input');
+customCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+// The styling is handled by CSS
+});
+});
+// Initialize charts
+const eventsChart = echarts.init(document.getElementById('events-chart'));
+const satisfactionChart = echarts.init(document.getElementById('satisfaction-chart'));
+// Events by category chart
+const eventsOption = {
+animation: false,
+title: {
+text: 'Eventos por Categoría',
+left: 'center',
+textStyle: {
+color: '#1f2937'
+}
+},
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ccc',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+orient: 'vertical',
+right: 10,
+top: 'center',
+textStyle: {
+color: '#1f2937'
+}
+},
+series: [
+{
+name: 'Eventos Realizados',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 10,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false,
+position: 'center'
+},
+emphasis: {
+label: {
+show: true,
+fontSize: '18',
+fontWeight: 'bold',
+color: '#1f2937'
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 320, name: 'Bodas', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+{ value: 240, name: 'Corporativos', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+{ value: 180, name: 'Sociales', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+{ value: 110, name: 'Temáticos', itemStyle: { color: 'rgba(252, 141, 98, 1)' } }
+]
+}
+]
+};
+
+// Client satisfaction chart
+const satisfactionOption = {
+animation: false,
+title: {
+text: 'Nivel de Satisfacción',
+left: 'center',
+textStyle: {
+color: '#1f2937'
+}
+},
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ccc',
+textStyle: {
+color: '#1f2937'
+}
+},
+xAxis: {
+type: 'category',
+data: ['Bodas', 'Corporativos', 'Sociales', 'Temáticos'],
+axisLine: {
+lineStyle: {
+color: '#1f2937'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+min: 90,
+max: 100,
+axisLine: {
+lineStyle: {
+color: '#1f2937'
+}
+},
+axisLabel: {
+color: '#1f2937',
+formatter: '{value}%'
+}
+},
+series: [
+{
+name: 'Satisfacción',
+type: 'bar',
+data: [98, 97, 99, 96],
+itemStyle: {
+color: 'rgba(87, 181, 231, 1)',
+borderRadius: 6
+},
+emphasis: {
+itemStyle: {
+color: 'rgba(87, 181, 231, 0.8)'
+}
+}
+}
+]
+};
+
+// Apply chart options
+eventsChart.setOption(eventsOption);
+satisfactionChart.setOption(satisfactionOption);
+
+// Counter animation
+const counters = document.querySelectorAll('.stat-counter');
+counters.forEach(counter => {
+const target = parseInt(counter.textContent);
+const suffix = counter.textContent.match(/[^\d]+$/);
+let count = 0;
+const duration = 2000; // ms
+const interval = 50; // ms
+const increment = target / (duration / interval);
+const timer = setInterval(() => {
+count += increment;
+if (count >= target) {
+counter.textContent = target + (suffix ? suffix[0] : '');
+clearInterval(timer);
+} else {
+counter.textContent = Math.floor(count) + (suffix ? suffix[0] : '');
+}
+}, interval);
+});
+
+// Responsive charts
+window.addEventListener('resize', function() {
+eventsChart.resize();
+satisfactionChart.resize();
+});
+});
+</script>
+</body>
+</html>

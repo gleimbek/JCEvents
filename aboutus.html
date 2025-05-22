@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre Nosotros - JC Events</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.timeline-item {
+position: relative;
+padding-left: 2.5rem;
+margin-bottom: 2rem;
+}
+.timeline-item::before {
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 2px;
+background-color: #B8860B;
+}
+.timeline-item::after {
+content: "";
+position: absolute;
+left: -6px;
+top: 0;
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background-color: #B8860B;
+}
+.value-card:hover {
+transform: translateY(-5px);
+}
+.team-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.testimonial-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.stat-counter {
+font-feature-settings: "tnum";
+font-variant-numeric: tabular-nums;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+<nav class="flex items-center justify-between px-6 h-20">
+<div class="flex items-center gap-12">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+<a href="aboutus.html" class="text-primary">Sobre Nosotros</a>
+<a href="eventos.html" class="text-gray-600 hover:text-primary">Eventos</a>
+<a href="galeria.html" data-readdy="true" class="text-gray-600 hover:text-primary">Galería</a>
+<a href="rental.html" data-readdy="true" class="text-gray-600 hover:text-primary">Rental</a>
+<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Contactar
+</a>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+
+<main class="pt-20">
+<section class="relative h-[500px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=professional%2520event%2520planning%2520team%2520working%2520together%2520in%2520a%2520modern%2520office%2520environment.%2520The%2520image%2520shows%2520diverse%2520team%2520members%2520collaborating%2520on%2520event%2520designs%2520and%2520planning%2520materials.%2520The%2520scene%2520demonstrates%2520creativity%2C%2520professionalism%2C%2520and%2520teamwork%2520with%2520elegant%2520event%2520decor%2520samples%2520visible.%2520The%2520left%2520side%2520has%2520a%2520clean%2520white%2520background%2520that%2520smoothly%2520transitions%2520into%2520the%2520office%2520scene&width=1920&height=500&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-semibold mb-6">Sobre JC Events</h1>
+<p class="text-xl text-gray-600 mb-8">Más de una década creando experiencias memorables y transformando eventos en momentos inolvidables.</p>
+<a href="#historia" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium inline-block whitespace-nowrap cursor-pointer">
+Conoce más
+</a>
+</div>
+</div>
+</section>
+
+<section id="historia" class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Nuestra Historia</h2>
+<p class="text-gray-600 mb-6">JC Events nació en 2010 de la pasión de Juanita Chavez por crear experiencias memorables. Lo que comenzó como un pequeño emprendimiento familiar se ha convertido en una empresa líder en la organización y producción de eventos en toda la región.</p>
+<p class="text-gray-600 mb-6">A lo largo de nuestra trayectoria, hemos evolucionado constantemente, incorporando las últimas tendencias y tecnologías para ofrecer soluciones innovadoras que superen las expectativas de nuestros clientes.</p>
+<div class="space-y-6">
+<div class="timeline-item">
+<h3 class="font-medium">2010: Fundación</h3>
+<p class="text-gray-600">JC Events inicia operaciones como un pequeño negocio familiar especializado en eventos sociales.</p>
+</div>
+<div class="timeline-item">
+<h3 class="font-medium">2013: Expansión de Servicios</h3>
+<p class="text-gray-600">Incorporamos servicios de alquiler de equipamiento y mobiliario para eventos.</p>
+</div>
+<div class="timeline-item">
+<h3 class="font-medium">2016: Eventos Corporativos</h3>
+<p class="text-gray-600">Ampliamos nuestro portafolio para incluir la organización de eventos empresariales y corporativos.</p>
+</div>
+<div class="timeline-item">
+<h3 class="font-medium">2019: Nuevas Instalaciones</h3>
+<p class="text-gray-600">Inauguramos nuestro showroom y almacén central para mejorar la experiencia de nuestros clientes.</p>
+</div>
+<div class="timeline-item">
+<h3 class="font-medium">2022: Internacionalización</h3>
+<p class="text-gray-600">Comenzamos a ofrecer nuestros servicios en eventos internacionales y expandimos nuestra red de proveedores.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520setup%2520with%2520beautiful%2520decoration%2C%2520flowers%2C%2520and%2520lighting.%2520Professional%2520event%2520photography%2520showing%2520a%2520luxurious%2520event%2520space%2520with%2520attention%2520to%2520detail&width=300&height=400&seq=2&orientation=portrait" alt="Evento de boda" class="rounded-lg shadow-md h-80 object-cover object-top">
+<img src="https://readdy.ai/api/search-image?query=professional%2520corporate%2520event%2520with%2520elegant%2520stage%2520setup%2C%2520professional%2520lighting%2C%2520and%2520attendees.%2520The%2520image%2520shows%2520a%2520business%2520conference%2520or%2520presentation%2520with%2520high-quality%2520audiovisual%2520equipment&width=300&height=400&seq=3&orientation=portrait" alt="Evento corporativo" class="rounded-lg shadow-md h-64 object-cover object-top mt-16">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520gala%2520dinner%2520setup%2520with%2520round%2520tables%2C%2520centerpieces%2C%2520and%2520ambient%2520lighting.%2520Professional%2520event%2520photography%2520showing%2520a%2520formal%2520dinner%2520arrangement%2520with%2520luxury%2520details&width=300&height=400&seq=4&orientation=portrait" alt="Cena de gala" class="rounded-lg shadow-md h-64 object-cover object-top">
+<img src="https://readdy.ai/api/search-image?query=event%2520planning%2520team%2520working%2520together%2C%2520discussing%2520ideas%2520with%2520event%2520design%2520materials%2520on%2520table.%2520Professional%2520business%2520photography%2520showing%2520teamwork%2520and%2520collaboration&width=300&height=400&seq=5&orientation=portrait" alt="Equipo trabajando" class="rounded-lg shadow-md h-80 object-cover object-top mt-16">
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Misión, Visión y Valores</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Nuestros principios fundamentales guían cada decisión que tomamos y cada evento que organizamos.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-flag-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-2xl font-semibold mb-4">Nuestra Misión</h3>
+<p class="text-gray-600">Crear experiencias memorables que superen las expectativas de nuestros clientes, a través de un servicio personalizado, atención al detalle y soluciones innovadoras. Nos comprometemos a transformar cada evento en un momento único e inolvidable, garantizando la máxima satisfacción de todos los involucrados.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-eye-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-2xl font-semibold mb-4">Nuestra Visión</h3>
+<p class="text-gray-600">Ser reconocidos como la empresa líder en la organización y producción de eventos en toda Latinoamérica, destacándonos por nuestra excelencia, innovación y compromiso con la sostenibilidad. Aspiramos a establecer nuevos estándares en la industria y ser la primera opción para quienes buscan crear momentos extraordinarios.</p>
+</div>
+</div>
+<h3 class="text-2xl font-semibold text-center mb-8">Nuestros Valores</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="value-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-heart-line text-primary text-2xl"></i>
+</div>
+<h4 class="text-lg font-medium text-center mb-2">Pasión</h4>
+<p class="text-gray-600 text-center">Amamos lo que hacemos y lo demostramos en cada detalle de nuestro trabajo, poniendo el corazón en cada proyecto.</p>
+</div>
+<div class="value-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-award-line text-primary text-2xl"></i>
+</div>
+<h4 class="text-lg font-medium text-center mb-2">Excelencia</h4>
+<p class="text-gray-600 text-center">Buscamos la perfección en cada aspecto de nuestros servicios, superando constantemente nuestros propios estándares.</p>
+</div>
+<div class="value-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-team-line text-primary text-2xl"></i>
+</div>
+<h4 class="text-lg font-medium text-center mb-2">Trabajo en Equipo</h4>
+<p class="text-gray-600 text-center">Colaboramos estrechamente entre nosotros y con nuestros clientes para lograr resultados excepcionales.</p>
+</div>
+<div class="value-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-creative-commons-line text-primary text-2xl"></i>
+</div>
+<h4 class="text-lg font-medium text-center mb-2">Creatividad</h4>
+<p class="text-gray-600 text-center">Pensamos fuera de lo convencional para ofrecer soluciones únicas y personalizadas a cada cliente.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="equipo" class="py-16">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Nuestro Equipo</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Contamos con profesionales apasionados y experimentados, dedicados a hacer realidad la visión de cada cliente.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<!--<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520male%2520event%2520planner%2520in%2520business%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=6&orientation=landscape" class="w-full h-64 object-cover object-top" alt="José Castillo">-->
+<img src="images/juanita2.jpg" class="w-full h-64 object-cover object-top" alt="Juanita Chavez">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Juanita Chavez</h3>
+<p class="text-primary mb-3">Fundadora y Directora General</p>
+<p class="text-gray-600 mb-4">Con más de 15 años de experiencia en la industria de eventos, José ha liderado la transformación de JC Events desde sus inicios hasta convertirla en una empresa referente del sector.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520female%2520event%2520coordinator%2520in%2520business%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=7&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Carmen Rodríguez">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Carmen Rodríguez</h3>
+<p class="text-primary mb-3">Directora de Operaciones</p>
+<p class="text-gray-600 mb-4">Carmen coordina todos los aspectos logísticos y operativos de nuestros eventos, asegurando que cada detalle sea ejecutado a la perfección y según lo planificado.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520male%2520creative%2520director%2520in%2520business%2520casual%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=8&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Miguel Ángel Soto">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Miguel Ángel Soto</h3>
+<p class="text-primary mb-3">Director Creativo</p>
+<p class="text-gray-600 mb-4">Miguel lidera nuestro equipo de diseño, desarrollando conceptos innovadores y transformando espacios ordinarios en experiencias extraordinarias para cada evento.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520female%2520marketing%2520specialist%2520in%2520business%2520casual%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=9&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Laura Mendoza">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Laura Mendoza</h3>
+<p class="text-primary mb-3">Directora de Marketing</p>
+<p class="text-gray-600 mb-4">Laura se encarga de dar visibilidad a nuestra marca y servicios, desarrollando estrategias de comunicación efectivas y manteniendo relaciones con nuestros clientes.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520male%2520technical%2520director%2520in%2520business%2520casual%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=10&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Javier Morales">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Javier Morales</h3>
+<p class="text-primary mb-3">Director Técnico</p>
+<p class="text-gray-600 mb-4">Javier supervisa todos los aspectos técnicos de nuestros eventos, desde iluminación y sonido hasta estructuras temporales y efectos especiales.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg shadow-sm overflow-hidden transition-all">
+<img src="https://readdy.ai/api/search-image?query=professional%2520hispanic%2520female%2520customer%2520service%2520manager%2520in%2520business%2520casual%2520attire%2C%2520confident%2520pose%2C%2520professional%2520headshot%2520with%2520neutral%2520background&width=400&height=300&seq=11&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Ana Valencia">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-1">Ana Valencia</h3>
+<p class="text-primary mb-3">Gerente de Atención al Cliente</p>
+<p class="text-gray-600 mb-4">Ana lidera nuestro equipo de atención al cliente, asegurando una comunicación efectiva y garantizando la satisfacción de todos nuestros clientes.</p>
+<div class="flex gap-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-mail-line"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Logros y Reconocimientos</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">A lo largo de nuestra trayectoria, hemos sido reconocidos por nuestro compromiso con la excelencia y la innovación.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">850+</div>
+<h3 class="text-lg font-medium mb-2">Eventos Realizados</h3>
+<p class="text-gray-600">Experiencia acumulada en la organización de eventos de todo tipo y tamaño.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">95%</div>
+<h3 class="text-lg font-medium mb-2">Clientes Satisfechos</h3>
+<p class="text-gray-600">Nuestro compromiso con la excelencia se refleja en la satisfacción de nuestros clientes.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">12</div>
+<h3 class="text-lg font-medium mb-2">Premios del Sector</h3>
+<p class="text-gray-600">Reconocimientos a nuestra creatividad, innovación y servicio al cliente.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="text-4xl font-bold text-primary mb-2 stat-counter">15</div>
+<h3 class="text-lg font-medium mb-2">Países Atendidos</h3>
+<p class="text-gray-600">Experiencia internacional en la organización de eventos en diferentes culturas.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-semibold mb-6">Premios y Certificaciones</h3>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-award-fill text-xl"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Premio a la Excelencia en Eventos Corporativos 2022</h4>
+<p class="text-gray-600">Otorgado por la Asociación Latinoamericana de Eventos Empresariales</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-award-fill text-xl"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Mejor Empresa de Organización de Bodas 2021</h4>
+<p class="text-gray-600">Reconocimiento otorgado por Wedding Planners International</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-award-fill text-xl"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Certificación ISO 9001:2015</h4>
+<p class="text-gray-600">Sistema de Gestión de Calidad para la organización de eventos</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-award-fill text-xl"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Premio a la Innovación en Eventos 2020</h4>
+<p class="text-gray-600">Por nuestras soluciones híbridas durante la pandemia</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-semibold mb-6">Clientes Destacados</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-microsoft-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Microsoft</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-google-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Google</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-amazon-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Amazon</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-netflix-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Netflix</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-spotify-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Spotify</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center mb-2">
+<i class="ri-apple-fill text-4xl text-gray-700"></i>
+</div>
+<span class="text-sm text-gray-600">Apple</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-semibold mb-4">Lo Que Dicen Nuestros Clientes</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Testimonios de quienes han confiado en nosotros para sus eventos más importantes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520businesswoman%2520in%2520formal%2520attire%2C%2520neutral%2520background%2C%2520confident%2520smile&width=60&height=60&seq=12&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Gabriela Martínez">
+<div>
+<h4 class="font-medium">Gabriela Martínez</h4>
+<p class="text-sm text-gray-500">Directora de Marketing, TechCorp</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"JC Events transformó nuestra conferencia anual en una experiencia inolvidable. Su atención al detalle y capacidad para resolver problemas sobre la marcha fue impresionante. Sin duda, seguiremos contando con ellos para nuestros futuros eventos."</p>
+<p class="text-sm text-gray-500">Marzo 2025</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520businessman%2520in%2520formal%2520attire%2C%2520neutral%2520background%2C%2520confident%2520smile&width=60&height=60&seq=13&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Ricardo Fernández">
+<div>
+<h4 class="font-medium">Ricardo Fernández</h4>
+<p class="text-sm text-gray-500">CEO, Innovatech</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"Hemos trabajado con JC Events en múltiples ocasiones y siempre superan nuestras expectativas. Su equipo es profesional, creativo y altamente eficiente. La última gala benéfica que organizaron para nosotros recibió elogios de todos los asistentes."</p>
+<p class="text-sm text-gray-500">Enero 2025</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520hispanic%2520woman%2520in%2520elegant%2520attire%2C%2520neutral%2520background%2C%2520confident%2520smile&width=60&height=60&seq=14&orientation=squarish" class="w-14 h-14 rounded-full object-cover" alt="Sofía Ramírez">
+<div>
+<h4 class="font-medium">Sofía Ramírez</h4>
+<p class="text-sm text-gray-500">Recién Casada</p>
+</div>
+</div>
+<div class="text-yellow-400 flex mb-3">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 mb-4">"Elegir a JC Events para nuestra boda fue la mejor decisión. Desde la planificación hasta la ejecución, cada detalle fue perfecto. Crearon exactamente la atmósfera que soñábamos y nos permitieron disfrutar de nuestro día sin preocupaciones."</p>
+<p class="text-sm text-gray-500">Febrero 2025</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contacto" class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Contáctanos</h2>
+<p class="text-gray-600 mb-8">Estamos aquí para ayudarte a crear el evento de tus sueños. Contáctanos para comenzar a planificar juntos.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-mail-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Email</h3>
+<p class="text-gray-600">jc.events@yahoo.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-phone-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Teléfono</h3>
+<p class="text-gray-600">+1 (408) 687-3611</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-map-pin-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Oficina Principal</h3>
+<p class="text-gray-600">1111 Campbell Ave, San Jose, CA 95126</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-time-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Horario de atención</h3>
+<p class="text-gray-600">Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 3:00 PM</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Envíanos un mensaje</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Enviar Mensaje
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-semibold mb-6">¿Listo para crear un evento inolvidable?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Permítenos ayudarte a transformar tu visión en realidad. En JC Events nos especializamos en crear experiencias memorables adaptadas a tus necesidades.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0cc5f454-c970-40c4-89f3-e85cbe743895" data-readdy="true" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Explorar Servicios de Alquiler
+</a>
+<a href="#contacto" class="!rounded-button bg-white border border-primary text-primary px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Contactar Ahora
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
+<ul class="space-y-4">
+<li><a href="index.html" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="aboutus.html" data-readdy="true" class="text-white">Sobre Nosotros</a></li>
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Eventos</a></li>
+<li><a href="galeria.html" data-readdy="true" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="rental.html" data-readdy="true" class="text-gray-400 hover:text-white">Rental</a></li>
+<li><a href="curso.html" data-readdy="true" class="text-gray-400 hover:text-white">Curso</a></li>
+<li><a href="#contacto" class="text-gray-400 hover:text-white">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir ofertas especiales y novedades</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 JC Events. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-pinterest-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-whatsapp-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Counter animation
+const counters = document.querySelectorAll('.stat-counter');
+counters.forEach(counter => {
+const target = parseInt(counter.textContent);
+const suffix = counter.textContent.match(/[^\d]+$/);
+let count = 0;
+const duration = 2000; // ms
+const interval = 50; // ms
+const increment = target / (duration / interval);
+const timer = setInterval(() => {
+count += increment;
+if (count >= target) {
+counter.textContent = target + (suffix ? suffix[0] : '');
+clearInterval(timer);
+} else {
+counter.textContent = Math.floor(count) + (suffix ? suffix[0] : '');
+}
+}, interval);
+});
+
+// Form submission
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+alert('Gracias por tu mensaje. Nos pondremos en contacto contigo a la brevedad.');
+form.reset();
+});
+});
+});
+</script>
+</body>
+</html>

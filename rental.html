@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental - JC Events</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.category-card:hover .category-icon {
+transform: translateY(-5px);
+}
+.product-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #e5e7eb;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #B8860B;
+border-color: #B8860B;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-range {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 6px;
+background: #e5e7eb;
+border-radius: 5px;
+outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+background: #B8860B;
+border-radius: 50%;
+cursor: pointer;
+}
+.custom-range::-moz-range-thumb {
+width: 18px;
+height: 18px;
+background: #B8860B;
+border-radius: 50%;
+cursor: pointer;
+border: none;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 44px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #B8860B;
+}
+input:checked + .slider:before {
+transform: translateX(20px);
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+<nav class="flex items-center justify-between px-6 h-20">
+<div class="flex items-center gap-12">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+<a href="aboutus.html#" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+<a href="eventos.html#" class="text-gray-600 hover:text-primary">Eventos</a>
+<a href="galeria.hmtl" data-readdy="true" class="text-gray-600 hover:text-primary">Galería</a>
+<a href="rental.html" data-readdy="true" class="text-primary">Rental</a>
+<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Contactar
+</a>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<section class="relative h-[500px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%2520event%2520rental%2520showroom%2520with%2520beautiful%2520furniture%2C%2520decorations%2C%2520lighting%2C%2520and%2520audiovisual%2520equipment%2520on%2520display.%2520The%2520scene%2520shows%2520a%2520sophisticated%2520collection%2520of%2520rental%2520items%2520for%2520events%2520with%2520warm%2520ambient%2520lighting%2520highlighting%2520quality%2520pieces.%2520The%2520left%2520side%2520has%2520a%2520clean%2520white%2520background%2520that%2520smoothly%2520transitions%2520into%2520the%2520showroom%2520scene&width=1920&height=500&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-semibold mb-6">Servicio de Alquiler para Eventos</h1>
+<p class="text-xl text-gray-600 mb-8">Todo lo que necesitas para crear eventos inolvidables. Mobiliario, decoración, equipos audiovisuales y más.</p>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-grow">
+<div class="relative">
+<input type="text" placeholder="¿Qué estás buscando?" class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary text-sm">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+<div>
+<button class="!rounded-button w-full md:w-auto bg-primary text-white px-6 py-3 text-sm font-medium whitespace-nowrap cursor-pointer">
+Buscar
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-semibold mb-4">Categorías de Alquiler</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Explora nuestra amplia gama de productos disponibles para alquiler, organizados por categorías para facilitar tu búsqueda.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<a href="#mobiliario" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-sofa-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Mobiliario</h3>
+<p class="text-sm text-gray-500">Mesas, sillas, sofás</p>
+</a>
+<a href="#decoracion" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-flower-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Decoración</h3>
+<p class="text-sm text-gray-500">Centros de mesa, floreros</p>
+</a>
+<a href="#audiovisual" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-speaker-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Audiovisual</h3>
+<p class="text-sm text-gray-500">Sonido, iluminación</p>
+</a>
+<a href="#carpas" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-home-4-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Carpas</h3>
+<p class="text-sm text-gray-500">Toldos, estructuras</p>
+</a>
+<a href="#vajilla" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-goblet-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Vajilla</h3>
+<p class="text-sm text-gray-500">Platos, cubiertos, copas</p>
+</a>
+<a href="#iluminacion" class="category-card bg-white rounded-lg shadow-sm border border-gray-100 p-6 text-center hover:border-primary/30 hover:shadow-md transition-all">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center category-icon transition-all">
+<i class="ri-lightbulb-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-1">Iluminación</h3>
+<p class="text-sm text-gray-500">Luces, velas, lámparas</p>
+</a>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="w-full lg:w-1/4">
+<div class="bg-white p-6 rounded-lg shadow-sm sticky top-24">
+<h3 class="text-xl font-semibold mb-6">Filtros</h3>
+<div class="space-y-6">
+<div>
+<h4 class="font-medium mb-3">Categorías</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox" checked>
+<span>Mobiliario</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Decoración</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Audiovisual</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Carpas</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Vajilla</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Iluminación</span>
+</label>
+</div>
+</div>
+<div>
+<h4 class="font-medium mb-3">Precio por día</h4>
+<div class="space-y-3">
+<input type="range" min="0" max="1000" value="500" class="custom-range" id="price-range">
+<div class="flex justify-between text-sm text-gray-500">
+<span>$0</span>
+<span id="price-value">$500</span>
+<span>$1000</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium mb-3">Disponibilidad</h4>
+<label class="flex items-center gap-2 cursor-pointer">
+<span>Mostrar solo disponibles</span>
+<div class="custom-switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</div>
+</label>
+</div>
+<div>
+<h4 class="font-medium mb-3">Tipo de evento</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Bodas</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Corporativo</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Fiestas privadas</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="checkbox" class="custom-checkbox">
+<span>Conferencias</span>
+</label>
+</div>
+</div>
+<div>
+<h4 class="font-medium mb-3">Color</h4>
+<div class="flex flex-wrap gap-2">
+<div class="w-8 h-8 rounded-full bg-white border border-gray-200 cursor-pointer hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-black cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-gray-300 cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-red-500 cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-blue-500 cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-green-500 cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-yellow-500 cursor-pointer hover:border-2 hover:border-primary"></div>
+<div class="w-8 h-8 rounded-full bg-purple-500 cursor-pointer hover:border-2 hover:border-primary"></div>
+</div>
+</div>
+<button class="!rounded-button w-full bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 text-sm font-medium mt-4 whitespace-nowrap cursor-pointer">
+Limpiar filtros
+</button>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-3/4">
+<div class="flex justify-between items-center mb-6">
+<h3 id="mobiliario" class="text-2xl font-semibold">Mobiliario</h3>
+<div class="flex items-center gap-4">
+<span class="text-sm text-gray-500">Ordenar por:</span>
+<div class="relative">
+<div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200 cursor-pointer">
+<span class="text-sm">Popularidad</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+<div class="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg border border-gray-200 shadow-md hidden">
+<div class="py-2">
+<div class="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm">Popularidad</div>
+<div class="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm">Precio: menor a mayor</div>
+<div class="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm">Precio: mayor a menor</div>
+<div class="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm">Más recientes</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520white%2520chiavari%2520chair%2520for%2520events%2520and%2520weddings%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=2&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Silla Tiffany Blanca">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Silla Tiffany Blanca</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(48)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$8.50</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520round%2520banquet%2520table%2520for%2520events%2520with%2520white%2520tablecloth%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=3&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Mesa Redonda 1.80m">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Mesa Redonda 1.80m</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-xs text-gray-500">(36)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$25.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520velvet%2520lounge%2520sofa%2520for%2520events%2520in%2520blue%2520color%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=4&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Sofá Lounge Azul">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Sofá Lounge Azul</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(52)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$75.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520gold%2520metal%2520bar%2520stool%2520with%2520velvet%2520cushion%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=5&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Taburete Alto Dorado">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Taburete Alto Dorado</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-xs text-gray-500">(29)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$15.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520rectangular%2520banquet%2520table%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=6&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Mesa Rectangular 2.40m">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Mesa Rectangular 2.40m</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(41)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$30.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520acrylic%2520ghost%2520chair%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=7&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Silla Ghost Transparente">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Silla Ghost Transparente</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-xs text-gray-500">(33)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$12.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+</div>
+<h3 id="decoracion" class="text-2xl font-semibold mt-12 mb-6">Decoración</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520tall%2520glass%2520vase%2520centerpiece%2520with%2520flowers%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=8&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Centro de Mesa Alto">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Centro de Mesa Alto</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(56)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$45.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520gold%2520candelabra%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=9&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Candelabro Dorado">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Candelabro Dorado</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(42)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$35.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520table%2520runner%2520in%2520gold%2520sequin%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=10&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Camino de Mesa Dorado">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Camino de Mesa Dorado</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-xs text-gray-500">(38)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$18.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+</div>
+<h3 id="audiovisual" class="text-2xl font-semibold mt-12 mb-6">Audiovisual</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=professional%2520speaker%2520system%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=11&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Sistema de Sonido Profesional">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Sistema de Sonido Profesional</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(64)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$150.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=professional%2520projector%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=12&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Proyector HD">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Proyector HD</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-xs text-gray-500">(47)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$85.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=professional%2520wireless%2520microphone%2520for%2520events%2520on%2520a%2520clean%2520white%2520background%2C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=400&height=300&seq=13&orientation=landscape" class="w-full h-48 object-cover object-top" alt="Micrófono Inalámbrico">
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">
+Disponible
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-medium mb-1">Micrófono Inalámbrico</h4>
+<div class="flex items-center gap-1 mb-3">
+<div class="text-yellow-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="text-xs text-gray-500">(53)</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-semibold">$35.00</span>
+<span class="text-sm text-gray-500">por día</span>
+</div>
+<div class="flex gap-2">
+<button class="!rounded-button flex-1 bg-white border border-primary text-primary hover:bg-primary/5 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Vista rápida
+</button>
+<button class="!rounded-button flex-1 bg-primary text-white hover:bg-primary/90 px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-2">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary">
+<i class="ri-arrow-left-s-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white">1</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary">2</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary">3</a>
+<span class="w-10 h-10 flex items-center justify-center text-gray-400">...</span>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary">8</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary">
+<i class="ri-arrow-right-s-line"></i>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Paquetes Especiales</h2>
+<p class="text-gray-600 mb-8">Ahorra tiempo y dinero con nuestros paquetes prediseñados para diferentes tipos de eventos. Incluyen todo lo necesario a un precio especial.</p>
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-heart-line text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-medium">Paquete Boda</h3>
+<p class="text-sm text-gray-500">Todo lo necesario para tu día especial</p>
+</div>
+</div>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>100 sillas Tiffany blancas</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>10 mesas redondas con mantelería</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Centros de mesa (10 unidades)</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Sistema de sonido básico</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Iluminación ambiental</span>
+</li>
+</ul>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-lg font-semibold">$850.00</span>
+<span class="text-sm text-gray-500 ml-1">por día</span>
+</div>
+<button class="!rounded-button bg-primary text-white px-6 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Ver detalles
+</button>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-building-line text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-medium">Paquete Corporativo</h3>
+<p class="text-sm text-gray-500">Solución completa para eventos empresariales</p>
+</div>
+</div>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>50 sillas ejecutivas</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>5 mesas rectangulares</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Proyector HD con pantalla</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Sistema de sonido profesional</span>
+</li>
+<li class="flex items-center gap-2 text-sm text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>2 micrófonos inalámbricos</span>
+</li>
+</ul>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-lg font-semibold">$750.00</span>
+<span class="text-sm text-gray-500 ml-1">por día</span>
+</div>
+<button class="!rounded-button bg-primary text-white px-6 py-2 text-sm font-medium whitespace-nowrap cursor-pointer">
+Ver detalles
+</button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<img src="https://readdy.ai/api/search-image?query=elegant%2520event%2520setup%2520with%2520beautiful%2520table%2520settings%2C%2520chairs%2C%2520flowers%2C%2520and%2520lighting%2520for%2520a%2520wedding%2520or%2520special%2520occasion.%2520The%2520scene%2520shows%2520a%2520complete%2520rental%2520package%2520with%2520coordinated%2520decor%2520elements%2520and%2520professional%2520arrangement&width=600&height=700&seq=14&orientation=portrait" class="w-full h-auto rounded-lg shadow-xl" alt="Paquetes Especiales">
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-semibold mb-4">Proceso de Alquiler</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Conoce cómo funciona nuestro servicio de alquiler, desde la selección hasta la devolución de los productos.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-shopping-cart-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-2">1. Selecciona tus productos</h3>
+<p class="text-sm text-gray-600">Explora nuestro catálogo y agrega los productos que necesitas a tu cotización.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-file-list-3-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-2">2. Solicita tu cotización</h3>
+<p class="text-sm text-gray-600">Completa el formulario con los detalles de tu evento y recibe una cotización personalizada.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-calendar-check-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-2">3. Confirma tu reserva</h3>
+<p class="text-sm text-gray-600">Aprueba la cotización, realiza el pago del depósito y asegura la disponibilidad.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-truck-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium mb-2">4. Entrega y recogida</h3>
+<p class="text-sm text-gray-600">Nosotros nos encargamos de la logística, entregando y recogiendo todo en las fechas acordadas.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="terminos" class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Términos y Condiciones</h2>
+<p class="text-gray-600 mb-8">Información importante sobre nuestro servicio de alquiler que debes conocer antes de realizar tu reserva.</p>
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">Depósito de seguridad</h3>
+<p class="text-gray-600">Se requiere un depósito de seguridad reembolsable equivalente al 30% del valor total del alquiler. Este depósito será devuelto dentro de los 5 días hábiles posteriores a la devolución de los productos en buen estado.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">Política de cancelación</h3>
+<p class="text-gray-600">Las cancelaciones realizadas con más de 15 días de anticipación recibirán un reembolso del 100% del anticipo. Entre 7-14 días, reembolso del 50%. Menos de 7 días, no hay reembolso.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">Entrega y recogida</h3>
+<p class="text-gray-600">El servicio de entrega y recogida tiene un costo adicional basado en la distancia. La instalación de equipos complejos puede tener un cargo extra. Los horarios se coordinarán previamente.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">Daños y pérdidas</h3>
+<p class="text-gray-600">El cliente es responsable por cualquier daño o pérdida de los productos alquilados. Los costos de reparación o reposición serán deducidos del depósito de seguridad o facturados adicionalmente.</p>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Solicita una Cotización</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+<input type="email" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+<input type="tel" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Fecha del evento *</label>
+<input type="date" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de evento *</label>
+<select required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona una opción</option>
+<option value="Boda">Boda</option>
+<option value="Corporativo">Corporativo</option>
+<option value="Cumpleaños">Cumpleaños</option>
+<option value="Conferencia">Conferencia</option>
+<option value="Otro">Otro</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Productos de interés</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary" placeholder="Describe los productos que necesitas para tu evento..."></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">¿Necesitas servicio de entrega e instalación?</label>
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="radio" name="entrega" value="si" class="w-4 h-4 text-primary">
+<span>Sí</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input type="radio" name="entrega" value="no" class="w-4 h-4 text-primary">
+<span>No</span>
+</label>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<input type="checkbox" id="terminos-checkbox" required class="mt-1">
+<label for="terminos-checkbox" class="text-sm text-gray-600">He leído y acepto los <a href="#terminos" class="text-primary">términos y condiciones</a> del servicio de alquiler *</label>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-semibold mb-4">Preguntas Frecuentes</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Respuestas a las dudas más comunes sobre nuestro servicio de alquiler.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Con cuánta anticipación debo hacer mi reserva?</h3>
+<p class="text-gray-600">Recomendamos realizar la reserva con al menos 4 semanas de anticipación para garantizar la disponibilidad, especialmente en temporada alta (mayo-septiembre). Para eventos grandes o con necesidades específicas, lo ideal es reservar con 2-3 meses de antelación.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Puedo modificar mi pedido después de confirmarlo?</h3>
+<p class="text-gray-600">Sí, puedes realizar modificaciones hasta 7 días antes del evento, sujeto a disponibilidad. Los cambios que impliquen reducción de productos pueden estar sujetos a cargos según nuestra política de cancelación.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Ofrecen servicio de montaje y desmontaje?</h3>
+<p class="text-gray-600">Sí, ofrecemos servicios de montaje y desmontaje para la mayoría de nuestros productos con un cargo adicional. Los precios varían según la complejidad y el volumen. Este servicio debe solicitarse al momento de realizar la cotización.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Cuál es el período mínimo de alquiler?</h3>
+<p class="text-gray-600">El período mínimo de alquiler es de 24 horas. Para eventos de varios días, ofrecemos tarifas especiales con descuentos progresivos según la duración del alquiler.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Qué sucede si algo se daña durante el evento?</h3>
+<p class="text-gray-600">El cliente es responsable de los daños que excedan el desgaste normal. Recomendamos revisar todos los artículos al momento de la entrega. Los daños serán evaluados al recoger los productos y se descontarán del depósito de seguridad.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-lg font-medium mb-3">¿Realizan entregas fuera de la ciudad?</h3>
+<p class="text-gray-600">Sí, realizamos entregas en un radio de hasta 100 km desde nuestra ubicación central. Para distancias mayores, se aplican tarifas especiales que se calcularán en la cotización según la distancia y el volumen de productos.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="contacto" class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Contáctanos</h2>
+<p class="text-gray-600 mb-8">¿Tienes preguntas sobre nuestro servicio de alquiler? Nuestro equipo está listo para ayudarte a crear un evento inolvidable.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-mail-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Email</h3>
+<p class="text-gray-600">jc.events@yahoo.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-phone-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Teléfono</h3>
+<p class="text-gray-600">+1 (408) 687-3611</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-map-pin-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Showroom</h3>
+<p class="text-gray-600">1111 Campbell Ave, San Jose, CA 95126</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-time-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Horario de atención</h3>
+<p class="text-gray-600">Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 3:00 PM</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-whatsapp-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-pinterest-line"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Envíanos un mensaje</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Enviar Mensaje
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-primary/10">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-semibold mb-6">¿Listo para crear un evento inolvidable?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Explora nuestro catálogo completo y encuentra todo lo que necesitas para hacer de tu evento algo extraordinario.</p>
+<a href="#" class="!rounded-button inline-block bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Solicitar Cotización
+</a>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
+<ul class="space-y-4">
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Eventos</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0209aeae-3555-40df-8103-93a2679dca97" data-readdy="true" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0cc5f454-c970-40c4-89f3-e85cbe743895" data-readdy="true" class="text-white">Rental</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="text-gray-400 hover:text-white">Curso</a></li>
+<li><a href="#contacto" class="text-gray-400 hover:text-white">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir ofertas especiales y novedades</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 JC Events. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-pinterest-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-whatsapp-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Price range slider
+const priceRange = document.getElementById('price-range');
+const priceValue = document.getElementById('price-value');
+priceRange.addEventListener('input', function() {
+priceValue.textContent = '$' + this.value;
+});
+// Custom checkbox styling
+const checkboxes = document.querySelectorAll('.custom-checkbox');
+checkboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+if (this.checked) {
+this.style.backgroundColor = '#B8860B';
+this.style.borderColor = '#B8860B';
+} else {
+this.style.backgroundColor = 'transparent';
+this.style.borderColor = '#e5e7eb';
+}
+});
+});
+// Form submission
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+alert('Gracias por tu mensaje. Nos pondremos en contacto contigo a la brevedad.');
+form.reset();
+});
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos Elegantes</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.hero-gradient {
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+}
+.modal {
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+}
+.modal.active {
+opacity: 1;
+visibility: visible;
+}
+.modal-content {
+transform: translateY(-20px);
+transition: all 0.3s ease;
+}
+.modal.active .modal-content {
+transform: translateY(0);
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+			<nav class="flex items-center justify-between px-6 h-20">
+			<div class="flex items-center gap-12">
+				<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+					<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+				</a>
+				<div class="hidden lg:flex items-center gap-8">
+					<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+					<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+					<a href="eventos.html" data-readdy="true" class="text-gray-600 hover:text-primary">Eventos</a>
+					<a href="galeria.html" class="text-primary">Galería</a>
+					<a href="rental.html#" class="text-gray-600 hover:text-primary">Rental</a>
+					<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+				</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+					<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+						<i class="ri-search-line"></i>
+					</div>
+					<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+				</div>
+				<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+					Contactar
+				</a>
+				<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+					<i class="ri-menu-line text-xl"></i>
+				</button>
+			</div>
+			</nav>
+		</header>
+		
+<div id="servicesModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-gray-100">
+<h3 class="text-2xl font-semibold">Nuestros Servicios</h3>
+<button id="closeModal" class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="overflow-y-auto p-6 space-y-8">
+<div class="space-y-6">
+<div class="flex items-start gap-6">
+<img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20ceremony%20with%20floral%20arrangements%20and%20sophisticated%20decor%20in%20a%20luxurious%20venue&width=200&height=150&seq=10&orientation=landscape" class="w-48 h-36 object-cover rounded-lg" alt="Bodas">
+<div>
+<h4 class="text-xl font-semibold mb-2">Bodas</h4>
+<p class="text-gray-600 mb-4">Creamos bodas mágicas y personalizadas que reflejan tu estilo único. Nuestro servicio incluye planificación completa, decoración, coordinación de proveedores y más.</p>
+<a href="eventos.html" class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap inline-block cursor-pointer">Solicitar Cotización</a>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<img src="https://readdy.ai/api/search-image?query=baby%20shower%20celebration%20with%20elegant%20pastel%20decorations%20and%20themed%20elements%20in%20a%20bright%20modern%20space&width=200&height=150&seq=11&orientation=landscape" class="w-48 h-36 object-cover rounded-lg" alt="Baby Showers">
+<div>
+<h4 class="text-xl font-semibold mb-2">Baby Showers</h4>
+<p class="text-gray-600 mb-4">Celebraciones especiales para dar la bienvenida a los más pequeños. Ofrecemos decoración temática, catering, actividades y recuerdos personalizados.</p>
+<a href="eventos.html" class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap inline-block cursor-pointer">Solicitar Cotización</a>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<img src="https://readdy.ai/api/search-image?query=quincea%C3%B1era%20celebration%20with%20elegant%20pink%20and%20gold%20decorations%20in%20a%20grand%20ballroom%20setting&width=200&height=150&seq=12&orientation=landscape" class="w-48 h-36 object-cover rounded-lg" alt="Quinceañeras">
+<div>
+<h4 class="text-xl font-semibold mb-2">Quinceañeras</h4>
+<p class="text-gray-600 mb-4">Hacemos realidad el sueño de tu quinceañera con servicios completos de planificación, decoración, coreografía, fotografía y más.</p>
+<a href="eventos.html" class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap inline-block cursor-pointer">Solicitar Cotización</a>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<img src="https://readdy.ai/api/search-image?query=corporate%20event%20setup%20with%20professional%20staging%20and%20modern%20business%20atmosphere&width=200&height=150&seq=13&orientation=landscape" class="w-48 h-36 object-cover rounded-lg" alt="Corporativos">
+<div>
+<h4 class="text-xl font-semibold mb-2">Eventos Corporativos</h4>
+<p class="text-gray-600 mb-4">Organizamos eventos empresariales profesionales, desde conferencias hasta cenas de gala. Incluye gestión logística, audiovisual, catering ejecutivo.</p>
+<a href="eventos.html" class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap inline-block cursor-pointer">Solicitar Cotización</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal para Bodas -->
+<div id="bodasModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-gray-100">
+<h3 class="text-2xl font-semibold">Bodas</h3>
+<button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="overflow-y-auto p-6 space-y-8">
+<div class="space-y-6">
+<img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20ceremony%20with%20floral%20arrangements%2C%20sophisticated%20decor%20in%20a%20luxurious%20venue%20with%20romantic%20lighting%20and%20beautiful%20setup&width=800&height=400&seq=20&orientation=landscape" class="w-full h-80 object-cover rounded-lg" alt="Bodas">
+<div>
+<h4 class="text-xl font-semibold mb-4">Creamos la boda de tus sueños</h4>
+<p class="text-gray-600 mb-6">En Eventos Elegantes, entendemos que tu boda es uno de los días más importantes de tu vida. Nuestro equipo de expertos en planificación de bodas se encarga de cada detalle para crear una celebración que refleje perfectamente tu personalidad y estilo.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div>
+<h5 class="font-medium mb-3">Nuestros servicios incluyen:</h5>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Planificación completa o parcial</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Selección y gestión de proveedores</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Diseño y decoración personalizada</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Coordinación el día del evento</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-medium mb-3">Paquetes disponibles:</h5>
+<div class="space-y-3">
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Esencial - $2,500</h6>
+<p class="text-sm text-gray-500">Coordinación básica para parejas que ya tienen la mayoría de los detalles planificados</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Premium - $5,000</h6>
+<p class="text-sm text-gray-500">Planificación parcial con asistencia en selección de proveedores clave</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Lujo - $8,500</h6>
+<p class="text-sm text-gray-500">Planificación completa de principio a fin con todos los servicios incluidos</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<h5 class="font-medium mb-4">Testimonios de nuestras parejas</h5>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"Fue la boda de nuestros sueños. Cada detalle fue perfecto y no tuvimos que preocuparnos por nada. ¡Altamente recomendados!"</p>
+<p class="font-medium">Carolina y Alejandro</p>
+</div>
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"Profesionales, creativos y atentos. Transformaron nuestras ideas en una celebración mágica que nunca olvidaremos."</p>
+<p class="font-medium">Mariana y Eduardo</p>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-medium mb-4">Contacta con nuestro equipo de bodas</h5>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<input type="text" placeholder="Nombre completo" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="tel" placeholder="Teléfono" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<input type="text" placeholder="Fecha tentativa de la boda" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<textarea placeholder="Cuéntanos sobre tu boda ideal" rows="3" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<div class="md:col-span-2">
+<button type="submit" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Solicitar información
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal para Baby Showers -->
+<div id="babyShowerModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-gray-100">
+<h3 class="text-2xl font-semibold">Baby Showers</h3>
+<button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="overflow-y-auto p-6 space-y-8">
+<div class="space-y-6">
+<img src="https://readdy.ai/api/search-image?query=elegant%20baby%20shower%20celebration%20with%20pastel%20decorations%2C%20balloons%2C%20and%20themed%20elements%20in%20a%20bright%20modern%20space%20with%20beautiful%20table%20settings%20and%20soft%20lighting&width=800&height=400&seq=21&orientation=landscape" class="w-full h-80 object-cover rounded-lg" alt="Baby Showers">
+<div>
+<h4 class="text-xl font-semibold mb-4">Celebraciones únicas para dar la bienvenida</h4>
+<p class="text-gray-600 mb-6">Organizamos baby showers memorables que celebran la llegada de los más pequeños. Nuestro equipo se encarga de crear un ambiente acogedor y festivo con decoraciones temáticas, actividades divertidas y detalles personalizados.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div>
+<h5 class="font-medium mb-3">Nuestros servicios incluyen:</h5>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Decoración temática personalizada</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Catering y mesa de postres</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Juegos y actividades</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Recuerdos para invitados</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-medium mb-3">Paquetes disponibles:</h5>
+<div class="space-y-3">
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Básico - $800</h6>
+<p class="text-sm text-gray-500">Decoración básica y coordinación para hasta 20 invitados</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Deluxe - $1,500</h6>
+<p class="text-sm text-gray-500">Decoración completa, catering y actividades para hasta 30 invitados</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Premium - $2,200</h6>
+<p class="text-sm text-gray-500">Experiencia todo incluido con detalles personalizados para hasta 40 invitados</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<h5 class="font-medium mb-4">Testimonios de nuestros clientes</h5>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"¡Fue perfecto! La decoración era preciosa y todos los invitados quedaron encantados con los detalles y las actividades."</p>
+<p class="font-medium">Daniela Morales</p>
+</div>
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"Superó todas mis expectativas. El equipo se encargó de todo y pude disfrutar de la celebración sin preocupaciones."</p>
+<p class="font-medium">Valeria Gutiérrez</p>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-medium mb-4">Contacta con nuestro equipo</h5>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<input type="text" placeholder="Nombre completo" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="tel" placeholder="Teléfono" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<input type="text" placeholder="Fecha tentativa del baby shower" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<textarea placeholder="Cuéntanos tus ideas para el baby shower" rows="3" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<div class="md:col-span-2">
+<button type="submit" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Solicitar información
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal para Quinceañeras -->
+<div id="quinceModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-gray-100">
+<h3 class="text-2xl font-semibold">Quinceañeras</h3>
+<button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="overflow-y-auto p-6 space-y-8">
+<div class="space-y-6">
+<img src="https://readdy.ai/api/search-image?query=elegant%20quincea%C3%B1era%20celebration%20with%20pink%20and%20gold%20decorations%2C%20beautiful%20ballroom%20setting%20with%20dramatic%20lighting%2C%20floral%20arrangements%20and%20elegant%20table%20settings&width=800&height=400&seq=22&orientation=landscape" class="w-full h-80 object-cover rounded-lg" alt="Quinceañeras">
+<div>
+<h4 class="text-xl font-semibold mb-4">El momento más especial de tu vida</h4>
+<p class="text-gray-600 mb-6">Hacemos realidad el sueño de tu quinceañera con una celebración inolvidable. Nuestro equipo se encarga de cada detalle, desde la ceremonia hasta la fiesta, para crear un evento que refleje tu personalidad y estilo.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div>
+<h5 class="font-medium mb-3">Nuestros servicios incluyen:</h5>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Planificación completa del evento</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Decoración temática personalizada</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Coreografía y ensayos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Fotografía y video profesional</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-medium mb-3">Paquetes disponibles:</h5>
+<div class="space-y-3">
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Clásico - $3,500</h6>
+<p class="text-sm text-gray-500">Planificación básica para una celebración tradicional</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Glamour - $5,800</h6>
+<p class="text-sm text-gray-500">Experiencia completa con decoración elegante y servicios premium</p>
+</div>
+<div class="p-3 border border-gray-100 rounded-lg">
+<h6 class="font-medium">Royal - $8,200</h6>
+<p class="text-sm text-gray-500">La experiencia definitiva con todos los lujos y detalles exclusivos</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<h5 class="font-medium mb-4">Testimonios de nuestras quinceañeras</h5>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"Mi fiesta fue como un sueño hecho realidad. Cada detalle fue perfecto y me sentí como una princesa durante toda la noche."</p>
+<p class="font-medium">Sofía Ramírez</p>
+</div>
+<div class="p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-600 italic mb-3">"Eventos Elegantes hizo que mi quinceañera fuera única y especial. Todos mis invitados quedaron impresionados con la decoración y la organización."</p>
+<p class="font-medium">Isabella Mendoza</p>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-medium mb-4">Contacta con nuestro equipo</h5>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<input type="text" placeholder="Nombre completo" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="tel" placeholder="Teléfono" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<input type="text" placeholder="Fecha tentativa de la quinceañera" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<textarea placeholder="Cuéntanos tus ideas para tu quinceañera" rows="3" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<div class="md:col-span-2">
+<button type="submit" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Solicitar información
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+<nav class="flex items-center justify-between px-6 h-20">
+<div class="flex items-center gap-12">
+<a href="index.html" class="h-12">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="index.html" class="text-gray-600 hover:text-primary">Inicio</a>
+<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+<a href="eventos.html" class="text-gray-600 hover:text-primary">Eventos</a>
+<a href="galeria.html" class="text-gray-600 hover:text-primary">Galería</a>
+<a href="rental.html" class="text-gray-600 hover:text-primary">Rental</a>
+<a href="curso.html" class="text-gray-600 hover:text-primary">Curso</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+<button class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Contactar
+</button>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<section class="relative h-[600px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=luxury%20event%20space%20with%20elegant%20decorations%2C%20chandeliers%2C%20soft%20lighting%2C%20floral%20arrangements%2C%20and%20table%20settings.%20The%20scene%20should%20have%20a%20romantic%20and%20sophisticated%20atmosphere%20with%20neutral%20tones%20and%20gold%20accents.%20The%20left%20side%20should%20have%20a%20clean%20white%20background%20that%20smoothly%20transitions%20into%20the%20decorated%20space&width=1920&height=600&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-5xl font-semibold mb-6">Creamos Momentos Inolvidables</h1>
+<p class="text-xl text-gray-600 mb-8">Especialistas en planificación de eventos exclusivos. Desde bodas elegantes hasta celebraciones corporativas, hacemos realidad tus sueños.</p>
+<div class="flex gap-4">
+<a href="planificador.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+  Planifica tu Evento
+</a>
+<!--
+<button onclick="window.location.href='planificador.html'" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Planifica tu Evento
+</button>
+-->
+<button id="showServicesModal" class="!rounded-button border border-gray-200 px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Ver Servicios
+</button>
+</div>
+</div>
+</div>
+</section>
+<section id="eventos" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-semibold text-center mb-16">Nuestros Servicios</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative h-80 rounded-lg overflow-hidden">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all z-10"></div>
+<img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20ceremony%20setup%20with%20white%20flowers%2C%20arch%2C%20and%20chairs%20in%20a%20luxurious%20venue%20with%20natural%20lighting&width=400&height=320&seq=2&orientation=landscape" class="w-full h-full object-cover" alt="Bodas">
+<div class="absolute inset-0 z-20 flex flex-col justify-end p-6 text-white">
+<h3 class="text-2xl font-semibold mb-2">Bodas</h3>
+<p class="text-sm opacity-90 mb-4">Creamos bodas mágicas y personalizadas</p>
+<button id="verMasBodas" class="!rounded-button bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-2.5 text-sm font-medium self-start whitespace-nowrap cursor-pointer">
+Ver Más
+</button>
+</div>
+</div>
+<div class="group relative h-80 rounded-lg overflow-hidden">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all z-10"></div>
+<img src="https://readdy.ai/api/search-image?query=baby%20shower%20celebration%20setup%20with%20pastel%20colors%2C%20balloons%2C%20and%20cute%20decorations%20in%20a%20bright%20modern%20space&width=400&height=320&seq=3&orientation=landscape" class="w-full h-full object-cover" alt="Baby Showers">
+<div class="absolute inset-0 z-20 flex flex-col justify-end p-6 text-white">
+<h3 class="text-2xl font-semibold mb-2">Baby Showers</h3>
+<p class="text-sm opacity-90 mb-4">Celebraciones únicas para dar la bienvenida</p>
+<button id="verMasBabyShower" class="!rounded-button bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-2.5 text-sm font-medium self-start whitespace-nowrap cursor-pointer">
+Ver Más
+</button>
+</div>
+</div>
+<div class="group relative h-80 rounded-lg overflow-hidden">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all z-10"></div>
+<img src="https://readdy.ai/api/search-image?query=quincea%C3%B1era%20celebration%20with%20elegant%20decorations%2C%20pink%20and%20gold%20theme%2C%20ballroom%20setting%20with%20dramatic%20lighting&width=400&height=320&seq=4&orientation=landscape" class="w-full h-full object-cover" alt="Quinceañeras">
+<div class="absolute inset-0 z-20 flex flex-col justify-end p-6 text-white">
+<h3 class="text-2xl font-semibold mb-2">Quinceañeras</h3>
+<p class="text-sm opacity-90 mb-4">El momento más especial de tu vida</p>
+<button id="verMasQuince" class="!rounded-button bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-2.5 text-sm font-medium self-start whitespace-nowrap cursor-pointer">
+Ver Más
+</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="eventos.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap inline-block cursor-pointer">
+Ver todos los eventos
+</a>
+</div>
+</div>
+</section>
+<section id="rental" class="py-20">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-semibold text-center mb-16">Rental de Equipamiento</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+<img src="https://readdy.ai/api/search-image?query=elegant%20white%20chiavari%20chairs%20arranged%20in%20rows%20with%20soft%20natural%20lighting&width=300&height=200&seq=5&orientation=landscape" class="w-full h-48 object-cover rounded-lg mb-4" alt="Sillas">
+<h3 class="font-medium mb-2">Silla Tiffany</h3>
+<p class="text-sm text-gray-500 mb-4">Elegante silla para eventos</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-medium">$8.00/día</span>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+<img src="https://readdy.ai/api/search-image?query=round%20banquet%20tables%20with%20white%20tablecloths%20in%20an%20elegant%20setting&width=300&height=200&seq=6&orientation=landscape" class="w-full h-48 object-cover rounded-lg mb-4" alt="Mesas">
+<h3 class="font-medium mb-2">Mesa Redonda</h3>
+<p class="text-sm text-gray-500 mb-4">Mesa para 10 personas</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-medium">$15.00/día</span>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+<img src="https://readdy.ai/api/search-image?query=luxury%20place%20setting%20with%20gold%20rimmed%20plates%2C%20crystal%20glasses%2C%20and%20gold%20cutlery&width=300&height=200&seq=7&orientation=landscape" class="w-full h-48 object-cover rounded-lg mb-4" alt="Vajilla">
+<h3 class="font-medium mb-2">Set de Vajilla Premium</h3>
+<p class="text-sm text-gray-500 mb-4">Vajilla completa por persona</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-medium">$12.00/set</span>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20audio%20system%20setup%20with%20speakers%20and%20lighting%20equipment&width=300&height=200&seq=8&orientation=landscape" class="w-full h-48 object-cover rounded-lg mb-4" alt="Audio">
+<h3 class="font-medium mb-2">Sistema de Audio</h3>
+<p class="text-sm text-gray-500 mb-4">Equipo profesional completo</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-medium">$200.00/día</span>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm whitespace-nowrap cursor-pointer">
+Agregar
+</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="rental.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap inline-block cursor-pointer">
+Ver catálogo completo
+</a>
+</div>
+</div>
+</section>
+<section id="curso" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Curso de Event Planner Profesional</h2>
+<p class="text-gray-600 mb-8">Aprende a organizar eventos de clase mundial con nuestro programa completo. Obtén las habilidades y conocimientos necesarios para destacar en la industria.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>12 módulos intensivos</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Certificación internacional</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Prácticas en eventos reales</span>
+</li>
+</ul>
+<a href="curso.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap inline-block cursor-pointer">
+Inscríbete Ahora
+</a>
+</div>
+<div>
+<img src="https://readdy.ai/api/search-image?query=professional%20event%20planner%20working%20with%20client%2C%20discussing%20event%20details%20in%20a%20modern%20office%20setting&width=600&height=400&seq=9&orientation=landscape" class="w-full rounded-lg shadow-lg" alt="Curso Event Planner">
+</div>
+</div>
+</div>
+</section>
+<section class="py-20">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-semibold text-center mb-16">Contáctanos</h2>
+<div class="max-w-2xl mx-auto">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Evento</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option>Selecciona un tipo</option>
+<option>Boda</option>
+<option>Baby Shower</option>
+<option>Quinceañera</option>
+<option>Corporativo</option>
+<option>Otro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Enviar Mensaje
+</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="index.html" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Servicios</h3>
+<ul class="space-y-4">
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Bodas</a></li>
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Baby Showers</a></li>
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Quinceañeras</a></li>
+<li><a href="eventos.html" class="text-gray-400 hover:text-white">Eventos Corporativos</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir noticias y ofertas especiales</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 Eventos Elegantes. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-pinterest-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Modal principal de servicios
+const servicesModal = document.getElementById('servicesModal');
+const closeBtn = document.getElementById('closeModal');
+const servicesBtn = document.getElementById('showServicesModal');
+function openServicesModal() {
+servicesModal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeServicesModal() {
+servicesModal.classList.remove('active');
+document.body.style.overflow = '';
+}
+servicesBtn.addEventListener('click', openServicesModal);
+closeBtn.addEventListener('click', closeServicesModal);
+servicesModal.addEventListener('click', function(e) {
+if (e.target === servicesModal) {
+closeServicesModal();
+}
+});
+// Modal de Bodas
+const bodasModal = document.getElementById('bodasModal');
+const verMasBodas = document.getElementById('verMasBodas');
+function openBodasModal() {
+bodasModal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeBodasModal() {
+bodasModal.classList.remove('active');
+document.body.style.overflow = '';
+}
+verMasBodas.addEventListener('click', openBodasModal);
+bodasModal.addEventListener('click', function(e) {
+if (e.target === bodasModal) {
+closeBodasModal();
+}
+});
+// Modal de Baby Shower
+const babyShowerModal = document.getElementById('babyShowerModal');
+const verMasBabyShower = document.getElementById('verMasBabyShower');
+function openBabyShowerModal() {
+babyShowerModal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeBabyShowerModal() {
+babyShowerModal.classList.remove('active');
+document.body.style.overflow = '';
+}
+verMasBabyShower.addEventListener('click', openBabyShowerModal);
+babyShowerModal.addEventListener('click', function(e) {
+if (e.target === babyShowerModal) {
+closeBabyShowerModal();
+}
+});
+// Modal de Quinceañeras
+const quinceModal = document.getElementById('quinceModal');
+const verMasQuince = document.getElementById('verMasQuince');
+function openQuinceModal() {
+quinceModal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeQuinceModal() {
+quinceModal.classList.remove('active');
+document.body.style.overflow = '';
+}
+verMasQuince.addEventListener('click', openQuinceModal);
+quinceModal.addEventListener('click', function(e) {
+if (e.target === quinceModal) {
+closeQuinceModal();
+}
+});
+// Cerrar modales detallados con botones de cierre
+const closeDetailBtns = document.querySelectorAll('.closeDetailModal');
+closeDetailBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+bodasModal.classList.remove('active');
+babyShowerModal.classList.remove('active');
+quinceModal.classList.remove('active');
+document.body.style.overflow = '';
+});
+});
+// Cerrar modales con tecla Escape
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+if (servicesModal.classList.contains('active')) {
+closeServicesModal();
+}
+if (bodasModal.classList.contains('active')) {
+closeBodasModal();
+}
+if (babyShowerModal.classList.contains('active')) {
+closeBabyShowerModal();
+}
+if (quinceModal.classList.contains('active')) {
+closeQuinceModal();
+}
+}
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscripción - Curso de Event Planner Profesional</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease;
+}
+.accordion-item.active .accordion-content {
+max-height: 500px;
+}
+.plan-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plan-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.plan-card.selected {
+border-color: #B8860B;
+background-color: #FEF9E7;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+<nav class="flex items-center justify-between px-6 h-20">
+<div class="flex items-center gap-12">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+<a href="eventos.html" class="text-gray-600 hover:text-primary">Eventos</a>
+<a href="galeria.html" data-readdy="true" class="text-gray-600 hover:text-primary">Galería</a>
+<a href="rental.html" data-readdy="true" class="text-gray-600 hover:text-primary">Rental</a>
+<a href="curso.html" class="text-primary">Curso</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+Contactar
+</a>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<section class="relative h-[500px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=professional%2520event%2520planning%2520course%2520with%2520elegant%2520classroom%2520setup%252C%2520students%2520working%2520on%2520event%2520designs%252C%2520floral%2520arrangements%252C%2520and%2520table%2520settings.%2520The%2520scene%2520should%2520have%2520a%2520sophisticated%2520educational%2520atmosphere%2520with%2520warm%2520lighting%2520and%2520professional%2520equipment.%2520The%2520left%2520side%2520should%2520have%2520a%2520clean%2520white%2520background%2520that%2520smoothly%2520transitions%2520into%2520the%2520classroom%2520scene&width=1920&height=500&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-semibold mb-6">Curso de Event Planner Profesional</h1>
+<p class="text-xl text-gray-600 mb-8">Conviértete en un experto organizador de eventos y destaca en la industria con nuestro programa completo y certificado.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#inscripcion" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap inline-block text-center cursor-pointer">
+Inscríbete Ahora
+</a>
+<a href="#programa" class="!rounded-button border border-gray-200 px-8 py-3 text-lg font-medium whitespace-nowrap inline-block text-center cursor-pointer">
+Ver Programa
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="descripcion" class="py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Sobre el Curso</h2>
+<p class="text-gray-600 mb-6">El Curso de Event Planner Profesional está diseñado para brindarte todas las herramientas, conocimientos y habilidades necesarias para destacar en la industria de organización de eventos. Ya sea que estés comenzando tu carrera o buscando perfeccionar tus habilidades existentes, nuestro programa completo te preparará para enfrentar cualquier desafío en este apasionante campo.</p>
+<p class="text-gray-600 mb-8">Aprenderás desde los fundamentos básicos hasta técnicas avanzadas de planificación, diseño, gestión de proveedores, presupuestos, marketing y mucho más. Todo esto de la mano de profesionales con amplia experiencia en la industria.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-calendar-check-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Duración</h3>
+<p class="text-gray-600">12 semanas (3 meses)</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-time-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Horarios</h3>
+<p class="text-gray-600">Flexible (presencial y online)</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-graduation-cap-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Certificación</h3>
+<p class="text-gray-600">Reconocida internacionalmente</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-user-star-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Prácticas</h3>
+<p class="text-gray-600">En eventos reales</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<img src="https://readdy.ai/api/search-image?query=professional%2520event%2520planning%2520course%2520with%2520students%2520learning%2520from%2520expert%2520instructor%252C%2520working%2520on%2520event%2520design%2520materials%252C%2520mood%2520boards%252C%2520and%2520planning%2520documents%2520in%2520a%2520modern%2520classroom%2520setting%2520with%2520elegant%2520decor%2520elements&width=600&height=700&seq=2&orientation=portrait" class="w-full h-auto rounded-lg shadow-xl" alt="Curso Event Planner">
+</div>
+</div>
+</div>
+</section>
+<section id="programa" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Programa Completo</h2>
+<p class="text-gray-600">Nuestro curso está estructurado en 12 módulos intensivos que cubren todos los aspectos esenciales de la planificación de eventos profesionales.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">01</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Introducción al Event Planning</h3>
+<p class="text-gray-600 mb-4">Fundamentos de la industria, tipos de eventos y rol del planificador profesional.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Historia y evolución de la industria</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Clasificación de eventos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Perfil profesional del organizador</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">02</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Planificación Estratégica</h3>
+<p class="text-gray-600 mb-4">Metodologías para la conceptualización y planificación efectiva de eventos.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Definición de objetivos y alcance</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Cronogramas y planificación temporal</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Gestión de riesgos</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">03</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Diseño y Temática</h3>
+<p class="text-gray-600 mb-4">Principios de diseño visual y creación de experiencias temáticas memorables.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Teoría del color y psicología visual</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Desarrollo de conceptos temáticos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Creación de mood boards</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">04</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Gestión de Presupuestos</h3>
+<p class="text-gray-600 mb-4">Técnicas para elaboración y control de presupuestos eficientes.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Estimación de costos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Herramientas de seguimiento financiero</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Estrategias de optimización</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">05</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Selección de Proveedores</h3>
+<p class="text-gray-600 mb-4">Criterios para la evaluación y contratación de proveedores de calidad.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Investigación y evaluación</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Negociación de contratos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Gestión de relaciones</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">06</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Logística y Coordinación</h3>
+<p class="text-gray-600 mb-4">Sistemas para la gestión eficiente de todos los aspectos logísticos.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Planificación espacial</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Gestión de tiempos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Coordinación de equipos</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">07</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Catering y Gastronomía</h3>
+<p class="text-gray-600 mb-4">Fundamentos de planificación gastronómica para diferentes tipos de eventos.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Tendencias culinarias</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Diseño de menús</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Servicio y presentación</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">08</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Decoración y Ambientación</h3>
+<p class="text-gray-600 mb-4">Técnicas de decoración y creación de ambientes impactantes.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Diseño floral</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Iluminación y efectos visuales</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Montaje de espacios</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">09</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Marketing y Promoción</h3>
+<p class="text-gray-600 mb-4">Estrategias para promocionar eventos y atraer al público objetivo.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Marketing digital</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Relaciones públicas</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Venta de entradas</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">10</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Tecnología para Eventos</h3>
+<p class="text-gray-600 mb-4">Herramientas tecnológicas para optimizar la planificación y ejecución.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Software de gestión</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Aplicaciones móviles</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Innovaciones tecnológicas</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">11</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Gestión de Crisis</h3>
+<p class="text-gray-600 mb-4">Preparación y respuesta ante imprevistos y situaciones de emergencia.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Planes de contingencia</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Seguridad y protocolos</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Comunicación en crisis</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="font-semibold">12</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">Emprendimiento</h3>
+<p class="text-gray-600 mb-4">Herramientas para establecer y desarrollar tu negocio de organización de eventos.</p>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Modelo de negocio</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Aspectos legales y fiscales</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Estrategias de crecimiento</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="instructores" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Nuestros Instructores</h2>
+<p class="text-gray-600">Aprende de profesionales con amplia experiencia en la industria de eventos a nivel nacional e internacional.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520female%2520event%2520planner%2520with%2520elegant%2520appearance%252C%2520confident%2520pose%252C%2520in%2520business%2520attire%2520with%2520neutral%2520background&width=400&height=300&seq=3&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Instructor">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Gabriela Méndez</h3>
+<p class="text-primary mb-3">Directora del Programa</p>
+<p class="text-gray-600 mb-4">Con más de 15 años de experiencia en la organización de eventos de lujo y corporativos a nivel internacional. Ha trabajado con marcas como Louis Vuitton, BMW y Four Seasons.</p>
+<div class="flex gap-3">
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520male%2520event%2520planner%2520with%2520elegant%2520appearance%252C%2520confident%2520pose%252C%2520in%2520business%2520attire%2520with%2520neutral%2520background&width=400&height=300&seq=4&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Instructor">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Carlos Jiménez</h3>
+<p class="text-primary mb-3">Especialista en Diseño de Eventos</p>
+<p class="text-gray-600 mb-4">Diseñador con especialización en eventos temáticos y decoración. Ha sido responsable del diseño visual de más de 500 bodas y eventos corporativos de alto nivel.</p>
+<div class="flex gap-3">
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520female%2520event%2520planner%2520with%2520elegant%2520appearance%252C%2520confident%2520pose%252C%2520in%2520business%2520attire%2520with%2520neutral%2520background%252C%2520different%2520from%2520previous%2520image&width=400&height=300&seq=5&orientation=landscape" class="w-full h-64 object-cover object-top" alt="Instructor">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Lucía Rodríguez</h3>
+<p class="text-primary mb-3">Experta en Marketing de Eventos</p>
+<p class="text-gray-600 mb-4">Especialista en estrategias de promoción y marketing digital para eventos. Ha liderado campañas para festivales internacionales y eventos corporativos.</p>
+<div class="flex gap-3">
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="testimonios" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Testimonios de Estudiantes</h2>
+<p class="text-gray-600">Descubre lo que opinan quienes ya han completado nuestro programa de formación.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"Este curso transformó mi carrera por completo. Los conocimientos prácticos y el apoyo de los instructores fueron excepcionales. Ahora tengo mi propia empresa de eventos y estoy organizando bodas de lujo."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520young%2520latin%2520woman%2520with%2520neutral%2520background&width=60&height=60&seq=6&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Estudiante">
+<div>
+<h4 class="font-medium">Valentina Gutiérrez</h4>
+<p class="text-gray-500 text-sm">Promoción 2024</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"Lo que más valoro del curso es su enfoque práctico. Las prácticas en eventos reales me dieron la confianza y experiencia que necesitaba para destacar en la industria. Totalmente recomendado."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520young%2520latin%2520man%2520with%2520neutral%2520background&width=60&height=60&seq=7&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Estudiante">
+<div>
+<h4 class="font-medium">Alejandro Herrera</h4>
+<p class="text-gray-500 text-sm">Promoción 2023</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"La inversión en este curso ha sido la mejor decisión para mi desarrollo profesional. La red de contactos que he creado y los conocimientos adquiridos son invaluables. Ahora trabajo con clientes internacionales."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520middle%2520aged%2520latin%2520woman%2520with%2520neutral%2520background&width=60&height=60&seq=8&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Estudiante">
+<div>
+<h4 class="font-medium">Marcela Vega</h4>
+<p class="text-gray-500 text-sm">Promoción 2023</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="planes" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Planes de Pago</h2>
+<p class="text-gray-600">Elige el plan que mejor se adapte a tus necesidades y comienza tu formación como Event Planner Profesional.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div id="plan-basico" class="plan-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden transition-all">
+<div class="p-8">
+<h3 class="text-2xl font-semibold mb-2">Plan Básico</h3>
+<p class="text-gray-600 mb-6">Acceso completo al contenido del curso</p>
+<div class="mb-6">
+<span class="text-4xl font-bold">$1,499</span>
+<span class="text-gray-500"> USD</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>12 módulos completos</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Material didáctico digital</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Certificación básica</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-gray-300">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400">Prácticas en eventos reales</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-gray-300">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400">Mentoría personalizada</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-gray-300">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400">Kit de herramientas profesionales</span>
+</li>
+</ul>
+<button class="select-plan !rounded-button w-full bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 font-medium whitespace-nowrap cursor-pointer" data-plan="basico" data-price="1499">
+Seleccionar Plan
+</button>
+</div>
+</div>
+<div id="plan-premium" class="plan-card bg-white rounded-lg shadow-lg border-2 border-primary overflow-hidden transition-all relative">
+<div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-medium">
+Recomendado
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-semibold mb-2">Plan Premium</h3>
+<p class="text-gray-600 mb-6">La experiencia completa de formación</p>
+<div class="mb-6">
+<span class="text-4xl font-bold">$2,499</span>
+<span class="text-gray-500"> USD</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>12 módulos completos</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Material didáctico físico y digital</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Certificación internacional</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Prácticas en eventos reales</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Mentoría personalizada</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-gray-300">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400">Kit de herramientas profesionales</span>
+</li>
+</ul>
+<button class="select-plan !rounded-button w-full bg-primary text-white hover:bg-primary/90 px-6 py-3 font-medium whitespace-nowrap cursor-pointer" data-plan="premium" data-price="2499">
+Seleccionar Plan
+</button>
+</div>
+</div>
+<div id="plan-vip" class="plan-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden transition-all">
+<div class="p-8">
+<h3 class="text-2xl font-semibold mb-2">Plan VIP</h3>
+<p class="text-gray-600 mb-6">La experiencia más exclusiva</p>
+<div class="mb-6">
+<span class="text-4xl font-bold">$3,499</span>
+<span class="text-gray-500"> USD</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>12 módulos completos</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Material didáctico físico y digital</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Certificación internacional premium</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Prácticas en eventos de lujo</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Mentoría personalizada VIP</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Kit completo de herramientas profesionales</span>
+</li>
+</ul>
+<button class="select-plan !rounded-button w-full bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 font-medium whitespace-nowrap cursor-pointer" data-plan="vip" data-price="3499">
+Seleccionar Plan
+</button>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-gray-500">¿Necesitas un plan de pagos? <a href="#contacto" class="text-primary font-medium">Contáctanos</a> para opciones de financiamiento.</p>
+</div>
+</div>
+</section>
+<section id="inscripcion" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Formulario de Inscripción</h2>
+<p class="text-gray-600 mb-8">Completa el siguiente formulario para iniciar tu proceso de inscripción. Nuestro equipo se pondrá en contacto contigo para confirmar tu plaza y brindarte toda la información necesaria.</p>
+<form id="inscripcion-form" class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
+<input type="text" id="nombre" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+<input type="email" id="email" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+<input type="tel" id="telefono" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">País *</label>
+<select id="pais" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option value="">Selecciona tu país</option>
+<option value="Argentina">Argentina</option>
+<option value="Bolivia">Bolivia</option>
+<option value="Chile">Chile</option>
+<option value="Colombia">Colombia</option>
+<option value="Costa Rica">Costa Rica</option>
+<option value="Ecuador">Ecuador</option>
+<option value="El Salvador">El Salvador</option>
+<option value="España">España</option>
+<option value="Guatemala">Guatemala</option>
+<option value="Honduras">Honduras</option>
+<option value="México">México</option>
+<option value="Nicaragua">Nicaragua</option>
+<option value="Panamá">Panamá</option>
+<option value="Paraguay">Paraguay</option>
+<option value="Perú">Perú</option>
+<option value="Puerto Rico">Puerto Rico</option>
+<option value="República Dominicana">República Dominicana</option>
+<option value="Uruguay">Uruguay</option>
+<option value="Venezuela">Venezuela</option>
+<option value="Otro">Otro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Ciudad *</label>
+<input type="text" id="ciudad" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Plan seleccionado *</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="relative">
+<input type="radio" id="plan-radio-basico" name="plan" value="basico" class="hidden" required>
+<label for="plan-radio-basico" class="block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary/50">
+<span class="font-medium">Plan Básico</span>
+<span class="block text-sm text-gray-500 mt-1">$1,499 USD</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-gray-300 rounded-full plan-radio-indicator"></div>
+</div>
+<div class="relative">
+<input type="radio" id="plan-radio-premium" name="plan" value="premium" class="hidden" checked>
+<label for="plan-radio-premium" class="block border-2 border-primary rounded-lg p-4 cursor-pointer bg-primary/5">
+<span class="font-medium">Plan Premium</span>
+<span class="block text-sm text-gray-500 mt-1">$2,499 USD</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-primary rounded-full plan-radio-indicator bg-primary"></div>
+</div>
+<div class="relative">
+<input type="radio" id="plan-radio-vip" name="plan" value="vip" class="hidden">
+<label for="plan-radio-vip" class="block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary/50">
+<span class="font-medium">Plan VIP</span>
+<span class="block text-sm text-gray-500 mt-1">$3,499 USD</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-gray-300 rounded-full plan-radio-indicator"></div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Método de pago *</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="relative">
+<input type="radio" id="pago-completo" name="metodo-pago" value="completo" class="hidden" checked>
+<label for="pago-completo" class="block border-2 border-primary rounded-lg p-4 cursor-pointer bg-primary/5">
+<span class="font-medium">Pago completo</span>
+<span class="block text-sm text-gray-500 mt-1">Un solo pago</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-primary rounded-full pago-radio-indicator bg-primary"></div>
+</div>
+<div class="relative">
+<input type="radio" id="pago-mensual" name="metodo-pago" value="mensual" class="hidden">
+<label for="pago-mensual" class="block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary/50">
+<span class="font-medium">Mensualidades</span>
+<span class="block text-sm text-gray-500 mt-1">3 pagos iguales</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-gray-300 rounded-full pago-radio-indicator"></div>
+</div>
+<div class="relative">
+<input type="radio" id="pago-financiado" name="metodo-pago" value="financiado" class="hidden">
+<label for="pago-financiado" class="block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary/50">
+<span class="font-medium">Financiamiento</span>
+<span class="block text-sm text-gray-500 mt-1">Hasta 12 meses</span>
+</label>
+<div class="absolute top-4 right-4 w-5 h-5 border border-gray-300 rounded-full pago-radio-indicator"></div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Comentarios adicionales</label>
+<textarea id="comentarios" rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<div class="flex items-start gap-3">
+<input type="checkbox" id="terminos" required class="mt-1">
+<label for="terminos" class="text-sm text-gray-600">He leído y acepto los <a href="#" class="text-primary">términos y condiciones</a> y la <a href="#" class="text-primary">política de privacidad</a> *</label>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Completar Inscripción
+</button>
+</form>
+</div>
+<div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 sticky top-24">
+<h3 class="text-2xl font-semibold mb-6">Resumen de tu Inscripción</h3>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between pb-4 border-b border-gray-100">
+<span class="text-gray-600">Plan seleccionado:</span>
+<span id="resumen-plan" class="font-medium">Plan Premium</span>
+</div>
+<div class="flex justify-between pb-4 border-b border-gray-100">
+<span class="text-gray-600">Precio del curso:</span>
+<span id="resumen-precio" class="font-medium">$2,499 USD</span>
+</div>
+<div class="flex justify-between pb-4 border-b border-gray-100">
+<span class="text-gray-600">Método de pago:</span>
+<span id="resumen-metodo" class="font-medium">Pago completo</span>
+</div>
+<div class="flex justify-between text-lg font-semibold">
+<span>Total a pagar:</span>
+<span id="resumen-total" class="text-primary">$2,499 USD</span>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h4 class="font-medium mb-3">Formas de pago aceptadas:</h4>
+<div class="flex flex-wrap gap-3">
+<div class="w-12 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill text-2xl"></i>
+</div>
+<div class="w-12 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill text-2xl"></i>
+</div>
+<div class="w-12 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill text-2xl"></i>
+</div>
+<div class="w-12 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-bank-card-fill text-2xl"></i>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium mb-3">Próximas fechas de inicio:</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-calendar-check-line"></i>
+</div>
+<span>5 de junio de 2025</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-calendar-check-line"></i>
+</div>
+<span>15 de julio de 2025</span>
+</li>
+<li class="flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-calendar-check-line"></i>
+</div>
+<span>10 de septiembre de 2025</span>
+</li>
+</ul>
+</div>
+<div class="bg-primary/10 p-4 rounded-lg">
+<p class="text-sm text-gray-600">Al inscribirte, recibirás acceso inmediato a los materiales introductorios y la confirmación de tu plaza en el curso.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="faq" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Preguntas Frecuentes</h2>
+<p class="text-gray-600">Encuentra respuestas a las dudas más comunes sobre nuestro programa de formación.</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="space-y-4">
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿Cuáles son los requisitos para tomar el curso?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">No existen requisitos académicos previos para inscribirte en nuestro curso. Lo más importante es tu pasión por la organización de eventos y tu compromiso con el aprendizaje. Es recomendable tener habilidades básicas de comunicación, organización y manejo de herramientas digitales, pero no son obligatorias ya que el curso cubre estos aspectos desde lo básico hasta lo avanzado.</p>
+</div>
+</div>
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿El curso es presencial u online?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">Ofrecemos modalidad mixta. Las clases teóricas pueden seguirse completamente online a través de nuestra plataforma educativa, con acceso a grabaciones y materiales digitales. Las prácticas y talleres se realizan de forma presencial en nuestras sedes o en eventos reales. Para estudiantes internacionales o que no puedan asistir presencialmente, ofrecemos alternativas de prácticas virtuales o la posibilidad de realizar las prácticas en su país de residencia con supervisión remota.</p>
+</div>
+</div>
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿Qué valor tiene la certificación en el mercado laboral?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">Nuestra certificación está reconocida internacionalmente y avalada por asociaciones profesionales de la industria de eventos. Los graduados de nuestro programa son altamente valorados en el mercado laboral debido a la formación práctica y completa que reciben. Además, facilitamos la inserción laboral a través de nuestra red de contactos con empresas del sector y ofrecemos asesoramiento para el desarrollo profesional tras completar el curso.</p>
+</div>
+</div>
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿Puedo pagar el curso en cuotas?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">Sí, ofrecemos varias opciones de financiamiento. Puedes pagar el curso completo en un solo pago con un descuento especial, dividirlo en 3 pagos mensuales sin intereses, o financiarlo hasta en 12 meses con diferentes entidades bancarias asociadas. También contamos con becas parciales para casos especiales. Nuestro equipo de admisiones puede asesorarte sobre la mejor opción según tu situación.</p>
+</div>
+</div>
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿Cuánto tiempo debo dedicar semanalmente al curso?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">El curso requiere aproximadamente 10-15 horas semanales de dedicación, incluyendo clases, estudio personal y prácticas. El programa está diseñado para ser compatible con otras actividades profesionales o académicas. Las clases en vivo se programan en horarios flexibles y quedan grabadas para que puedas verlas cuando te sea conveniente. Los módulos prácticos se concentran principalmente en fines de semana o en horarios acordados con los estudiantes.</p>
+</div>
+</div>
+<div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="accordion-header flex items-center justify-between p-6 cursor-pointer">
+<h3 class="text-lg font-medium">¿Qué apoyo recibo después de terminar el curso?</h3>
+<div class="w-6 h-6 flex items-center justify-center accordion-icon">
+<i class="ri-add-line"></i>
+</div>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-600">Al graduarte, pasas a formar parte de nuestra comunidad de alumni con beneficios exclusivos: acceso a actualizaciones del contenido del curso, invitaciones a eventos y workshops especializados, bolsa de trabajo con oportunidades laborales, mentoría continua durante los primeros 6 meses después de graduarte, y descuentos en cursos avanzados y especializaciones. También facilitamos la creación de redes profesionales entre graduados para posibles colaboraciones.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contacto" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">¿Tienes más preguntas?</h2>
+<p class="text-gray-600 mb-8">Nuestro equipo está disponible para resolver todas tus dudas sobre el Curso de Event Planner Profesional. Contáctanos y te responderemos a la brevedad.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-mail-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Email</h3>
+<p class="text-gray-600">jc.events@yahoo.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-phone-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Teléfono</h3>
+<p class="text-gray-600">+1 (408) 687-3611</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-map-pin-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Dirección</h3>
+<p class="text-gray-600">1111 Campbell Ave, San Jose, CA 95126</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+<div>
+<form class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Envíanos un mensaje</h3>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option>Información sobre el curso</option>
+<option>Opciones de pago</option>
+<option>Fechas y horarios</option>
+<option>Contenido del programa</option>
+<option>Otro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Enviar Mensaje
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-primary/10">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-semibold mb-6">¡Da el primer paso hacia tu nueva carrera!</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Inscríbete hoy en nuestro Curso de Event Planner Profesional y comienza a construir un futuro exitoso en la industria de eventos.</p>
+<a href="#inscripcion" class="!rounded-button inline-block bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Inscríbete Ahora
+</a>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
+<ul class="space-y-4">
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Eventos</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0209aeae-3555-40df-8103-93a2679dca97" data-readdy="true" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/785e79be-6e40-483e-a999-6f053799162d" data-readdy="true" class="text-gray-400 hover:text-white">Rental</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Curso</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">jc.events@yahoo.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir noticias y ofertas especiales</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 JC Events. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Accordion functionality
+const accordionItems = document.querySelectorAll('.accordion-item');
+accordionItems.forEach(item => {
+const header = item.querySelector('.accordion-header');
+const icon = item.querySelector('.accordion-icon');
+header.addEventListener('click', () => {
+const isActive = item.classList.contains('active');
+// Close all accordions
+accordionItems.forEach(accItem => {
+accItem.classList.remove('active');
+accItem.querySelector('.accordion-icon').innerHTML = '<i class="ri-add-line"></i>';
+});
+// If the clicked item wasn't active, open it
+if (!isActive) {
+item.classList.add('active');
+icon.innerHTML = '<i class="ri-subtract-line"></i>';
+}
+});
+});
+// Plan selection in cards
+const planCards = document.querySelectorAll('.plan-card');
+const selectPlanButtons = document.querySelectorAll('.select-plan');
+selectPlanButtons.forEach(button => {
+button.addEventListener('click', function() {
+const planId = this.getAttribute('data-plan');
+const planPrice = this.getAttribute('data-price');
+// Remove selected class from all cards
+planCards.forEach(card => card.classList.remove('selected'));
+// Add selected class to current card
+document.getElementById(`plan-${planId}`).classList.add('selected');
+// Update radio button in form
+document.getElementById(`plan-radio-${planId}`).checked = true;
+// Update summary
+updateSummary();
+// Scroll to inscription form
+document.getElementById('inscripcion').scrollIntoView({
+behavior: 'smooth'
+});
+});
+});
+// Plan radio buttons in form
+const planRadios = document.querySelectorAll('input[name="plan"]');
+planRadios.forEach(radio => {
+radio.addEventListener('change', function() {
+// Update radio indicators
+document.querySelectorAll('.plan-radio-indicator').forEach(indicator => {
+indicator.style.backgroundColor = 'transparent';
+indicator.style.borderColor = '#D1D5DB';
+});
+const selectedIndicator = this.parentElement.querySelector('.plan-radio-indicator');
+selectedIndicator.style.backgroundColor = '#B8860B';
+selectedIndicator.style.borderColor = '#B8860B';
+// Update summary
+updateSummary();
+});
+});
+// Payment method radio buttons
+const paymentRadios = document.querySelectorAll('input[name="metodo-pago"]');
+paymentRadios.forEach(radio => {
+radio.addEventListener('change', function() {
+// Update radio indicators
+document.querySelectorAll('.pago-radio-indicator').forEach(indicator => {
+indicator.style.backgroundColor = 'transparent';
+indicator.style.borderColor = '#D1D5DB';
+});
+const selectedIndicator = this.parentElement.querySelector('.pago-radio-indicator');
+selectedIndicator.style.backgroundColor = '#B8860B';
+selectedIndicator.style.borderColor = '#B8860B';
+// Update summary
+updateSummary();
+});
+});
+// Function to update summary
+function updateSummary() {
+const selectedPlan = document.querySelector('input[name="plan"]:checked').value;
+const selectedPayment = document.querySelector('input[name="metodo-pago"]:checked').value;
+let planName, planPrice;
+switch(selectedPlan) {
+case 'basico':
+planName = 'Plan Básico';
+planPrice = 1499;
+break;
+case 'premium':
+planName = 'Plan Premium';
+planPrice = 2499;
+break;
+case 'vip':
+planName = 'Plan VIP';
+planPrice = 3499;
+break;
+}
+let paymentMethod;
+switch(selectedPayment) {
+case 'completo':
+paymentMethod = 'Pago completo';
+break;
+case 'mensual':
+paymentMethod = '3 mensualidades';
+break;
+case 'financiado':
+paymentMethod = 'Financiamiento';
+break;
+}
+document.getElementById('resumen-plan').textContent = planName;
+document.getElementById('resumen-precio').textContent = `$${planPrice} USD`;
+document.getElementById('resumen-metodo').textContent = paymentMethod;
+document.getElementById('resumen-total').textContent = `$${planPrice} USD`;
+}
+// Form submission
+const inscripcionForm = document.getElementById('inscripcion-form');
+inscripcionForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Simple validation
+const nombre = document.getElementById('nombre').value;
+const email = document.getElementById('email').value;
+const telefono = document.getElementById('telefono').value;
+const pais = document.getElementById('pais').value;
+const ciudad = document.getElementById('ciudad').value;
+const terminos = document.getElementById('terminos').checked;
+if (!nombre || !email || !telefono || !pais || !ciudad || !terminos) {
+alert('Por favor completa todos los campos obligatorios.');
+return;
+}
+// Here you would normally send the form data to your server
+alert('¡Gracias por tu inscripción! Te contactaremos pronto para confirmar los detalles.');
+// Reset form
+inscripcionForm.reset();
+// Set default values again
+document.getElementById('plan-radio-premium').checked = true;
+document.getElementById('pago-completo').checked = true;
+updateSummary();
+});
+// Initialize summary on page load
+updateSummary();
+});
+</script>
+</body>
+</html>

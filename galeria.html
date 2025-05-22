@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería - Curso de Event Planner Profesional</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#B8860B',
+secondary: '#1F2937'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.gallery-item {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.lightbox {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.9);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+}
+.lightbox.active {
+display: flex;
+}
+.lightbox-content {
+position: relative;
+max-width: 90%;
+max-height: 90%;
+}
+.lightbox-img {
+max-width: 100%;
+max-height: 90vh;
+object-fit: contain;
+}
+.lightbox-close {
+position: absolute;
+top: -40px;
+right: 0;
+color: white;
+font-size: 30px;
+cursor: pointer;
+}
+.lightbox-prev, .lightbox-next {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+color: white;
+font-size: 30px;
+cursor: pointer;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(0, 0, 0, 0.5);
+border-radius: 50%;
+}
+.lightbox-prev {
+left: 20px;
+}
+.lightbox-next {
+right: 20px;
+}
+.lightbox-caption {
+position: absolute;
+bottom: -40px;
+left: 0;
+right: 0;
+color: white;
+text-align: center;
+}
+.filter-button.active {
+background-color: #B8860B;
+color: white;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+			<nav class="flex items-center justify-between px-6 h-20">
+			<div class="flex items-center gap-12">
+				<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
+					<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+				</a>
+				<div class="hidden lg:flex items-center gap-8">
+					<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
+					<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
+					<a href="eventos.html" data-readdy="true" class="text-gray-600 hover:text-primary">Eventos</a>
+					<a href="galeria.html" class="text-primary">Galería</a>
+					<a href="rental.html#" class="text-gray-600 hover:text-primary">Rental</a>
+					<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
+				</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+					<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+						<i class="ri-search-line"></i>
+					</div>
+					<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
+				</div>
+				<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
+					Contactar
+				</a>
+				<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+					<i class="ri-menu-line text-xl"></i>
+				</button>
+			</div>
+			</nav>
+		</header>
+<main class="pt-20">
+<section class="relative h-[400px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%2520event%2520gallery%2520with%2520a%2520collection%2520of%2520beautiful%2520wedding%2520decorations%252C%2520corporate%2520event%2520setups%252C%2520and%2520themed%2520parties.%2520The%2520scene%2520should%2520showcase%2520a%2520sophisticated%2520display%2520of%2520event%2520planning%2520work%2520with%2520soft%2520lighting%2520and%2520professional%2520presentation.%2520The%2520left%2520side%2520should%2520have%2520a%2520clean%2520white%2520background%2520that%2520smoothly%2520transitions%2520into%2520the%2520gallery%2520scene&width=1920&height=400&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="relative container mx-auto px-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-semibold mb-6">Galería de Eventos</h1>
+<p class="text-xl text-gray-600 mb-8">Explora nuestra colección de eventos organizados por graduados, trabajos prácticos y sesiones de clase que muestran la excelencia en planificación de eventos.</p>
+</div>
+</div>
+</section>
+<section id="galeria" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<h2 class="text-3xl font-semibold mb-4">Nuestros Mejores Trabajos</h2>
+<p class="text-gray-600">Descubre la creatividad y profesionalismo de nuestros graduados a través de esta selección de eventos organizados.</p>
+</div>
+<div class="mb-12">
+<div class="flex flex-wrap justify-center gap-3 mb-8">
+<button class="filter-button !rounded-button px-6 py-2.5 text-sm font-medium border border-gray-200 hover:bg-primary/10 whitespace-nowrap active" data-filter="all">
+Todos
+</button>
+<button class="filter-button !rounded-button px-6 py-2.5 text-sm font-medium border border-gray-200 hover:bg-primary/10 whitespace-nowrap" data-filter="bodas">
+Bodas
+</button>
+<button class="filter-button !rounded-button px-6 py-2.5 text-sm font-medium border border-gray-200 hover:bg-primary/10 whitespace-nowrap" data-filter="corporativos">
+Eventos Corporativos
+</button>
+<button class="filter-button !rounded-button px-6 py-2.5 text-sm font-medium border border-gray-200 hover:bg-primary/10 whitespace-nowrap" data-filter="tematicos">
+Fiestas Temáticas
+</button>
+<button class="filter-button !rounded-button px-6 py-2.5 text-sm font-medium border border-gray-200 hover:bg-primary/10 whitespace-nowrap" data-filter="clases">
+Sesiones de Clase
+</button>
+</div>
+<div class="flex flex-wrap justify-center gap-6 mb-8">
+<div class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-calendar-line"></i>
+</div>
+<select id="filter-date" class="bg-transparent border-none outline-none text-sm pr-8">
+<option value="all">Todas las fechas</option>
+<option value="2025">2025</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-map-pin-line"></i>
+</div>
+<select id="filter-location" class="bg-transparent border-none outline-none text-sm pr-8">
+<option value="all">Todas las ubicaciones</option>
+<option value="madrid">Madrid</option>
+<option value="barcelona">Barcelona</option>
+<option value="valencia">Valencia</option>
+<option value="sevilla">Sevilla</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+<input type="text" id="search-gallery" placeholder="Buscar por palabra clave" class="bg-transparent border-none outline-none text-sm w-48">
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-container">
+<!-- Bodas -->
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="bodas" data-date="2025" data-location="madrid">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520wedding%2520setup%2520with%2520beautiful%2520floral%2520arrangements%252C%2520soft%2520lighting%252C%2520and%2520sophisticated%2520table%2520settings%2520in%2520a%2520luxurious%2520venue&width=600&height=400&seq=2&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Boda Elegante">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Boda</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Boda Elegante en Palacio Real</h3>
+<p class="text-gray-600 text-sm mb-4">Una celebración sofisticada con decoración floral exquisita y atención al detalle en cada aspecto del evento.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Mayo 2025</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Madrid</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="bodas" data-date="2024" data-location="barcelona">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=rustic%2520outdoor%2520wedding%2520with%2520natural%2520decorations%252C%2520wooden%2520elements%252C%2520and%2520a%2520beautiful%2520garden%2520setting%2520with%2520string%2520lights%2520overhead&width=600&height=400&seq=3&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Boda Rústica">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Boda</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Boda Rústica al Aire Libre</h3>
+<p class="text-gray-600 text-sm mb-4">Celebración íntima en un entorno natural con elementos de madera y decoración bohemia para crear un ambiente acogedor.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Septiembre 2024</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Barcelona</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="bodas" data-date="2023" data-location="valencia">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=beach%2520wedding%2520setup%2520with%2520white%2520decorations%252C%2520flowing%2520fabrics%252C%2520and%2520a%2520beautiful%2520ocean%2520view%2520at%2520sunset&width=600&height=400&seq=4&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Boda en Playa">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Boda</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Boda en la Playa al Atardecer</h3>
+<p class="text-gray-600 text-sm mb-4">Ceremonia romántica junto al mar con decoración en tonos blancos y azules que complementan el entorno natural.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Julio 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Valencia</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Eventos Corporativos -->
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="corporativos" data-date="2025" data-location="madrid">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520gala%2520event%2520with%2520elegant%2520table%2520settings%252C%2520stage%2520setup%252C%2520and%2520professional%2520lighting%2520in%2520a%2520luxury%2520hotel%2520ballroom&width=600&height=400&seq=5&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Gala Corporativa">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Corporativo</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Gala Anual de Premiación</h3>
+<p class="text-gray-600 text-sm mb-4">Evento exclusivo para 200 ejecutivos con cena de gala, entrega de premios y entretenimiento de primer nivel.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Marzo 2025</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Madrid</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="corporativos" data-date="2024" data-location="barcelona">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=product%2520launch%2520event%2520with%2520modern%2520minimalist%2520design%252C%2520technology%2520displays%252C%2520and%2520interactive%2520stations%2520in%2520a%2520contemporary%2520venue&width=600&height=400&seq=6&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Lanzamiento de Producto">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Corporativo</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Lanzamiento de Producto Tecnológico</h3>
+<p class="text-gray-600 text-sm mb-4">Presentación innovadora con estaciones interactivas, demostraciones de producto y experiencia inmersiva para invitados.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Octubre 2024</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Barcelona</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="corporativos" data-date="2023" data-location="sevilla">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=corporate%2520conference%2520setup%2520with%2520professional%2520stage%252C%2520seating%2520arrangement%252C%2520and%2520branding%2520elements%2520in%2520a%2520large%2520convention%2520center&width=600&height=400&seq=7&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Conferencia Empresarial">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Corporativo</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Conferencia Internacional de Negocios</h3>
+<p class="text-gray-600 text-sm mb-4">Evento de tres días con ponentes internacionales, workshops, networking y experiencias personalizadas para asistentes.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Noviembre 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Sevilla</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fiestas Temáticas -->
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="tematicos" data-date="2025" data-location="valencia">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=gatsby%2520themed%2520party%2520with%2520art%2520deco%2520decorations%252C%25201920s%2520style%2520elements%252C%2520gold%2520and%2520black%2520color%2520scheme%252C%2520and%2520elegant%2520vintage%2520details&width=600&height=400&seq=8&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Fiesta Gatsby">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Temático</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Gala Great Gatsby</h3>
+<p class="text-gray-600 text-sm mb-4">Elegante celebración inspirada en los años 20 con decoración art deco, música de época y experiencias inmersivas.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Febrero 2025</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Valencia</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="tematicos" data-date="2024" data-location="sevilla">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=tropical%2520themed%2520party%2520with%2520vibrant%2520colors%252C%2520exotic%2520flowers%252C%2520palm%2520leaves%252C%2520and%2520beach%2520elements%2520in%2520an%2520outdoor%2520setting&width=600&height=400&seq=9&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Fiesta Tropical">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Temático</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Fiesta Tropical de Verano</h3>
+<p class="text-gray-600 text-sm mb-4">Celebración vibrante con decoración exótica, cócteles tropicales, música caribeña y experiencias sensoriales únicas.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Agosto 2024</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Sevilla</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="tematicos" data-date="2023" data-location="madrid">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=masquerade%2520ball%2520with%2520elegant%2520masks%252C%2520dramatic%2520lighting%252C%2520rich%2520colors%252C%2520and%2520luxurious%2520decorations%2520in%2520a%2520historic%2520venue&width=600&height=400&seq=10&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Baile de Máscaras">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Temático</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Baile de Máscaras Veneciano</h3>
+<p class="text-gray-600 text-sm mb-4">Evento misterioso con máscaras elaboradas, decoración opulenta, entretenimiento teatral y ambiente de elegancia.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Diciembre 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Madrid</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sesiones de Clase -->
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="clases" data-date="2025" data-location="barcelona">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=event%2520planning%2520workshop%2520with%2520students%2520working%2520on%2520table%2520settings%252C%2520floral%2520arrangements%252C%2520and%2520design%2520elements%2520in%2520a%2520bright%2520classroom&width=600&height=400&seq=11&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Taller de Decoración">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Clase</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Taller de Decoración Floral</h3>
+<p class="text-gray-600 text-sm mb-4">Sesión práctica donde los estudiantes aprenden técnicas avanzadas de arreglos florales para diferentes tipos de eventos.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Abril 2025</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Barcelona</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="clases" data-date="2024" data-location="madrid">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=event%2520planning%2520class%2520with%2520students%2520creating%2520mood%2520boards%252C%2520design%2520concepts%252C%2520and%2520planning%2520documents%2520in%2520a%2520professional%2520setting&width=600&height=400&seq=12&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Clase de Diseño">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Clase</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Masterclass de Diseño Conceptual</h3>
+<p class="text-gray-600 text-sm mb-4">Estudiantes desarrollando mood boards y conceptos creativos bajo la guía de profesionales reconocidos en la industria.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Junio 2024</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Madrid</span>
+</div>
+</div>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm border border-gray-100 group cursor-pointer" data-category="clases" data-date="2023" data-location="valencia">
+<div class="relative h-64 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=event%2520planning%2520practical%2520session%2520with%2520students%2520setting%2520up%2520a%2520real%2520event%252C%2520coordinating%2520logistics%252C%2520and%2520working%2520as%2520a%2520team&width=600&height=400&seq=13&orientation=landscape" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" alt="Práctica en Evento Real">
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur-sm text-primary text-xs font-medium px-3 py-1 rounded-full">Clase</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Práctica en Evento Real</h3>
+<p class="text-gray-600 text-sm mb-4">Estudiantes aplicando sus conocimientos en la organización y ejecución de un evento corporativo bajo supervisión profesional.</p>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<div class="flex items-center gap-1">
+<i class="ri-calendar-line"></i>
+<span>Octubre 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<i class="ri-map-pin-line"></i>
+<span>Valencia</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="no-results" class="hidden text-center py-12">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-gray-100 text-gray-400">
+<i class="ri-search-line text-2xl"></i>
+</div>
+<h3 class="text-xl font-medium mb-2">No se encontraron resultados</h3>
+<p class="text-gray-500">Intenta con otros criterios de búsqueda o filtros</p>
+</div>
+<div class="mt-12 flex justify-center">
+<button id="load-more" class="!rounded-button bg-white border border-primary text-primary hover:bg-primary/5 px-8 py-3 font-medium whitespace-nowrap cursor-pointer">
+Cargar Más
+</button>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">Inspírate para tu Futuro Profesional</h2>
+<p class="text-gray-600 mb-6">Nuestra galería muestra el trabajo de graduados que ahora son profesionales exitosos en la industria de eventos. Cada imagen representa la creatividad, atención al detalle y excelencia que caracteriza a los event planners formados en nuestro programa.</p>
+<p class="text-gray-600 mb-8">Al completar el curso, tú también podrás desarrollar eventos de este nivel y formar parte de nuestra comunidad de profesionales destacados.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0cc5f454-c970-40c4-89f3-e85cbe743895" data-readdy="true" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap inline-block text-center cursor-pointer">
+Inscríbete al Curso
+</a>
+<a href="#contacto" class="!rounded-button border border-gray-200 px-8 py-3 text-lg font-medium whitespace-nowrap inline-block text-center cursor-pointer">
+Solicitar Información
+</a>
+</div>
+</div>
+<div>
+<img src="https://readdy.ai/api/search-image?query=successful%2520event%2520planner%2520team%2520celebrating%2520after%2520completing%2520a%2520beautiful%2520event%252C%2520showing%2520professional%2520satisfaction%2520and%2520teamwork%2520in%2520an%2520elegant%2520venue%2520with%2520their%2520creation%2520visible%2520in%2520the%2520background&width=600&height=500&seq=14&orientation=landscape" class="w-full h-auto rounded-lg shadow-xl" alt="Equipo de Event Planners">
+</div>
+</div>
+</div>
+</section>
+<section id="testimonios" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-semibold mb-4">Lo Que Dicen Nuestros Graduados</h2>
+<p class="text-gray-600">Descubre las experiencias de quienes han completado nuestro programa y ahora organizan eventos increíbles.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"Las habilidades que adquirí en el curso me permitieron crear mi propia empresa de organización de bodas. Ahora diseño eventos que aparecen en esta galería y me siento orgullosa de cada proyecto que realizo."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520young%2520latin%2520woman%2520with%2520neutral%2520background&width=60&height=60&seq=15&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Graduada">
+<div>
+<h4 class="font-medium">Carmen Rodríguez</h4>
+<p class="text-gray-500 text-sm">Fundadora de "Momentos Mágicos"</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"El enfoque práctico del curso me dio la confianza para organizar eventos corporativos de alto nivel. Las técnicas aprendidas me han permitido destacar en un mercado competitivo y crear experiencias memorables."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520young%2520latin%2520man%2520with%2520neutral%2520background&width=60&height=60&seq=16&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Graduado">
+<div>
+<h4 class="font-medium">Daniel Morales</h4>
+<p class="text-gray-500 text-sm">Director de Eventos en Global Corp</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex gap-1 text-yellow-400 mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<p class="text-gray-600 italic mb-6">"Gracias al curso pude especializarme en fiestas temáticas creativas. Los conocimientos sobre diseño, proveedores y gestión de presupuestos han sido fundamentales para el éxito de mi negocio actual."</p>
+<div class="flex items-center gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520middle%2520aged%2520latin%2520woman%2520with%2520neutral%2520background&width=60&height=60&seq=17&orientation=squarish" class="w-12 h-12 rounded-full object-cover" alt="Graduada">
+<div>
+<h4 class="font-medium">Laura Sánchez</h4>
+<p class="text-gray-500 text-sm">Creadora de "Fiestas con Estilo"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contacto" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-semibold mb-6">¿Quieres Formar Parte de Nuestra Galería?</h2>
+<p class="text-gray-600 mb-8">Inscríbete en nuestro Curso de Event Planner Profesional y aprende a crear eventos tan impresionantes como los que ves en esta galería. Contáctanos para obtener más información.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-mail-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Email</h3>
+<p class="text-gray-600">cursos@jcevents.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-phone-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Teléfono</h3>
+<p class="text-gray-600">+1 (408) 687-3611</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
+<i class="ri-map-pin-line"></i>
+</div>
+<div>
+<h3 class="font-medium mb-1">Dirección</h3>
+<p class="text-gray-600">1111 Campbell Ave, San Jose, CA 95126</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+<div>
+<form class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Solicita Información</h3>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+<select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary pr-8">
+<option>Información sobre el curso</option>
+<option>Consulta sobre la galería</option>
+<option>Fechas y horarios</option>
+<option>Contenido del programa</option>
+<option>Otro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+<textarea rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary"></textarea>
+</div>
+<button type="submit" class="!rounded-button w-full bg-primary text-white px-6 py-3 font-medium whitespace-nowrap cursor-pointer">
+Enviar Mensaje
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-primary/10">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-semibold mb-6">¿Listo para crear eventos inolvidables?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Inscríbete hoy en nuestro Curso de Event Planner Profesional y comienza tu camino para convertirte en un organizador de eventos de élite.</p>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0cc5f454-c970-40c4-89f3-e85cbe743895" data-readdy="true" class="!rounded-button inline-block bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
+Inscríbete Ahora
+</a>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-20">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12 mb-6 block">
+<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
+</a>
+<p class="text-gray-400">Creando momentos inolvidables desde 2010</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
+<ul class="space-y-4">
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="text-gray-400 hover:text-white">Inicio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/869ecc4a-7cc6-4931-89bc-6c0f3fb2a02f" data-readdy="true" class="text-gray-400 hover:text-white">Eventos</a></li>
+<li><a href="#galeria" class="text-gray-400 hover:text-white">Galería</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Rental</a></li>
+<li><a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/0cc5f454-c970-40c4-89f3-e85cbe743895" data-readdy="true" class="text-gray-400 hover:text-white">Curso</a></li>
+<li><a href="#contacto" class="text-gray-400 hover:text-white">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Contacto</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">1111 Campbell Ave, San Jose, CA 95126</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+1 (408) 687-3611</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">cursos@jcevents.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Suscríbete para recibir noticias y ofertas especiales</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Tu email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary">
+<button class="!rounded-button bg-primary text-white px-6 py-2 whitespace-nowrap cursor-pointer">
+Suscribir
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 JC Events. Todos los derechos reservados.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+<div class="lightbox-content">
+<div class="lightbox-close">
+<i class="ri-close-line"></i>
+</div>
+<div class="lightbox-prev">
+<i class="ri-arrow-left-s-line"></i>
+</div>
+<img src="" alt="" class="lightbox-img">
+<div class="lightbox-next">
+<i class="ri-arrow-right-s-line"></i>
+</div>
+<div class="lightbox-caption">
+<h3 class="text-xl font-semibold mb-1"></h3>
+<p class="text-sm"></p>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Gallery filtering
+const filterButtons = document.querySelectorAll('.filter-button');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const noResults = document.getElementById('no-results');
+const dateFilter = document.getElementById('filter-date');
+const locationFilter = document.getElementById('filter-location');
+const searchInput = document.getElementById('search-gallery');
+let currentCategory = 'all';
+let currentDate = 'all';
+let currentLocation = 'all';
+let searchTerm = '';
+function filterGallery() {
+let visibleCount = 0;
+galleryItems.forEach(item => {
+const category = item.getAttribute('data-category');
+const date = item.getAttribute('data-date');
+const location = item.getAttribute('data-location');
+const itemText = item.textContent.toLowerCase();
+const matchesCategory = currentCategory === 'all' || category === currentCategory;
+const matchesDate = currentDate === 'all' || date === currentDate;
+const matchesLocation = currentLocation === 'all' || location === currentLocation;
+const matchesSearch = searchTerm === '' || itemText.includes(searchTerm);
+if (matchesCategory && matchesDate && matchesLocation && matchesSearch) {
+item.style.display = 'block';
+visibleCount++;
+} else {
+item.style.display = 'none';
+}
+});
+if (visibleCount === 0) {
+noResults.style.display = 'block';
+} else {
+noResults.style.display = 'none';
+}
+}
+filterButtons.forEach(button => {
+button.addEventListener('click', function() {
+filterButtons.forEach(btn => btn.classList.remove('active'));
+this.classList.add('active');
+currentCategory = this.getAttribute('data-filter');
+filterGallery();
+});
+});
+dateFilter.addEventListener('change', function() {
+currentDate = this.value;
+filterGallery();
+});
+locationFilter.addEventListener('change', function() {
+currentLocation = this.value;
+filterGallery();
+});
+searchInput.addEventListener('input', function() {
+searchTerm = this.value.toLowerCase();
+filterGallery();
+});
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const lightboxClose = document.querySelector('.lightbox-close');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+const lightboxCaption = document.querySelector('.lightbox-caption');
+const lightboxTitle = document.querySelector('.lightbox-caption h3');
+const lightboxDesc = document.querySelector('.lightbox-caption p');
+let currentIndex = 0;
+const visibleItems = () => Array.from(galleryItems).filter(item => item.style.display !== 'none');
+galleryItems.forEach(item => {
+item.addEventListener('click', function() {
+const items = visibleItems();
+currentIndex = items.indexOf(this);
+const img = this.querySelector('img');
+const title = this.querySelector('h3').textContent;
+const desc = this.querySelector('p').textContent;
+lightboxImg.src = img.src;
+lightboxTitle.textContent = title;
+lightboxDesc.textContent = desc;
+lightbox.classList.add('active');
+document.body.style.overflow = 'hidden';
+});
+});
+lightboxClose.addEventListener('click', function() {
+lightbox.classList.remove('active');
+document.body.style.overflow = 'auto';
+});
+lightboxPrev.addEventListener('click', function() {
+const items = visibleItems();
+currentIndex = (currentIndex - 1 + items.length) % items.length;
+const item = items[currentIndex];
+const img = item.querySelector('img');
+const title = item.querySelector('h3').textContent;
+const desc = item.querySelector('p').textContent;
+lightboxImg.src = img.src;
+lightboxTitle.textContent = title;
+lightboxDesc.textContent = desc;
+});
+lightboxNext.addEventListener('click', function() {
+const items = visibleItems();
+currentIndex = (currentIndex + 1) % items.length;
+const item = items[currentIndex];
+const img = item.querySelector('img');
+const title = item.querySelector('h3').textContent;
+const desc = item.querySelector('p').textContent;
+lightboxImg.src = img.src;
+lightboxTitle.textContent = title;
+lightboxDesc.textContent = desc;
+});
+lightbox.addEventListener('click', function(e) {
+if (e.target === lightbox) {
+lightbox.classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+});
+document.addEventListener('keydown', function(e) {
+if (!lightbox.classList.contains('active')) return;
+if (e.key === 'Escape') {
+lightbox.classList.remove('active');
+document.body.style.overflow = 'auto';
+} else if (e.key === 'ArrowLeft') {
+lightboxPrev.click();
+} else if (e.key === 'ArrowRight') {
+lightboxNext.click();
+}
+});
+// Load more button (simulated)
+const loadMoreBtn = document.getElementById('load-more');
+let clickCount = 0;
+loadMoreBtn.addEventListener('click', function() {
+clickCount++;
+if (clickCount >= 2) {
+this.textContent = 'No hay más imágenes';
+this.disabled = true;
+this.classList.add('opacity-50', 'cursor-not-allowed');
+} else {
+// In a real implementation, you would load more images here
+// For this demo, we'll just show a message
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-lg shadow-lg';
+notification.textContent = 'Se han cargado más imágenes';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.remove();
+}, 3000);
+}
+});
+});
+</script>
+</body>
+</html>
