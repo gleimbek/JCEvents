@@ -50,47 +50,28 @@ visibility: visible;
 .modal-content {
 transform: translateY(-20px);
 transition: all 0.3s ease;
+max-height: 90vh;
+overflow-y: auto;
 }
 .modal.active .modal-content {
 transform: translateY(0);
 }
+.modal-content::-webkit-scrollbar {
+width: 6px;
+}
+.modal-content::-webkit-scrollbar-track {
+background: #f1f1f1;
+border-radius: 3px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+background: #B8860B;
+border-radius: 3px;
+}
 </style>
 </head>
 <body class="bg-white">
-<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-			<nav class="flex items-center justify-between px-6 h-20">
-			<div class="flex items-center gap-12">
-				<a href="https://readdy.ai/home/097748d5-8305-40fc-9d21-a151e265d7d4/df2b9454-043c-472b-9fd6-b3cffe68055d" data-readdy="true" class="h-12">
-					<img src="https://static.readdy.ai/image/deefa86aa544edf61068881cf80efffb/3ec04ddbe058c413a72c2af62cd24173.png" alt="JC Events" class="h-full">
-				</a>
-				<div class="hidden lg:flex items-center gap-8">
-					<a href="index.html" data-readdy="true" class="text-gray-600 hover:text-primary">Inicio</a>
-					<a href="aboutus.html" class="text-gray-600 hover:text-primary">Sobre Nosotros</a>
-					<a href="eventos.html" data-readdy="true" class="text-gray-600 hover:text-primary">Eventos</a>
-					<a href="galeria.html" class="text-primary">Galería</a>
-					<a href="rental.html#" class="text-gray-600 hover:text-primary">Rental</a>
-					<a href="curso.html" data-readdy="true" class="text-gray-600 hover:text-primary">Curso</a>
-				</div>
-			</div>
-			<div class="flex items-center gap-4">
-				<div class="hidden lg:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
-					<div class="w-5 h-5 flex items-center justify-center text-gray-400">
-						<i class="ri-search-line"></i>
-					</div>
-					<input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-sm w-48">
-				</div>
-				<a href="#contacto" class="!rounded-button bg-primary text-white px-6 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer">
-					Contactar
-				</a>
-				<button class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
-					<i class="ri-menu-line text-xl"></i>
-				</button>
-			</div>
-			</nav>
-		</header>
-		
 <div id="servicesModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="modal-content bg-white w-full max-w-4xl rounded-lg shadow-xl mx-4">
 <div class="flex items-center justify-between p-6 border-b border-gray-100">
 <h3 class="text-2xl font-semibold">Nuestros Servicios</h3>
 <button id="closeModal" class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
@@ -137,7 +118,7 @@ transform: translateY(0);
 </div>
 <!-- Modal para Bodas -->
 <div id="bodasModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="modal-content bg-white w-full max-w-4xl rounded-lg shadow-xl mx-4">
 <div class="flex items-center justify-between p-6 border-b border-gray-100">
 <h3 class="text-2xl font-semibold">Bodas</h3>
 <button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
@@ -243,7 +224,7 @@ Solicitar información
 </div>
 <!-- Modal para Baby Showers -->
 <div id="babyShowerModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="modal-content bg-white w-full max-w-4xl rounded-lg shadow-xl mx-4">
 <div class="flex items-center justify-between p-6 border-b border-gray-100">
 <h3 class="text-2xl font-semibold">Baby Showers</h3>
 <button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
@@ -349,7 +330,7 @@ Solicitar información
 </div>
 <!-- Modal para Quinceañeras -->
 <div id="quinceModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-<div class="modal-content bg-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-xl mx-4 overflow-hidden">
+<div class="modal-content bg-white w-full max-w-4xl rounded-lg shadow-xl mx-4">
 <div class="flex items-center justify-between p-6 border-b border-gray-100">
 <h3 class="text-2xl font-semibold">Quinceañeras</h3>
 <button class="closeDetailModal w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer">
@@ -493,13 +474,8 @@ Contactar
 <p class="text-xl text-gray-600 mb-8">Especialistas en planificación de eventos exclusivos. Desde bodas elegantes hasta celebraciones corporativas, hacemos realidad tus sueños.</p>
 <div class="flex gap-4">
 <a href="planificador.html" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
-  Planifica tu Evento
-</a>
-<!--
-<button onclick="window.location.href='planificador.html'" class="!rounded-button bg-primary text-white px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
 Planifica tu Evento
-</button>
--->
+</a>
 <button id="showServicesModal" class="!rounded-button border border-gray-200 px-8 py-3 text-lg font-medium whitespace-nowrap cursor-pointer">
 Ver Servicios
 </button>
